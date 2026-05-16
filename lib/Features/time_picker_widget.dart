@@ -1,15 +1,70 @@
 import 'package:flutter/material.dart';
+import 'package:orbitask/constants/app_colors.dart';
+import 'package:orbitask/constants/app_fonts.dart';
 
-class TimePickerWidget extends StatefulWidget {
-  const TimePickerWidget({super.key});
+class TimerPickerWidget extends StatefulWidget {
+  final Function(TimeOfDay) onTimeSelected;
+
+  const TimerPickerWidget({super.key, required this.onTimeSelected});
 
   @override
-  State<TimePickerWidget> createState() => _TimePickerWidgetState();
+  State<TimerPickerWidget> createState() => _TimerPickerWidgetState();
 }
 
-class _TimePickerWidgetState extends State<TimePickerWidget> {
+class _TimerPickerWidgetState extends State<TimerPickerWidget> {
+  TimeOfDay _startTime = TimeOfDay.now();
+
+  Future<void> _pickTime() async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: _startTime,
+    );
+    if (picked != null) {
+      setState(() {
+        _startTime = picked;
+      });
+      widget.onTimeSelected(_startTime);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: _pickTime,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.timer_rounded,
+                  size: 24,
+                  color: AppColors.bgblue,
+                ),
+                SizedBox(width: 8),
+                Text(
+                  'Start Time',
+                  style: TextStyle(
+                    fontSize: AppFonts.body,
+                    fontWeight: AppFonts.medium,
+                    color: AppColors.textPrimary,
+                  ),
+                ),
+                Spacer(),
+                Text(
+                  _startTime.format(context),
+                  style: TextStyle(
+                    fontSize: AppFonts.body,
+                    fontWeight: AppFonts.medium,
+                    color: AppColors.shark600,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

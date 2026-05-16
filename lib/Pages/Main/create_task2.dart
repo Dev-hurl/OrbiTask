@@ -1,13 +1,21 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:orbitask/Features/time_picker_widget.dart';
 import 'package:orbitask/Pages/Main/task_preview.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
-class CreateTask2 extends StatelessWidget {
+class CreateTask2 extends StatefulWidget {
   const CreateTask2({super.key});
+
+  @override
+  State<CreateTask2> createState() => _CreateTask2State();
+}
+
+class _CreateTask2State extends State<CreateTask2> {
+
+  TimeOfDay selectedTime = TimeOfDay.now();
 
   @override
   Widget build(BuildContext context) {
@@ -61,48 +69,18 @@ class CreateTask2 extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 24),
+                    SizedBox(height: 12),
                     Column(
                       children: [
                         //First Row: Time
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            SvgPicture.asset(
-                              'assets/icons/timer_outline.svg',
-                              width: 24,
-                              height: 24,
-                              colorFilter: ColorFilter.mode(
-                                AppColors.bgblue,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            SizedBox(height: 12),
-                            Text(
-                              'Start Time',
-                              style: TextStyle(
-                                fontSize: AppFonts.body,
-                                fontWeight: AppFonts.medium,
-                                color: AppColors.textPrimary,
-                              ),
-                            ),
-                            Spacer(),
-                            GestureDetector(
-                              onTap: () {
-                                //
-                              },
-                              child: Text(
-                                '09:00 AM',
-                                style: TextStyle(
-                                  fontSize: AppFonts.body,
-                                  fontWeight: AppFonts.medium,
-                                  color: AppColors.shark600,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 24),
+                        TimerPickerWidget(
+                          onTimeSelected: (time) {
+                            setState(() {
+                              selectedTime = time;
+                            });
+                          } 
+                          ),
+                        SizedBox(height: 12),
                         Divider(height: 1, thickness: 1, color: AppColors.shark100),
                         SizedBox(height: 24),
                         //Second Row: Date

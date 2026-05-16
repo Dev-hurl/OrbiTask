@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:orbitask/Pages/Onboarding/onboard1.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
