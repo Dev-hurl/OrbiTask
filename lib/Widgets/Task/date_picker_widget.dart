@@ -68,7 +68,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                   '${_startDate.year.toString().padLeft(2, '0')}',
                   style: TextStyle(
                     fontSize: AppFonts.body,
-                    fontWeight: AppFonts.medium,
+                    fontWeight: AppFonts.semibold,
                     color: AppColors.shark600,
                   ),
                 ),

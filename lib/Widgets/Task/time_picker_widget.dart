@@ -56,7 +56,7 @@ class _TimerPickerWidgetState extends State<TimerPickerWidget> {
                   _startTime.format(context),
                   style: TextStyle(
                     fontSize: AppFonts.body,
-                    fontWeight: AppFonts.medium,
+                    fontWeight: AppFonts.semibold,
                     color: AppColors.shark600,
                   ),
                 ),
