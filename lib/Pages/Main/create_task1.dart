@@ -153,6 +153,7 @@ class _CreateTask1State extends State<CreateTask1> {
                       DropdownButtonFormField<String>(
                         initialValue: _selectedPriority,
                         decoration: InputDecoration(
+                          hintText: 'Choose Priority Level',
                           labelText: 'Priority Level',
                           labelStyle: TextStyle(
                             color: AppColors.textPrimary,
@@ -196,6 +197,7 @@ class _CreateTask1State extends State<CreateTask1> {
                       DropdownButtonFormField<String>(
                         initialValue: _selectedCategory,
                         decoration: InputDecoration(
+                          hintText: 'Choose Category',
                           labelText: 'Category',
                           labelStyle: TextStyle(
                             color: AppColors.textPrimary,

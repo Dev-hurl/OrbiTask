@@ -34,7 +34,7 @@ class _TimerPickerWidgetState extends State<TimerPickerWidget> {
         GestureDetector(
           onTap: _pickTime,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
+            padding: const EdgeInsets.symmetric(vertical: 8),
             child: Row(
               children: [
                 Icon(
