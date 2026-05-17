@@ -5,7 +5,7 @@ import 'package:orbitask/constants/app_fonts.dart';
 class DatePickerWidget extends StatefulWidget {
   final Function(DateTime) onDateSelected;
 
-  const DatePickerWidget({super.key});
+  const DatePickerWidget({super.key, required this.onDateSelected});
 
   @override
   State<DatePickerWidget> createState() => _DatePickerWidgetState();
@@ -15,16 +15,34 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
   
   DateTime _startDate = DateTime.now();
 
-  Future<void> _pickedDate = async 
+  Future<void> _pickedDate() async {
+    final DateTime today = DateTime(
+      DateTime.now().year,
+      DateTime.now().month,
+      DateTime.now().day,
+    );
+
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: today, 
+      firstDate: today,
+      lastDate: DateTime(2100),
+    ); 
+
+    if (picked != null ) {
+      setState(() {
+        _startDate = picked;
+      });
+      widget.onDateSelected(_startDate);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         GestureDetector(
-          onTap: () {
-            //
-          },
+          onTap: _pickedDate,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: Row(
@@ -45,7 +63,9 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                 ),
                 Spacer(),
                 Text(
-                  '12/02/2025',
+                  '${_startDate.day.toString().padLeft(2, '0')}/'
+                  '${_startDate.month.toString().padLeft(2, '0')}/'
+                  '${_startDate.year.toString().padLeft(2, '0')}',
                   style: TextStyle(
                     fontSize: AppFonts.body,
                     fontWeight: AppFonts.medium,

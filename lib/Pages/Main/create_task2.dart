@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:orbitask/Widgets/Task/date_picker_widget.dart';
 import 'package:orbitask/Widgets/Task/time_picker_widget.dart';
 import 'package:orbitask/Pages/Main/task_preview.dart';
 import 'package:orbitask/constants/app_colors.dart';
@@ -16,6 +17,7 @@ class CreateTask2 extends StatefulWidget {
 class _CreateTask2State extends State<CreateTask2> {
 
   TimeOfDay selectedTime = TimeOfDay.now();
+  DateTime selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -82,44 +84,18 @@ class _CreateTask2State extends State<CreateTask2> {
                           ),
                         SizedBox(height: 12),
                         Divider(height: 1, thickness: 1, color: AppColors.shark100),
-                        SizedBox(height: 24),
+                        SizedBox(height: 12),
                         //Second Row: Date
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            SvgPicture.asset(
-                              'assets/icons/calendar-01-stroke-rounded.svg',
-                              width: 24,
-                              height: 24,
-                              colorFilter: ColorFilter.mode(
-                                AppColors.bgblue,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            SizedBox(height: 12),
-                            Text(
-                              'Start Date',
-                              style: TextStyle(
-                                fontSize: AppFonts.body,
-                                fontWeight: AppFonts.medium,
-                                color: AppColors.textPrimary,
-                              ),
-                            ),
-                            Spacer(),
-                            Text(
-                              '12/02/2025',
-                              style: TextStyle(
-                                fontSize: AppFonts.body,
-                                fontWeight: AppFonts.medium,
-                                color: AppColors.shark600,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 24),
+                        DatePickerWidget(
+                          onDateSelected: (date) {
+                            setState(() {
+                              selectedDate = date;
+                            });
+                          }),
+                        SizedBox(height: 12),
                         Divider(height: 1, thickness: 1, color: AppColors.shark100),
                         //Third Row:Reminder
-                        SizedBox(height: 24),
+                        SizedBox(height: 12),
                         Row(
                           children: [
                             SvgPicture.asset(
