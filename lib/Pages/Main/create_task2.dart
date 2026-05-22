@@ -107,7 +107,7 @@ class _CreateTask2State extends State<CreateTask2> {
                                 BlendMode.srcIn,
                               ),
                             ),
-                            SizedBox(height: 4),
+                            SizedBox(height: 8),
                             Text(
                               'Reminder',
                               style: TextStyle(
