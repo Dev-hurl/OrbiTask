@@ -25,7 +25,8 @@ class TaskCard extends StatelessWidget {
         return AppColors.success;
       case 'medium':
         return AppColors.shark600;
-      default: return AppColors.textPrimary;
+      default:
+        return AppColors.textPrimary;
     }
   }
 
@@ -60,9 +61,63 @@ class TaskCard extends StatelessWidget {
                 ),
               ),
               //PopUpMenuButton
-              Icon(Icons.more_horiz, color: AppColors.shark400),
+              PopupMenuButton<String>(
+                icon: Icon(Icons.more_horiz, color: AppColors.shark400),
+                onSelected: (value) {
+                  if (value == 'edit') {
+                    // handle edit
+                  } else if (value == 'delete') {
+                    // handle delete
+                  }
+                },
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    value: 'edit',
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.edit,
+                          size: 18,
+                          color: AppColors.textPrimary,
+                        ),
+                        SizedBox(width: 8),
+                        Text('Edit'),
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: 'delete',
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.delete_forever_rounded,
+                          size: 18,
+                          color: Colors.red,
+                        ),
+                        SizedBox(width: 8),
+                        Text('Delete', style: TextStyle(color: Colors.red)),
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: 'cancel',
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.close,
+                          size: 18,
+                          color: AppColors.textSecondary,
+                        ),
+                        SizedBox(width: 8),
+                        Text('Cancel'),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
+          SizedBox(height: 16),
           //Time & Date
           Row(
             children: [
@@ -81,7 +136,7 @@ class TaskCard extends StatelessWidget {
                 time,
                 style: TextStyle(
                   fontSize: AppFonts.caption,
-                  fontWeight: AppFonts.medium,
+                  fontWeight: AppFonts.semibold,
                   color: AppColors.textSecondary,
                 ),
               ),
@@ -100,13 +155,13 @@ class TaskCard extends StatelessWidget {
                 date,
                 style: TextStyle(
                   fontSize: AppFonts.caption,
-                  fontWeight: AppFonts.medium,
+                  fontWeight: AppFonts.semibold,
                   color: AppColors.textSecondary,
                 ),
               ),
             ],
           ),
-          SizedBox(height: 8),
+          SizedBox(height: 12),
           //Priority Level
           Row(
             children: [
@@ -114,7 +169,7 @@ class TaskCard extends StatelessWidget {
                 'Priority Level',
                 style: TextStyle(
                   fontSize: AppFonts.caption,
-                  fontWeight: AppFonts.medium,
+                  fontWeight: AppFonts.semibold,
                   color: AppColors.textSecondary,
                 ),
               ),
@@ -125,7 +180,7 @@ class TaskCard extends StatelessWidget {
                   fontWeight: AppFonts.semibold,
                   color: _priorityColor,
                 ),
-              )
+              ),
             ],
           ),
         ],
