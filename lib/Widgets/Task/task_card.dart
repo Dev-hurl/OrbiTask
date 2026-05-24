@@ -42,7 +42,7 @@ class TaskCard extends StatelessWidget {
         border: Border.all(color: AppColors.shark400),
         /*boxShadow: [
           BoxShadow(
-            color: AppColors.shark600.,
+            color: AppColors.shark600,
           )
         ]*/
       ),
@@ -131,7 +131,8 @@ class TaskCard extends StatelessWidget {
             ],
           ),
           SizedBox(height: 12),
-          //
+          //Progress
+          
         ],
       ),
     );
