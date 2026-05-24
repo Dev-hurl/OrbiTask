@@ -8,7 +8,6 @@ class TaskCard extends StatelessWidget {
   final String time;
   final String date;
   final String priority;
-  final String progress;
 
   const TaskCard({
     super.key,
@@ -16,7 +15,6 @@ class TaskCard extends StatelessWidget {
     required this.time,
     required this.date,
     required this.priority,
-    required this.progress,
   });
 
   Color get _priorityColor {
@@ -130,9 +128,6 @@ class TaskCard extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(height: 12),
-          //Progress
-          
         ],
       ),
     );

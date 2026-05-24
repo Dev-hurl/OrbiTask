@@ -1,12 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:orbitask/Pages/Main/create_task1.dart';
+import 'package:orbitask/Widgets/Home/tasks_list.dart';
 import 'package:orbitask/Widgets/custom_nav_bar.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomePage extends StatelessWidget {
+import '../../Widgets/Home/empty_state.dart';
+
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<Map<String, dynamic>> tasks = [
+    {
+    'title': 'UIUX Assignment',
+    'time': '09:00 AM',
+    'date': '12/02/2025',
+    'priority': 'Low',
+    'category': 'Work',
+  },
+  ]; // empty = no tasks yet
+
 
   @override
   Widget build(BuildContext context) {
@@ -15,26 +34,25 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         leading: CircleAvatar(
           radius: 24,
-          backgroundImage: AssetImage(
-            'assets/images/avatar.jpg'),
+          backgroundImage: AssetImage('assets/images/avatar.jpg'),
         ),
         title: Column(
           children: [
             Text(
               'Hello, Emmanuel',
               style: TextStyle(
-                fontSize:AppFonts.subheading,
+                fontSize: AppFonts.subheading,
                 fontWeight: AppFonts.semibold,
                 color: AppColors.textPrimary,
-              )
+              ),
             ),
             Text(
               'welcome back',
               style: TextStyle(
-                fontSize:AppFonts.body,
+                fontSize: AppFonts.body,
                 fontWeight: AppFonts.medium,
                 color: AppColors.textSecondary,
-              )
+              ),
             ),
           ],
         ),
@@ -44,9 +62,7 @@ class HomePage extends StatelessWidget {
               'assets/icons/calendar-03-stroke-rounded.svg',
               width: 24,
               height: 24,
-              colorFilter: ColorFilter.mode(
-                AppColors.bgblue, 
-                BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(AppColors.bgblue, BlendMode.srcIn),
             ),
             onPressed: () {
               // Handle calendar icon press
@@ -57,9 +73,7 @@ class HomePage extends StatelessWidget {
               'assets/icons/notifications.svg',
               width: 24,
               height: 24,
-              colorFilter: ColorFilter.mode(
-                AppColors.bgblue, 
-                BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(AppColors.bgblue, BlendMode.srcIn),
             ),
             color: AppColors.bgblue,
             onPressed: () {
@@ -67,61 +81,8 @@ class HomePage extends StatelessWidget {
             },
           ),
         ],
-        
       ),
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(
-                'assets/icons/task list.svg',
-                width: 100,
-                height: 100,
-                colorFilter: ColorFilter.mode(
-                  AppColors.bgblue, 
-                  BlendMode.srcIn),
-              ),
-              SizedBox(height: 8,),
-              Text(
-                'Create a task to efficiently manage your time.',
-                style: TextStyle(
-                  fontSize:AppFonts.body,
-                  fontWeight: AppFonts.regular,
-                  color: AppColors.textSecondary,
-                )
-              ),
-              SizedBox(height: 24,),
-
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.bgblue,
-                  fixedSize: Size(200, 48),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 16,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
-                  ),
-                ),
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CreateTask1()),
-                ),
-                child: Text(
-                  'Create a Task',
-                  style: TextStyle(
-                    fontSize: AppFonts.body,
-                    fontWeight: AppFonts.medium,
-                    color: AppColors.bgwhite,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        )
-      ),
+      body: tasks.isEmpty ? EmptyState() : TaskList(tasks: tasks),
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 32),
         child: FloatingActionButton(
@@ -133,8 +94,7 @@ class HomePage extends StatelessWidget {
             // Handle FAB press
           },
           backgroundColor: AppColors.bgblue50,
-          child: Icon(Icons.add, 
-          color: AppColors.bgblue),
+          child: Icon(Icons.add, color: AppColors.bgblue),
         ),
       ),
     );
