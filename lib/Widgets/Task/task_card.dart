@@ -8,6 +8,7 @@ class TaskCard extends StatelessWidget {
   final String time;
   final String date;
   final String priority;
+  final VoidCallback onDelete;
 
   const TaskCard({
     super.key,
@@ -15,6 +16,7 @@ class TaskCard extends StatelessWidget {
     required this.time,
     required this.date,
     required this.priority,
+    required this.onDelete,
   });
 
   Color get _priorityColor {
@@ -65,9 +67,9 @@ class TaskCard extends StatelessWidget {
                 icon: Icon(Icons.more_horiz, color: AppColors.shark400),
                 onSelected: (value) {
                   if (value == 'edit') {
-                    // handle edit
+                    Navigator.pop(context, MaterialPageRoute(builder: (context) => EditTask()));
                   } else if (value == 'delete') {
-                    // handle delete
+                    onDelete();
                   }
                 },
                 itemBuilder: (context) => [

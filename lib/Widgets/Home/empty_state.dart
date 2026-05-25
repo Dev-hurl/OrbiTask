@@ -14,13 +14,11 @@ class EmptyState extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.asset(
-                'assets/icons/task list.svg',
-                width: 100,
-                height: 100,
-                colorFilter: ColorFilter.mode(
-                  AppColors.bgblue, 
-                  BlendMode.srcIn),
-              ),
+            'assets/icons/task list.svg',
+            width: 100,
+            height: 100,
+            colorFilter: ColorFilter.mode(AppColors.bgblue, BlendMode.srcIn),
+          ),
           SizedBox(height: 16),
           Text(
             'Create a task to efficiently\nmanage your time.',

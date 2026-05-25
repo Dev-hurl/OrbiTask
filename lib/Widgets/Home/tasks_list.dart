@@ -5,8 +5,9 @@ import 'package:orbitask/constants/app_fonts.dart';
 
 class TaskList extends StatelessWidget {
   final List<Map<String, dynamic>> tasks;
+  final Function(int) onDelete;
 
-  const TaskList({super.key, required this.tasks});
+  const TaskList({super.key, required this.tasks, required this.onDelete});
 
   List<Map<String, dynamic>> _filterByCategory(String category) {
     if (category == 'All') return tasks;
@@ -35,6 +36,7 @@ class TaskList extends StatelessWidget {
           time: filteredTasks[index]['time'],
           date: filteredTasks[index]['date'],
           priority: filteredTasks[index]['priority'],
+          onDelete: () => onDelete(index),
         );
       },
     );
@@ -44,6 +46,7 @@ class TaskList extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 5,
+      //animationDuration: Duration(days: 0, hours: 0, minutes: 0, seconds: 0, milliseconds: 30,),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -52,6 +55,9 @@ class TaskList extends StatelessWidget {
             labelColor: AppColors.bgblue,
             unselectedLabelColor: AppColors.textSecondary,
             indicatorColor: AppColors.bgblue,
+            indicator: BoxDecoration(
+              shape: BoxShape.circle,
+            ),
             labelStyle: TextStyle(
               fontWeight: AppFonts.semibold,
               fontSize: AppFonts.body,

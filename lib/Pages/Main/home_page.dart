@@ -82,7 +82,11 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: tasks.isEmpty ? EmptyState() : TaskList(tasks: tasks),
+      body: tasks.isEmpty ? EmptyState() : TaskList(tasks: tasks, onDelete: (index) {
+        setState(() {
+          tasks.removeAt(index);
+        });
+      },),
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 32),
         child: FloatingActionButton(
