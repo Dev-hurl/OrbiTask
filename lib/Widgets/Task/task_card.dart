@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:orbitask/Pages/Main/tasks_view.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
@@ -67,7 +68,7 @@ class TaskCard extends StatelessWidget {
                 icon: Icon(Icons.more_horiz, color: AppColors.shark400),
                 onSelected: (value) {
                   if (value == 'edit') {
-                    Navigator.pop(context, MaterialPageRoute(builder: (context) => EditTask()));
+                    Navigator.pop(context, MaterialPageRoute(builder: (context) => TasksView()));
                   } else if (value == 'delete') {
                     onDelete();
                   }
