@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:orbitask/Widgets/Task/date_picker_widget.dart';
+import 'package:orbitask/Widgets/Task/subtask_section.dart';
 import 'package:orbitask/Widgets/Task/time_picker_widget.dart';
 import 'package:orbitask/Pages/Main/task_preview.dart';
 import 'package:orbitask/constants/app_colors.dart';
@@ -17,6 +18,7 @@ class CreateTask2 extends StatefulWidget {
 class _CreateTask2State extends State<CreateTask2> {
   TimeOfDay selectedTime = TimeOfDay.now();
   DateTime selectedDate = DateTime.now();
+  List<String> _subTasks = [];
 
   @override
   Widget build(BuildContext context) {
@@ -146,27 +148,12 @@ class _CreateTask2State extends State<CreateTask2> {
                   ),
                   SizedBox(height: 24),
                   //Subtask
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        'assets/icons/add.svg',
-                        width: 24,
-                        height: 24,
-                        colorFilter: ColorFilter.mode(
-                          AppColors.bgblue,
-                          BlendMode.srcIn,
-                        ),
-                      ),
-                      SizedBox(width: 4),
-                      Text(
-                        'Add Subtask',
-                        style: TextStyle(
-                          fontSize: AppFonts.body,
-                          fontWeight: AppFonts.medium,
-                          color: AppColors.textPrimary,
-                        ),
-                      ),
-                    ],
+                  SubtaskSection(
+                    onSubtasksChanged: (subtasks) {
+                      setState(() {
+                        _subTasks = subtasks;
+                      });
+                    },
                   ),
                   SizedBox(height: 24),
                   Column(
@@ -235,7 +222,16 @@ class _CreateTask2State extends State<CreateTask2> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.pop(
+                        if (_subTasks.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Please add at least one subtask'),
+                            ),
+                          );
+                          return;
+                        }
+                        // proceed to preview
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => TaskPreview(),
