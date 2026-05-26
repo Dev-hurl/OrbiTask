@@ -4,13 +4,11 @@ import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
 class Onboarding3 extends StatelessWidget {
-  const Onboarding3({super.key});
+  const Onboarding3({super.key, required void Function() onNext});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
+    return Column(
           children: [
             Image.asset(
               'assets/images/onboard3.png',
@@ -69,8 +67,6 @@ class Onboarding3 extends StatelessWidget {
             ),
             SizedBox(height: 16),
           ],
-        ),
-      ),
-    );
+        );
   }
 }

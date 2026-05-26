@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/Pages/Onboarding/onboard1.dart';
+import 'package:orbitask/Pages/Splash_Screen/splash_screen1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'OrbiTask',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      home: const Onboarding1(),
+      home: const SplashScreen1(),
     );
   }
 }

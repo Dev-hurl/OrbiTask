@@ -8,9 +8,7 @@ class Onboarding4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
+    return Column(
           children: [
             Image.asset(
               'assets/images/onboard4.png',
@@ -69,8 +67,6 @@ class Onboarding4 extends StatelessWidget {
             ),
             SizedBox(height: 16),
           ],
-        ),
-      ),
-    );
+        );
   }
 }
