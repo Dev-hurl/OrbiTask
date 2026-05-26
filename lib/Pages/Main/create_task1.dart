@@ -97,7 +97,6 @@ class _CreateTask1State extends State<CreateTask1> {
                         SizedBox(height: 8),
                         CustomTextFormField(
                           hinText: 'Write Task Name',
-                          icon: Icons.edit_note_rounded,
                           controller: _titleController,
                         ),
                       ],
@@ -117,7 +116,6 @@ class _CreateTask1State extends State<CreateTask1> {
                         SizedBox(height: 8),
                         CustomTextFormField(
                           hinText: 'Add Task Details',
-                          icon: Icons.add_task_rounded,
                           controller: _descriptionController,
                         ),
                       ],
@@ -170,7 +168,7 @@ class _CreateTask1State extends State<CreateTask1> {
                     DropdownButtonFormField<String>(
                       initialValue: _selectedCategory,
                       decoration: InputDecoration(
-                        hintText: 'Choose Category',
+                        hintText: 'Choose a Category',
                         labelText: 'Category',
                         labelStyle: TextStyle(
                           color: AppColors.textPrimary,

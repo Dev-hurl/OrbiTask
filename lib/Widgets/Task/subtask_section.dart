@@ -101,7 +101,7 @@ class _SubtaskSectionState extends State<SubtaskSection> {
         GestureDetector(
           onTap: _showAddSubtaskDialog,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
+            padding: const EdgeInsets.symmetric(vertical: 8),
             child: Row(
               children: [
                 Icon(Icons.add, color: AppColors.bgblue, size: 24),
@@ -111,7 +111,7 @@ class _SubtaskSectionState extends State<SubtaskSection> {
                   style: TextStyle(
                     fontSize: AppFonts.body,
                     fontWeight: AppFonts.medium,
-                    color: AppColors.bgblue,
+                    color: AppColors.textPrimary,
                   ),
                 ),
               ],
@@ -126,10 +126,10 @@ class _SubtaskSectionState extends State<SubtaskSection> {
           itemCount: _subTasks.length,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.only(bottom: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Row(
                 children: [
-                  Icon(Icons.check_circle_outlined, size: 20, color: AppColors.bgblue),
+                  Icon(Icons.check_box_outlined, size: 24, color: AppColors.bgblue),
                   SizedBox(width: 8),
                   Text(
                     _subTasks[index],

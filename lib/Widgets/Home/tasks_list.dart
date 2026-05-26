@@ -59,8 +59,8 @@ class TaskList extends StatelessWidget {
               shape: BoxShape.circle,
             ),
             labelStyle: TextStyle(
-              fontWeight: AppFonts.semibold,
-              fontSize: AppFonts.body,
+              fontWeight: AppFonts.medium,
+              fontSize: AppFonts.caption,
             ),
             tabs: [
               Tab(text: 'All'),

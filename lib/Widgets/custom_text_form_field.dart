@@ -4,18 +4,16 @@ import 'package:orbitask/constants/app_fonts.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String hinText;
-  final IconData icon;
+  final IconData? icon;
   final bool obscureText;
-  final int maxLines;
   final TextEditingController controller;
   final TextInputType keyboardType;
 
   const CustomTextFormField({
     super.key,
     required this.hinText,
-    required this.icon,
+    this.icon,
     required this.controller,
-    this.maxLines = 2,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
   });
@@ -26,7 +24,6 @@ class CustomTextFormField extends StatelessWidget {
       scrollPhysics: NeverScrollableScrollPhysics(),
       controller: controller,
       obscureText: obscureText,
-      maxLines: maxLines,
       decoration: InputDecoration(
         hintText: hinText,
         hintStyle: TextStyle(
@@ -48,7 +45,6 @@ class CustomTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(
             color: AppColors.bgblue,
-            //width: 1,
           ),
         ),
         errorBorder: OutlineInputBorder(

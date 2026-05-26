@@ -87,7 +87,7 @@ class _CreateTask2State extends State<CreateTask2> {
                       Divider(
                         height: 1,
                         thickness: 1,
-                        color: AppColors.shark100,
+                        color: AppColors.shark50,
                       ),
                       SizedBox(height: 12),
                       //Second Row: Date
@@ -102,7 +102,7 @@ class _CreateTask2State extends State<CreateTask2> {
                       Divider(
                         height: 1,
                         thickness: 1,
-                        color: AppColors.shark100,
+                        color: AppColors.shark50,
                       ),
                       //Third Row:Reminder
                       SizedBox(height: 12),
@@ -140,9 +140,9 @@ class _CreateTask2State extends State<CreateTask2> {
                       ),
                       SizedBox(height: 24),
                       Divider(
-                        height: sqrt1_2,
+                        height: 1,
                         thickness: 1,
-                        color: AppColors.shark100,
+                        color: AppColors.shark50,
                       ),
                     ],
                   ),

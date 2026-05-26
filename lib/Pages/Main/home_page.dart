@@ -24,6 +24,34 @@ class _HomePageState extends State<HomePage> {
     'priority': 'Low',
     'category': 'Work',
   },
+  {
+    'title': 'Build My App',
+    'time': '01:20 AM',
+    'date': '12/04/2026',
+    'priority': 'High',
+    'category': 'School',
+  },
+  {
+    'title': 'Build My App',
+    'time': '01:20 AM',
+    'date': '12/04/2026',
+    'priority': 'High',
+    'category': 'School',
+  },
+  {
+    'title': 'Build My App',
+    'time': '01:20 AM',
+    'date': '12/04/2026',
+    'priority': 'High',
+    'category': 'School',
+  },
+  {
+    'title': 'Build My App',
+    'time': '01:20 AM',
+    'date': '12/04/2026',
+    'priority': 'Medium',
+    'category': 'Personal',
+  },
   ]; // empty = no tasks yet
 
 
@@ -37,6 +65,7 @@ class _HomePageState extends State<HomePage> {
           backgroundImage: AssetImage('assets/images/avatar.jpg'),
         ),
         title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'Hello, Emmanuel',
