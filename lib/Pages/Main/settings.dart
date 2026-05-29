@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/Pages/Main/account.dart';
+import 'package:orbitask/Pages/Main/Notifications.dart';
+import 'package:orbitask/Pages/Main/account_page.dart';
+import 'package:orbitask/Pages/Main/change_password.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
@@ -12,16 +14,19 @@ class Settings extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         leading: BackButton(color: AppColors.bgblue),
-        title: Text('Settings',style: TextStyle(
-          fontSize: AppFonts.subheading,
-          fontWeight:AppFonts.semibold,
-        ),),
+        title: Text(
+          'Settings',
+          style: TextStyle(
+            fontSize: AppFonts.subheading,
+            fontWeight: AppFonts.semibold,
+          ),
+        ),
       ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment .start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'General',
@@ -40,7 +45,7 @@ class Settings extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Account()),
+                        MaterialPageRoute(builder: (context) => AccountPage()),
                       );
                     },
                     child: Row(
@@ -63,47 +68,70 @@ class Settings extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: 24,),
+                  SizedBox(height: 24),
                   // Change Password
-                  Row(
-                    children: [
-                      Icon(Icons.lock_reset_rounded, color: AppColors.bgblue),
-                      SizedBox(height: 8),
-                      Text(
-                        'Change Password',
-                        style: TextStyle(
-                          fontSize: AppFonts.subheading,
-                          fontWeight: AppFonts.semibold,
-                          color: AppColors.textPrimary,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChangePassword(),
                         ),
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.keyboard_arrow_right_rounded,
-                        color: AppColors.bgblue,
-                      ),
-                    ],
+                      );
+                    },
+                    child: Row(
+                      children: [
+                        Icon(Icons.lock_reset_rounded, color: AppColors.bgblue),
+                        SizedBox(height: 8),
+                        Text(
+                          'Change Password',
+                          style: TextStyle(
+                            fontSize: AppFonts.subheading,
+                            fontWeight: AppFonts.semibold,
+                            color: AppColors.textPrimary,
+                          ),
+                        ),
+                        Spacer(),
+                        Icon(
+                          Icons.keyboard_arrow_right_rounded,
+                          color: AppColors.bgblue,
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(height: 24),
                   // Notification
-                  Row(
-                    children: [
-                      Icon(Icons.notifications_active_rounded, color: AppColors.bgblue),
-                      SizedBox(height: 8),
-                      Text(
-                        'Notification',
-                        style: TextStyle(
-                          fontSize: AppFonts.subheading,
-                          fontWeight: AppFonts.semibold,
-                          color: AppColors.textPrimary,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Notifications(),
                         ),
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.keyboard_arrow_right_rounded,
-                        color: AppColors.bgblue,
-                      ),
-                    ],
+                      );
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.notifications_active_rounded,
+                          color: AppColors.bgblue,
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'Notification',
+                          style: TextStyle(
+                            fontSize: AppFonts.subheading,
+                            fontWeight: AppFonts.semibold,
+                            color: AppColors.textPrimary,
+                          ),
+                        ),
+                        Spacer(),
+                        Icon(
+                          Icons.keyboard_arrow_right_rounded,
+                          color: AppColors.bgblue,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -140,7 +168,7 @@ class Settings extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 24,),
+                  SizedBox(height: 24),
                   // T's & C
                   Row(
                     children: [
@@ -161,7 +189,7 @@ class Settings extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 24,),
+                  SizedBox(height: 24),
                   // Log out
                   Row(
                     children: [
@@ -181,7 +209,8 @@ class Settings extends StatelessWidget {
                         color: AppColors.error,
                       ),
                     ],
-                  ),SizedBox(height: 24,),
+                  ),
+                  SizedBox(height: 24),
                 ],
               ),
             ],

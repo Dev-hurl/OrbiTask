@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
-class Account extends StatefulWidget {
-  const Account({super.key});
+class AccountPage extends StatefulWidget {
+  const AccountPage({super.key});
 
   @override
-  State<Account> createState() => _AccountState();
+  State<AccountPage> createState() => _AccountPageState();
 }
 
-class _AccountState extends State<Account> {
+class _AccountPageState extends State<AccountPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();

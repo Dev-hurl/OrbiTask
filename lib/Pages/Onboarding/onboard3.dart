@@ -4,7 +4,9 @@ import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
 class Onboarding3 extends StatelessWidget {
-  const Onboarding3({super.key, required void Function() onNext});
+  final VoidCallback onNext;
+
+  const Onboarding3({super.key, required this.onNext});
 
   @override
   Widget build(BuildContext context) {
