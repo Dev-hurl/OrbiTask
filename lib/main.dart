@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:orbitask/Pages/Onboarding/main_onboard.dart';
-import 'package:orbitask/Pages/Splash_Screen/splash_screen1.dart';
 
 void main() {
   runApp(const MyApp());

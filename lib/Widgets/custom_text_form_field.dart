@@ -30,8 +30,10 @@ class CustomTextFormField extends StatelessWidget {
           fontSize: AppFonts.body,
           color: AppColors.shark300,
         ),
+        suffixIcon: Icon(icon),
+        suffixIconColor: AppColors.bgblue,
         prefixIcon: Icon(icon),
-        prefixIconColor: Color(0xff464AE5),
+        prefixIconColor: AppColors.bgblue,
         filled: true,
         fillColor: Color(0xffEAEAEA),
         enabledBorder: OutlineInputBorder(
