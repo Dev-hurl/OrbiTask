@@ -29,16 +29,38 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   Widget build(BuildContext context) {
     return Container(
       height: 80,
-      decoration: BoxDecoration(
-        color: AppColors.shark50,
-      ),
+      decoration: BoxDecoration(color: AppColors.shark50),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildNavItem(0, 'assets/icons/home outline.svg', 'assets/icons/home bold.svg', 'Home', HomePage()),
-          _buildNavItem(1, 'assets/icons/task list.svg', 'assets/icons/task list filled.svg', 'Task', TasksView()),
-          _buildNavItem(2, 'assets/icons/timer_outline.svg', 'assets/icons/timer_filled.svg', 'Timer', Timer()),
-          _buildNavItem(3, 'assets/icons/setting_outline.svg', 'assets/icons/setting_fill.svg', 'Settings', Settings()),
+          _buildNavItem(
+            0,
+            'assets/icons/home outline.svg',
+            'assets/icons/home bold.svg',
+            'Home',
+            HomePage(),
+          ),
+          _buildNavItem(
+            1,
+            'assets/icons/task list.svg',
+            'assets/icons/task list filled.svg',
+            'Task',
+            TasksView(),
+          ),
+          _buildNavItem(
+            2,
+            'assets/icons/timer_outline.svg',
+            'assets/icons/timer_filled.svg',
+            'Timer',
+            Timer(),
+          ),
+          _buildNavItem(
+            3,
+            'assets/icons/setting_outline.svg',
+            'assets/icons/setting_fill.svg',
+            'Settings',
+            Settings(),
+          ),
         ],
       ),
     );
@@ -49,7 +71,8 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     String outlinedIcon,
     String filledIcon,
     String label,
-    Widget page) {
+    Widget page,
+  ) {
     final bool isActive = _selectedIndex == index;
 
     return GestureDetector(
@@ -57,10 +80,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         setState(() {
           _selectedIndex = index;
         });
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => page),
-        );
+        Navigator.push(context, MaterialPageRoute(builder: (context) => page));
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

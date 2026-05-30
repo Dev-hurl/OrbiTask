@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/Pages/Main/Notifications.dart';
+import 'package:orbitask/Pages/Main/notifications.dart';
 import 'package:orbitask/Pages/Main/account_page.dart';
 import 'package:orbitask/Pages/Main/change_password.dart';
 import 'package:orbitask/constants/app_colors.dart';

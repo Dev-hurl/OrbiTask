@@ -12,7 +12,6 @@ class SplashScreen2 extends StatefulWidget {
 }
 
 class _SplashScreen2State extends State<SplashScreen2> {
-
   // change to false to test returning user
   final bool isNewUser = true;
 
@@ -24,7 +23,7 @@ class _SplashScreen2State extends State<SplashScreen2> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (_) => isNewUser ? const Onboarding1() : const Login(),
+            builder: (_) => isNewUser ? Onboarding1(onNext: () {}) : Login(),
           ),
         );
       }

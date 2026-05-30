@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/Pages/Onboarding/onboard4.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
@@ -52,11 +51,7 @@ class Onboarding3 extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24),
                   ),
-                ),
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Onboarding4()),
-                ),
+                ),onPressed: onNext,
                 child: Text(
                   'Next',
                   style: TextStyle(
