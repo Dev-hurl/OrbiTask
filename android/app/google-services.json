@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "393707247884",
+    "project_id": "orbitask-d1669",
+    "storage_bucket": "orbitask-d1669.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393707247884:android:7e9b8bbe63c9d0731e1129",
+        "android_client_info": {
+          "package_name": "com.example.orbitask"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkTcYPQjJS4HoTVSBUWj10l7PFO-BOsHs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
