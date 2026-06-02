@@ -91,7 +91,7 @@ class _SignUpState extends State<SignUp> {
                           ),
                         ),
                         CustomTextFormField(
-                          hinText: 'John Doe',
+                          hinText: 'e.g. John Doe',
                           controller: _nameController,
                         ),
                       ],
@@ -112,7 +112,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                         CustomTextFormField(
                           keyboardType: TextInputType.emailAddress,
-                          hinText: 'JohnDoe@example.com',
+                          hinText: 'e.g. JohnDoe@example.com',
                           controller: _emailController,
                         ),
                       ],
@@ -131,7 +131,7 @@ class _SignUpState extends State<SignUp> {
                           ),
                         ),
                         CustomTextFormField(
-                          hinText: '********',
+                          hinText: 'Create a strong password',
                           controller: _passwordController,
                           icon: Icons.visibility_off_rounded,
                           obscureText: true,

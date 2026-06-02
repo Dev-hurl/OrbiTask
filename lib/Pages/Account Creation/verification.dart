@@ -8,11 +8,7 @@ class Verification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: BackButton(
-          color: AppColors.bgblue,
-        ),
-      ),
+      appBar: AppBar(leading: BackButton(color: AppColors.bgblue)),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -22,38 +18,65 @@ class Verification extends StatelessWidget {
                 Text(
                   'Verification',
                   style: TextStyle(
-                    color: AppColors.textPrimary,
+                    color: AppColors.textSecondary,
                     fontSize: AppFonts.heading2,
                     fontWeight: AppFonts.semibold,
                   ),
                 ),
-                RichText(
-                  text: TextSpan(
-                    text: 'Enter the 4-digit code sent to your email',
+                Text.rich(
+                  TextSpan(
+                    text:
+                        'Enter the 4-digit code sent to your email johndoe@gmail.com',
                     style: TextStyle(
                       color: AppColors.shark400,
                       fontSize: AppFonts.body,
                       fontWeight: AppFonts.medium,
                     ),
-                    children: [
-                      TextSpan(
-                        text: 'Johndoe@gmail.com',
-                        style: TextStyle(
-                          fontSize: AppFonts.body,
-                          fontWeight: AppFonts.semibold,
-                          color: AppColors.shark400,
-                        ),
-                      ),
-                    ],
                   ),
                 ),
+                SizedBox(height: 32),
 
-                //Code Box
-                //Timer
-                //Button
+                Container(height: 120, width: 120, color: AppColors.bgblue100),
+                SizedBox(height: 32),
+                // Code Box
+                SizedBox(
+                  height: 80,
+
+                  child: GridView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    //shrinkWrap: true,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 4,
+                          crossAxisSpacing: 12,
+                          mainAxisSpacing: 12,
+                          childAspectRatio: 2,
+                        ),
+                    children: [myBox(1), myBox(2), myBox(3), myBox(4)],
+                  ),
+                ),
+                // Timer
+                // Button
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget myBox(int index) {
+    return Container(
+      //margin: EdgeInsets.all(8),
+      color: AppColors.shark100,
+      alignment: Alignment.center,
+      child: Text(
+        '$index',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontWeight: AppFonts.semibold,
+          fontSize: AppFonts.heading2,
+          color: AppColors.textPrimary,
         ),
       ),
     );

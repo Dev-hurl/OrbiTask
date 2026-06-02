@@ -72,7 +72,7 @@ class _SigninState extends State<Signin> {
                       ),
                       CustomTextFormField(
                         keyboardType: TextInputType.emailAddress,
-                        hinText: 'JohnDoe@example.com',
+                        hinText: 'Enter your email address',
                         controller: _emailController,
                       ),
                     ],
@@ -91,7 +91,7 @@ class _SigninState extends State<Signin> {
                         ),
                       ),
                       CustomTextFormField(
-                        hinText: '********',
+                        hinText: 'Enter your password',
                         controller: _passwordController,
                         icon: Icons.visibility_off_rounded,
                         obscureText: true,
