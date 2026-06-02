@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orbitask/Pages/Account%20Creation/sign_up.dart';
 import 'package:orbitask/Pages/Onboarding/main_onboard.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'OrbiTask',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      home: const MainOnboard(),
+      home: const SignUp(),
     );
   }
 }

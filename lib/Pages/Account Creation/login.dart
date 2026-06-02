@@ -2,11 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:orbitask/Pages/Account%20Creation/forgot_password.dart';
 import 'package:orbitask/Pages/Account%20Creation/sign_up.dart';
 import 'package:orbitask/Pages/Main/home_page.dart';
+import 'package:orbitask/Widgets/custom_text_form_field.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +40,7 @@ class Login extends StatelessWidget {
                     style: TextStyle(
                       fontSize: AppFonts.heading2,
                       fontWeight: AppFonts.semibold,
-                      color: AppColors.textPrimary,
+                      color: AppColors.textSecondary,
                     ),
                   ),
                   Text(
@@ -45,40 +54,46 @@ class Login extends StatelessWidget {
                   ),
                   SizedBox(height: 24),
                   //FirstName
-                  TextField(
-                    style: TextStyle(
-                      fontSize: AppFonts.body,
-                      fontWeight: AppFonts.medium,
-                    ),
-                    decoration: InputDecoration(
-                      labelText: 'First Name',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(
-                          color: AppColors.bgblue,
-                          width: 2,
+                  Column(
+                      spacing: 8,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Email',
+                          style: TextStyle(
+                            fontSize: AppFonts.body,
+                            fontWeight: AppFonts.semibold,
+                            color: AppColors.textSecondary,
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 24),
-                  //PassWord
-                  TextField(
-                    style: TextStyle(
-                      fontSize: AppFonts.body,
-                      fontWeight: AppFonts.medium,
-                    ),
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(
-                          color: AppColors.bgblue,
-                          width: 2,
+                        CustomTextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          hinText: 'JohnDoe@example.com',
+                          controller: _emailController,
                         ),
-                      ),
+                      ],
                     ),
-                  ),
+                    SizedBox(height: 20),
+                    Column(
+                      spacing: 8,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Password',
+                          style: TextStyle(
+                            fontSize: AppFonts.body,
+                            fontWeight: AppFonts.semibold,
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
+                        CustomTextFormField(
+                          hinText: '********',
+                          controller: _passwordController,
+                          icon: Icons.visibility_off_rounded,
+                          obscureText: true,
+                        ),
+                      ],
+                    ),
                   SizedBox(height: 12),
 
                   Align(

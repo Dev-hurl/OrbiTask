@@ -60,7 +60,7 @@ class _SignUpState extends State<SignUp> {
                       style: TextStyle(
                         fontSize: AppFonts.heading2,
                         fontWeight: AppFonts.semibold,
-                        color: AppColors.textPrimary,
+                        color: AppColors.textSecondary,
                       ),
                     ),
                     Text(
@@ -72,24 +72,68 @@ class _SignUpState extends State<SignUp> {
                         color: AppColors.textSecondary,
                       ),
                     ),
-                    SizedBox(height: 24),
-                    CustomTextFormField(
-                      hinText: 'FullName',
-                      controller: _nameController,
+                    SizedBox(height: 20),
+                    Column(
+                      spacing: 8,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Fullname',
+                          style: TextStyle(
+                            fontSize: AppFonts.body,
+                            fontWeight: AppFonts.semibold,
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
+                        CustomTextFormField(
+                          hinText: 'John Doe',
+                          controller: _nameController,
+                        ),
+                      ],
                     ),
-                    
-                    SizedBox(height: 24),
-                    CustomTextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      hinText: 'Email',
-                      controller: _emailController,
+
+                    SizedBox(height: 20),
+                    Column(
+                      spacing: 8,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Email',
+                          style: TextStyle(
+                            fontSize: AppFonts.body,
+                            fontWeight: AppFonts.semibold,
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
+                        CustomTextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          hinText: 'JohnDoe@example.com',
+                          controller: _emailController,
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 24),
-                    CustomTextFormField(
-                      hinText: 'Password',
-                      controller: _passwordController,
-                      icon: Icons.close,
+                    SizedBox(height: 20),
+                    Column(
+                      spacing: 8,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Password',
+                          style: TextStyle(
+                            fontSize: AppFonts.body,
+                            fontWeight: AppFonts.semibold,
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
+                        CustomTextFormField(
+                          hinText: '********',
+                          controller: _passwordController,
+                          icon: Icons.visibility_off_rounded,
+                          obscureText: true,
+                        ),
+                      ],
                     ),
+
                     SizedBox(height: 24),
 
                     Align(

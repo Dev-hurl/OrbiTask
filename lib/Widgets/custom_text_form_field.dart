@@ -27,13 +27,14 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hinText,
         hintStyle: TextStyle(
-          fontSize: AppFonts.body,
-          color: AppColors.shark300,
+          fontSize: AppFonts.caption,
+          fontWeight: AppFonts.medium,
+          color: AppColors.shark400,
         ),
         suffixIcon: Icon(icon),
         suffixIconColor: AppColors.bgblue,
-        prefixIcon: Icon(icon),
-        prefixIconColor: AppColors.bgblue,
+        //prefixIcon: Icon(icon),
+        //prefixIconColor: AppColors.bgblue,
         filled: true,
         fillColor: Color(0xffEAEAEA),
         enabledBorder: OutlineInputBorder(
@@ -47,6 +48,7 @@ class CustomTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(
             color: AppColors.bgblue,
+            width: 1.2,
           ),
         ),
         errorBorder: OutlineInputBorder(
