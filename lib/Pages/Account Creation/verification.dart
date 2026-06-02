@@ -41,7 +41,6 @@ class Verification extends StatelessWidget {
                 // Code Box
                 SizedBox(
                   height: 80,
-
                   child: GridView(
                     physics: const NeverScrollableScrollPhysics(),
                     //shrinkWrap: true,
@@ -49,14 +48,32 @@ class Verification extends StatelessWidget {
                         const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 4,
                           crossAxisSpacing: 12,
-                          mainAxisSpacing: 12,
-                          childAspectRatio: 2,
+                          //mainAxisSpacing: 12,
+                          childAspectRatio: 1,
                         ),
                     children: [myBox(1), myBox(2), myBox(3), myBox(4)],
                   ),
                 ),
                 // Timer
+                Text('Resend code in 00:30'),
                 // Button
+                FilledButton(
+                  onPressed: () {
+                    //
+                  },
+                  style: FilledButton.styleFrom(
+                    backgroundColor: AppColors.bgblue,
+                    minimumSize: Size(double.infinity, 48),
+                  ),
+                  child: Text(
+                    'Verify',
+                    style: TextStyle(
+                      color: AppColors.bgwhite,
+                      fontSize: AppFonts.body,
+                      fontWeight: AppFonts.semibold,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -67,7 +84,7 @@ class Verification extends StatelessWidget {
 
   Widget myBox(int index) {
     return Container(
-      //margin: EdgeInsets.all(8),
+      padding: EdgeInsets.all(8),
       color: AppColors.shark100,
       alignment: Alignment.center,
       child: Text(

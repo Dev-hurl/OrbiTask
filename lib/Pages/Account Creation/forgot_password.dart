@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:orbitask/Pages/Account%20Creation/sign_in.dart';
+import 'package:orbitask/Widgets/custom_text_form_field.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
@@ -17,7 +17,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   final TextEditingController _confirmPasswordController =
       TextEditingController();
 
-  bool _isPasswordVisible = false;
+  //bool isPasswordVisible = false;
 
   @override
   void dispose() {
@@ -39,15 +39,15 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               child: Column(
                 children: [
                   Text(
-                    'Change Password',
+                    'Forgot Password',
                     style: TextStyle(
-                      color: AppColors.textPrimary,
+                      color: AppColors.textSecondary,
                       fontSize: AppFonts.heading2,
                       fontWeight: AppFonts.semibold,
                     ),
                   ),
                   Text(
-                    'Enter your new password to proceed.',
+                    'Enter your email address to receive to a password reset link..',
                     style: TextStyle(
                       color: AppColors.shark400,
                       fontSize: AppFonts.body,
@@ -55,93 +55,46 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     ),
                   ),
                   SizedBox(height: 24),
-                  TextFormField(
-                    controller: _passwordController,
-                    obscureText: !_isPasswordVisible,
-                    decoration: InputDecoration(
-                      labelText: 'Enter a New Password',
-                      hintText: 'New Password',
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            _isPasswordVisible = !_isPasswordVisible;
-                          });
-                        },
-                        icon: SvgPicture.asset(
-                          _isPasswordVisible
-                              ? 'assets/icons/eye.svg'
-                              : 'assets/icons/eye-slash.svg',
-                          colorFilter: ColorFilter.mode(
-                            AppColors.bgblue,
-                            BlendMode.srcIn,
-                          ),
+                  Column(
+                    spacing: 8,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Enter New Password',
+                        style: TextStyle(
+                          fontWeight: AppFonts.semibold,
+                          fontSize: AppFonts.body,
+                          color: AppColors.textSecondary,
                         ),
                       ),
-                      hintStyle: TextStyle(
-                        color: AppColors.shark300,
-                        fontSize: AppFonts.body,
-                        fontWeight: AppFonts.regular,
+                      CustomTextFormField(
+                        hinText: 'Enter new Password',
+                        controller: _passwordController,
+                        obscureText: true,
+                        icon: Icons.visibility,
                       ),
-                      labelStyle: TextStyle(
-                        color: AppColors.shark600,
-                        fontSize: AppFonts.body,
-                        fontWeight: AppFonts.medium,
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                        borderSide: BorderSide(color: AppColors.bgblue),
-                      ),
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter a password';
-                      }
-                      if (value.length < 6) {
-                        return 'Password must be at least 6 characters';
-                      }
-                      return null;
-                    },
+                    ],
                   ),
                   SizedBox(height: 24),
-                  TextFormField(
-                    controller: _confirmPasswordController,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      labelText: 'Confirm Password',
-                      hintText: 'Confirm New Password',
-                      /*suffixIcon: SvgPicture.asset(
-                        'assets/icons/eye-slash.svg',
-                        width: 24,
-                        height: 24,
-                        colorFilter: ColorFilter.mode(
-                          AppColors.bgblue,
-                          BlendMode.srcIn,
+                  Column(
+                    spacing: 8,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Confirm New Password',
+                        style: TextStyle(
+                          fontSize: AppFonts.body,
+                          fontWeight: AppFonts.semibold,
+                          color: AppColors.textSecondary,
                         ),
-                      ),*/
-                      hintStyle: TextStyle(
-                        color: AppColors.shark300,
-                        fontSize: AppFonts.body,
-                        fontWeight: AppFonts.regular,
                       ),
-                      labelStyle: TextStyle(
-                        color: AppColors.shark600,
-                        fontSize: AppFonts.body,
-                        fontWeight: AppFonts.medium,
+                      CustomTextFormField(
+                        hinText: 'Confirm Password',
+                        controller: _confirmPasswordController,
+                        obscureText: true,
+                        icon: Icons.visibility,
                       ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                        borderSide: BorderSide(color: AppColors.bgblue),
-                      ),
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please confirm your password';
-                      }
-                      if (value != _passwordController.text) {
-                        return 'Passwords do not match';
-                      }
-                      return null;
-                    },
+                    ],
                   ),
                   SizedBox(height: 32),
 
