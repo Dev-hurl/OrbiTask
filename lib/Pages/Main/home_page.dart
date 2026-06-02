@@ -9,7 +9,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../Widgets/Home/empty_state.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String firstName;
+  const HomePage({super.key, this.firstName= 'User'});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -68,7 +69,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Hello, Emmanuel',
+              'Hello, ${widget.firstName}',
               style: TextStyle(
                 fontSize: AppFonts.subheading,
                 fontWeight: AppFonts.semibold,

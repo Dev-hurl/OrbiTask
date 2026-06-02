@@ -12,7 +12,12 @@
           "package_name": "com.example.orbitask"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "393707247884-6ef6fqunldr4had6t3fc3rrj9b0v502q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBkTcYPQjJS4HoTVSBUWj10l7PFO-BOsHs"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "393707247884-6ef6fqunldr4had6t3fc3rrj9b0v502q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "393707247884-u2nk08f4r7fmn6n20n12qp3nct9grpj8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.orbitask"
+              }
+            }
+          ]
         }
       }
     }

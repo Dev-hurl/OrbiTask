@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:orbitask/Pages/Account%20Creation/login.dart';
+import 'package:orbitask/Pages/Account%20Creation/sign_in.dart';
 import 'package:orbitask/Pages/Account%20Creation/verification.dart';
+import 'package:orbitask/Pages/Main/home_page.dart';
+import 'package:orbitask/Pages/Services/auth_services.dart';
 import 'package:orbitask/Widgets/custom_text_form_field.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
@@ -18,6 +21,8 @@ class _SignUpState extends State<SignUp> {
   late TextEditingController _passwordController;
 
   final formKey = GlobalKey<FormState>();
+
+  final AuthService _authService = AuthService();
 
   @override
   void initState() {
@@ -192,10 +197,31 @@ class _SignUpState extends State<SignUp> {
                             borderRadius: BorderRadius.all(Radius.circular(16)),
                           ),
                           child: Center(
-                            child: Image.asset(
-                              'assets/images/google.png',
-                              width: 24,
-                              height: 24,
+                            child: GestureDetector(
+                              onTap: () async {
+                                final User? user = await _authService
+                                    .signInWithGoogle();
+                                if (user != null) {
+                                  if (!mounted) return;
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => HomePage(
+                                        firstName:
+                                            user.displayName
+                                                ?.split(' ')
+                                                .first ??
+                                            'User',
+                                      ),
+                                    ),
+                                  );
+                                }
+                              },
+                              child: Image.asset(
+                                'assets/images/google.png',
+                                width: 24,
+                                height: 24,
+                              ),
                             ),
                           ),
                         ),
@@ -222,7 +248,7 @@ class _SignUpState extends State<SignUp> {
                     GestureDetector(
                       onTap: () => Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Login()),
+                        MaterialPageRoute(builder: (context) => Signin()),
                       ),
                       child: RichText(
                         text: TextSpan(

@@ -1,21 +1,25 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:orbitask/Pages/Account%20Creation/forgot_password.dart';
 import 'package:orbitask/Pages/Account%20Creation/sign_up.dart';
 import 'package:orbitask/Pages/Main/home_page.dart';
+import 'package:orbitask/Pages/Services/auth_services.dart';
 import 'package:orbitask/Widgets/custom_text_form_field.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Signin extends StatefulWidget {
+  const Signin({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Signin> createState() => _SigninState();
 }
 
-class _LoginState extends State<Login> {
+class _SigninState extends State<Signin> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  final AuthService _authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +48,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   Text(
-                    'Login to access your account, manage your time and task',
+                    'Signin to access your account, manage your time and task',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 16,
@@ -55,45 +59,45 @@ class _LoginState extends State<Login> {
                   SizedBox(height: 24),
                   //FirstName
                   Column(
-                      spacing: 8,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Email',
-                          style: TextStyle(
-                            fontSize: AppFonts.body,
-                            fontWeight: AppFonts.semibold,
-                            color: AppColors.textSecondary,
-                          ),
+                    spacing: 8,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Email',
+                        style: TextStyle(
+                          fontSize: AppFonts.body,
+                          fontWeight: AppFonts.semibold,
+                          color: AppColors.textSecondary,
                         ),
-                        CustomTextFormField(
-                          keyboardType: TextInputType.emailAddress,
-                          hinText: 'JohnDoe@example.com',
-                          controller: _emailController,
+                      ),
+                      CustomTextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        hinText: 'JohnDoe@example.com',
+                        controller: _emailController,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Column(
+                    spacing: 8,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Password',
+                        style: TextStyle(
+                          fontSize: AppFonts.body,
+                          fontWeight: AppFonts.semibold,
+                          color: AppColors.textSecondary,
                         ),
-                      ],
-                    ),
-                    SizedBox(height: 20),
-                    Column(
-                      spacing: 8,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Password',
-                          style: TextStyle(
-                            fontSize: AppFonts.body,
-                            fontWeight: AppFonts.semibold,
-                            color: AppColors.textSecondary,
-                          ),
-                        ),
-                        CustomTextFormField(
-                          hinText: '********',
-                          controller: _passwordController,
-                          icon: Icons.visibility_off_rounded,
-                          obscureText: true,
-                        ),
-                      ],
-                    ),
+                      ),
+                      CustomTextFormField(
+                        hinText: '********',
+                        controller: _passwordController,
+                        icon: Icons.visibility_off_rounded,
+                        obscureText: true,
+                      ),
+                    ],
+                  ),
                   SizedBox(height: 12),
 
                   Align(
@@ -137,7 +141,7 @@ class _LoginState extends State<Login> {
                           MaterialPageRoute(builder: (context) => HomePage()),
                         ),
                         child: Text(
-                          'Login',
+                          'Signin',
                           style: TextStyle(
                             fontSize: AppFonts.body,
                             fontWeight: AppFonts.bold,
@@ -170,10 +174,29 @@ class _LoginState extends State<Login> {
                           borderRadius: BorderRadius.all(Radius.circular(16)),
                         ),
                         child: Center(
-                          child: Image.asset(
-                            'assets/images/google.png',
-                            width: 24,
-                            height: 24,
+                          child: GestureDetector(
+                            onTap: () async {
+                              final User? user = await _authService
+                                  .signInWithGoogle();
+                              if (user != null) {
+                                if (!mounted) return;
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => HomePage(
+                                      firstName:
+                                          user.displayName?.split(' ').first ??
+                                          'User',
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
+                            child: Image.asset(
+                              'assets/images/google.png',
+                              width: 24,
+                              height: 24,
+                            ),
                           ),
                         ),
                       ),
@@ -187,10 +210,15 @@ class _LoginState extends State<Login> {
                           borderRadius: BorderRadius.all(Radius.circular(16)),
                         ),
                         child: Center(
-                          child: Image.asset(
-                            'assets/images/facebook.png',
-                            width: 24,
-                            height: 24,
+                          child: GestureDetector(
+                            onTap: () async {
+                              // Handle Facebook Sign-In logic here
+                            },
+                            child: Image.asset(
+                              'assets/images/facebook.png',
+                              width: 24,
+                              height: 24,
+                            ),
                           ),
                         ),
                       ),

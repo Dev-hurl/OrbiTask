@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:orbitask/Pages/Account%20Creation/login.dart';
+import 'package:orbitask/Pages/Account%20Creation/sign_in.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
@@ -170,7 +170,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             // only navigates if all fields pass validation
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Login()),
+                              MaterialPageRoute(builder: (context) => Signin()),
                             );
                           }
                         },
