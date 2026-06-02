@@ -77,3 +77,4 @@ doc/api/
 >>>>>>> e1e04570e90530117523e2d9e0dc78059ec9ceba
 lib/firebase_options.dart
 firebase.json
+android/app/google-services.json
