@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/Pages/Account%20Creation/sign_up.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:orbitask/Pages/Account%20Creation/sign_in.dart';
+import 'package:orbitask/Pages/Main/home_page.dart';
+import 'package:orbitask/Pages/Main/settings.dart';
 import 'package:orbitask/firebase_options.dart';
 
 void main() async {
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'OrbiTask',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      home: const SignUp(),
+      home: const Settings(),
     );
   }
 }

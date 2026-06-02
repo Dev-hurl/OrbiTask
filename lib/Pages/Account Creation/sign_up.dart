@@ -199,12 +199,12 @@ class _SignUpState extends State<SignUp> {
                           child: Center(
                             child: GestureDetector(
                               onTap: () async {
+                                final navigator = Navigator.of(context);
                                 final User? user = await _authService
                                     .signInWithGoogle();
                                 if (user != null) {
                                   if (!mounted) return;
-                                  Navigator.pushReplacement(
-                                    context,
+                                  navigator.pushReplacement(
                                     MaterialPageRoute(
                                       builder: (context) => HomePage(
                                         firstName:

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/Pages/Main/notifications.dart';
-import 'package:orbitask/Pages/Main/account_page.dart';
-import 'package:orbitask/Pages/Main/change_password.dart';
+import 'package:orbitask/Widgets/custom_nav_bar.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
@@ -13,210 +11,121 @@ class Settings extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        leading: BackButton(color: AppColors.bgblue),
         title: Text(
           'Settings',
           style: TextStyle(
             fontSize: AppFonts.subheading,
             fontWeight: AppFonts.semibold,
+            color: AppColors.textPrimary,
           ),
         ),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'General',
-                style: TextStyle(
-                  fontSize: AppFonts.body,
-                  fontWeight: AppFonts.medium,
-                  color: AppColors.textPrimary,
-                ),
-              ),
-              SizedBox(height: 12),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  //Account
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => AccountPage()),
-                      );
-                    },
-                    child: Row(
-                      children: [
-                        Icon(Icons.person_2, color: AppColors.bgblue),
-                        SizedBox(height: 12),
-                        Text(
-                          'Account',
-                          style: TextStyle(
-                            fontSize: AppFonts.subheading,
-                            fontWeight: AppFonts.semibold,
-                            color: AppColors.textPrimary,
-                          ),
-                        ),
-                        Spacer(),
-                        Icon(
-                          Icons.keyboard_arrow_right_rounded,
-                          color: AppColors.bgblue,
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 24),
-                  // Change Password
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ChangePassword(),
-                        ),
-                      );
-                    },
-                    child: Row(
-                      children: [
-                        Icon(Icons.lock_reset_rounded, color: AppColors.bgblue),
-                        SizedBox(height: 8),
-                        Text(
-                          'Change Password',
-                          style: TextStyle(
-                            fontSize: AppFonts.subheading,
-                            fontWeight: AppFonts.semibold,
-                            color: AppColors.textPrimary,
-                          ),
-                        ),
-                        Spacer(),
-                        Icon(
-                          Icons.keyboard_arrow_right_rounded,
-                          color: AppColors.bgblue,
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 24),
-                  // Notification
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Notifications(),
-                        ),
-                      );
-                    },
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.notifications_active_rounded,
-                          color: AppColors.bgblue,
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          'Notification',
-                          style: TextStyle(
-                            fontSize: AppFonts.subheading,
-                            fontWeight: AppFonts.semibold,
-                            color: AppColors.textPrimary,
-                          ),
-                        ),
-                        Spacer(),
-                        Icon(
-                          Icons.keyboard_arrow_right_rounded,
-                          color: AppColors.bgblue,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 24),
-              Text(
-                'About',
-                style: TextStyle(
-                  fontSize: AppFonts.body,
-                  fontWeight: AppFonts.medium,
-                  color: AppColors.textPrimary,
-                ),
-              ),
-              SizedBox(height: 24),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  //Support
-                  Row(
-                    children: [
-                      Icon(Icons.headphones_rounded, color: AppColors.bgblue),
-                      SizedBox(height: 8),
-                      Text(
-                        'Support',
-                        style: TextStyle(
-                          fontSize: AppFonts.subheading,
-                          fontWeight: AppFonts.semibold,
-                          color: AppColors.textPrimary,
-                        ),
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.keyboard_arrow_right_rounded,
-                        color: AppColors.bgblue,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 24),
-                  // T's & C
-                  Row(
-                    children: [
-                      Icon(Icons.safety_check_rounded, color: AppColors.bgblue),
-                      SizedBox(height: 8),
-                      Text(
-                        'Terms & Conditions',
-                        style: TextStyle(
-                          fontSize: AppFonts.subheading,
-                          fontWeight: AppFonts.semibold,
-                          color: AppColors.textPrimary,
-                        ),
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.keyboard_arrow_right_rounded,
-                        color: AppColors.bgblue,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 24),
-                  // Log out
-                  Row(
-                    children: [
-                      Icon(Icons.logout_rounded, color: AppColors.bgblue),
-                      SizedBox(height: 8),
-                      Text(
-                        'Log out',
-                        style: TextStyle(
-                          fontSize: AppFonts.subheading,
-                          fontWeight: AppFonts.semibold,
-                          color: AppColors.textPrimary,
-                        ),
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.keyboard_arrow_right_rounded,
-                        color: AppColors.error,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 24),
-                ],
-              ),
-            ],
-          ),
+        leading: BackButton(
+          color: AppColors.textPrimary,
         ),
       ),
+      body: ListView(
+        padding: EdgeInsets.all(16),
+        children: [
+          _buildSectionHeader('General'),
+          SizedBox(height: 8),
+          _buildSettingsItem(
+            context,
+            icon: Icons.person_outline,
+            label: 'Account',
+            onTap: () {},
+          ),
+          _buildSettingsItem(
+            context,
+            icon: Icons.lock_outline,
+            label: 'Change Password',
+            onTap: () {},
+          ),
+          _buildSettingsItem(
+            context,
+            icon: Icons.notifications_outlined,
+            label: 'Notification',
+            onTap: () {},
+          ),
+
+          SizedBox(height: 24),
+
+          _buildSectionHeader('About'),
+          SizedBox(height: 8),
+          _buildSettingsItem(
+            context,
+            icon: Icons.headset_mic_outlined,
+            label: 'Support',
+            onTap: () {},
+          ),
+          _buildSettingsItem(
+            context,
+            icon: Icons.shield_outlined,
+            label: 'Terms and Conditions',
+            onTap: () {},
+          ),
+
+          SizedBox(height: 24),
+
+          _buildSettingsItem(
+            context,
+            icon: Icons.logout,
+            label: 'Logout',
+            iconColor: Colors.red,
+            labelColor: Colors.red,
+            onTap: () {
+              // handle logout
+            },
+          ),
+        ],
+      ),
+      bottomNavigationBar: CustomBottomNavBar(currentIndex: 3),
+    );
+  }
+
+  Widget _buildSectionHeader(String title) {
+    return Text(
+      title,
+      style: TextStyle(
+        fontSize: AppFonts.caption,
+        fontWeight: AppFonts.medium,
+        color: AppColors.textSecondary,
+      ),
+    );
+  }
+
+  Widget _buildSettingsItem(
+    BuildContext context, {
+    required IconData icon,
+    required String label,
+    required VoidCallback onTap,
+    Color? iconColor,
+    Color? labelColor,
+  }) {
+    return Column(
+      children: [
+        ListTile(
+          onTap: onTap,
+          leading: Icon(
+            icon,
+            color: iconColor ?? AppColors.bgblue,
+            size: 22,
+          ),
+          title: Text(
+            label,
+            style: TextStyle(
+              fontSize: AppFonts.body,
+              fontWeight: AppFonts.medium,
+              color: labelColor ?? AppColors.textPrimary,
+            ),
+          ),
+          trailing: Icon(
+            Icons.arrow_forward_ios,
+            color: AppColors.textSecondary,
+            size: 16,
+          ),
+        ),
+        Divider(color: AppColors.shark100, height: 1),
+      ],
     );
   }
 }
