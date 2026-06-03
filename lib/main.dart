@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:orbitask/Pages/Account%20Creation/forgot_password.dart';
 import 'package:orbitask/Pages/Main/create_task1.dart';
 import 'package:orbitask/firebase_options.dart';
 
