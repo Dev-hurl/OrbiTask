@@ -125,7 +125,6 @@ class _CreateTask1State extends State<CreateTask1> {
                     DropdownButtonFormField<String>(
                       initialValue: _selectedPriority,
                       decoration: InputDecoration(
-                        
                         hintText: 'Choose Priority Level',
                         labelText: 'Priority Level',
                         labelStyle: TextStyle(
@@ -191,6 +190,8 @@ class _CreateTask1State extends State<CreateTask1> {
                           borderRadius: BorderRadius.circular(12),
                           borderSide: BorderSide(color: AppColors.error),
                         ),
+                        filled: true,
+                        fillColor: Color(0xffEAEAEA),
                       ),
                       items: ['Work', 'Personal', 'School', 'Other']
                           .map(
