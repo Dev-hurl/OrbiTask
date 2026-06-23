@@ -19,9 +19,7 @@ class Settings extends StatelessWidget {
             color: AppColors.textPrimary,
           ),
         ),
-        leading: BackButton(
-          color: AppColors.textPrimary,
-        ),
+        leading: BackButton(color: AppColors.textPrimary),
       ),
       body: ListView(
         padding: EdgeInsets.all(16),
@@ -105,11 +103,7 @@ class Settings extends StatelessWidget {
       children: [
         ListTile(
           onTap: onTap,
-          leading: Icon(
-            icon,
-            color: iconColor ?? AppColors.bgblue,
-            size: 22,
-          ),
+          leading: Icon(icon, color: iconColor ?? AppColors.bgblue, size: 22),
           title: Text(
             label,
             style: TextStyle(

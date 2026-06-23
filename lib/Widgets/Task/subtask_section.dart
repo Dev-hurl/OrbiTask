@@ -84,7 +84,13 @@ class _SubtaskSectionState extends State<SubtaskSection> {
                   Navigator.pop(context);
                 }
               },
-              child: Text('Add', style: TextStyle(color: AppColors.bgwhite)),
+              child: Text(
+                'Add',
+                style: TextStyle(
+                  fontSize: AppFonts.body,
+                  color: AppColors.bgwhite,
+                ),
+              ),
             ),
           ],
         );
@@ -101,7 +107,7 @@ class _SubtaskSectionState extends State<SubtaskSection> {
         GestureDetector(
           onTap: _showAddSubtaskDialog,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
+            padding: EdgeInsets.symmetric(vertical: 8),
             child: Row(
               children: [
                 Icon(Icons.add, color: AppColors.bgblue, size: 24),
@@ -126,10 +132,14 @@ class _SubtaskSectionState extends State<SubtaskSection> {
           itemCount: _subTasks.length,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Row(
                 children: [
-                  Icon(Icons.check_box_outlined, size: 24, color: AppColors.bgblue),
+                  Icon(
+                    Icons.check_box_outlined,
+                    size: 24,
+                    color: AppColors.bgblue,
+                  ),
                   SizedBox(width: 8),
                   Text(
                     _subTasks[index],

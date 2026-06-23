@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
     'priority': 'Medium',
     'category': 'Personal',
   },
-  ]; // empty = no tasks yet
+  ];
 
 
   @override
