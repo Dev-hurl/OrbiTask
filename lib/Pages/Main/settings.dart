@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:orbitask/Features/provider/theme_notifier.dart';
 import 'package:orbitask/Widgets/custom_nav_bar.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
+import 'package:provider/provider.dart';
 
-class Settings extends StatelessWidget {
+class Settings extends StatefulWidget {
   const Settings({super.key});
 
+  @override
+  State<Settings> createState() => _SettingsState();
+}
+
+class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +33,7 @@ class Settings extends StatelessWidget {
         children: [
           _buildSectionHeader('General'),
           SizedBox(height: 8),
+          _buildThemeToggle(context),
           _buildSettingsItem(
             context,
             icon: Icons.person_outline,
@@ -122,4 +130,35 @@ class Settings extends StatelessWidget {
       ],
     );
   }
+}
+
+Widget _buildThemeToggle(BuildContext context) {
+  final themeNotifier = context.watch<ThemeNotifier>();
+  return Column(
+    children: [
+      ListTile(
+        leading: Icon(
+          themeNotifier.isDarkMode
+              ? Icons.dark_mode_outlined
+              : Icons.light_mode_outlined,
+          color: AppColors.bgblue,
+          size: 22,
+        ),
+        title: Text(
+          'Dark Mode',
+          style: TextStyle(
+            fontSize: AppFonts.body,
+            fontWeight: AppFonts.medium,
+            color: AppColors.textPrimary,
+          ),
+        ),
+        trailing: Switch(
+          value: themeNotifier.isDarkMode,
+          onChanged: (_) => themeNotifier.toggleTheme(),
+          activeThumbColor: AppColors.accent,
+        ),
+      ),
+      Divider(color: AppColors.shark100, height: 1),
+    ],
+  );
 }
