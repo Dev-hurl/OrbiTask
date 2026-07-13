@@ -7,10 +7,22 @@ import 'package:orbitask/core/theme/app_theme.dart';
 import 'package:orbitask/firebase_options.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/foundation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  // Handle Google redirect result on web
+  if (kIsWeb) {
+    try {
+      await FirebaseAuth.instance.getRedirectResult();
+    } catch (e) {
+      debugPrint('Redirect result error: $e');
+    }
+  }
+
   final prefs = await SharedPreferences.getInstance();
   final hasSeenOnboarding = prefs.getBool('hasSeenOnboarding') ?? false;
   runApp(

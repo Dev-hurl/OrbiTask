@@ -8,29 +8,33 @@ class AuthService {
 
   // ─── EMAIL AUTH ───────────────────────────────────────────
 
-  Future<User?> signUpWithEmail(String email, String password, String name) async {
-  try {
-    final UserCredential userCredential =
-        await _auth.createUserWithEmailAndPassword(
-      email: email.trim(),
-      password: password.trim(),
-    );
-    // Save the name to Firebase profile
-    await userCredential.user?.updateDisplayName(name.trim());
-    return userCredential.user;
-  } on FirebaseAuthException catch (e) {
-    debugPrint('SignUp error: ${e.message}');
-    rethrow;
+  Future<User?> signUpWithEmail(
+    String email,
+    String password,
+    String name,
+  ) async {
+    try {
+      final UserCredential userCredential = await _auth
+          .createUserWithEmailAndPassword(
+            email: email.trim(),
+            password: password.trim(),
+          );
+      // Save the name to Firebase profile
+      await userCredential.user?.updateDisplayName(name.trim());
+      return userCredential.user;
+    } on FirebaseAuthException catch (e) {
+      debugPrint('SignUp error: ${e.message}');
+      rethrow;
+    }
   }
-}
 
   Future<User?> signInWithEmail(String email, String password) async {
     try {
-      final UserCredential userCredential =
-          await _auth.signInWithEmailAndPassword(
-        email: email.trim(),
-        password: password.trim(),
-      );
+      final UserCredential userCredential = await _auth
+          .signInWithEmailAndPassword(
+            email: email.trim(),
+            password: password.trim(),
+          );
       return userCredential.user;
     } on FirebaseAuthException catch (e) {
       debugPrint('SignIn error: ${e.message}');
@@ -45,8 +49,8 @@ class AuthService {
       // Web uses a different flow
       if (kIsWeb) {
         final GoogleAuthProvider googleProvider = GoogleAuthProvider();
-        final UserCredential userCredential =
-            await _auth.signInWithPopup(googleProvider);
+        await _auth.signInWithRedirect(googleProvider);
+        final UserCredential userCredential = await _auth.getRedirectResult();
         return userCredential.user;
       }
 
@@ -62,8 +66,9 @@ class AuthService {
         idToken: googleAuth.idToken,
       );
 
-      final UserCredential userCredential =
-          await _auth.signInWithCredential(credential);
+      final UserCredential userCredential = await _auth.signInWithCredential(
+        credential,
+      );
       return userCredential.user;
     } catch (e) {
       debugPrint('Google Sign-In error: $e');
