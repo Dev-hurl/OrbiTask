@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:orbitask/Pages/Main/home_page.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
@@ -59,7 +61,18 @@ class Verification extends StatelessWidget {
                 // Button
                 FilledButton(
                   onPressed: () {
-                    //
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomePage(
+                          firstName:
+                              FirebaseAuth.instance.currentUser?.displayName
+                                  ?.split(' ')
+                                  .first ??
+                              'User',
+                        ),
+                      ),
+                    );
                   },
                   style: FilledButton.styleFrom(
                     backgroundColor: AppColors.bgblue,
@@ -84,12 +97,12 @@ class Verification extends StatelessWidget {
 
   Widget myBox(int index) {
     return Container(
+      height: 48,
       padding: EdgeInsets.all(8),
       color: AppColors.shark100,
       alignment: Alignment.center,
       child: Text(
         '$index',
-        textAlign: TextAlign.center,
         style: TextStyle(
           fontWeight: AppFonts.semibold,
           fontSize: AppFonts.heading2,
