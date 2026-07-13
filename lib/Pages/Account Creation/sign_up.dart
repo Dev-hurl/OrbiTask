@@ -20,7 +20,7 @@ class _SignUpState extends State<SignUp> {
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
 
-  final formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
   final AuthService _authService = AuthService();
 
@@ -49,7 +49,7 @@ class _SignUpState extends State<SignUp> {
             padding: const EdgeInsets.all(16.0),
             child: Center(
               child: Form(
-                key: formKey,
+                key: _formKey,
                 child: Column(
                   children: [
                     SizedBox(height: 24),
@@ -93,6 +93,12 @@ class _SignUpState extends State<SignUp> {
                         CustomTextFormField(
                           hinText: 'e.g. John Doe',
                           controller: _nameController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Name is required';
+                            }
+                            return null;
+                          },
                         ),
                       ],
                     ),
@@ -114,6 +120,17 @@ class _SignUpState extends State<SignUp> {
                           keyboardType: TextInputType.emailAddress,
                           hinText: 'e.g. JohnDoe@example.com',
                           controller: _emailController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Email is required';
+                            }
+                            if (!RegExp(
+                              r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                            ).hasMatch(value)) {
+                              return 'Enter a valid email';
+                            }
+                            return null;
+                          },
                         ),
                       ],
                     ),
@@ -135,6 +152,15 @@ class _SignUpState extends State<SignUp> {
                           controller: _passwordController,
                           icon: Icons.visibility_off_rounded,
                           obscureText: true,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Password is required';
+                            }
+                            if (value.length < 6) {
+                              return 'Password must be at least 6 characters';
+                            }
+                            return null;
+                          },
                         ),
                       ],
                     ),
@@ -157,12 +183,37 @@ class _SignUpState extends State<SignUp> {
                               borderRadius: BorderRadius.circular(24),
                             ),
                           ),
-                          onPressed: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Verification(),
-                            ),
-                          ),
+                          onPressed: () async {
+                            if (!_formKey.currentState!.validate()) return;
+
+                            final navigator = Navigator.of(context);
+                            final scaffoldMessenger = ScaffoldMessenger.of(
+                              context,
+                            );
+
+                            try {
+                              final user = await _authService.signUpWithEmail(
+                                _emailController.text,
+                                _passwordController.text,
+                                _nameController.text,
+                              );
+                              if (user != null) {
+                                if (!mounted) return;
+                                navigator.push(
+                                  MaterialPageRoute(
+                                    builder: (context) => Verification(),
+                                  ),
+                                );
+                              }
+                            } on FirebaseAuthException catch (e) {
+                              if (!mounted) return;
+                              scaffoldMessenger.showSnackBar(
+                                SnackBar(
+                                  content: Text(e.message ?? 'Signup failed'),
+                                ),
+                              );
+                            }
+                          },
                           child: Text(
                             'Sign Up',
                             style: TextStyle(
@@ -281,5 +332,3 @@ class _SignUpState extends State<SignUp> {
     );
   }
 }
-
-class TapGestureRecognizer {}
