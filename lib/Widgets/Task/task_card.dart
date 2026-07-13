@@ -39,7 +39,7 @@ class TaskCard extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 16),
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.shark50,
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: AppColors.shark100),
         /*boxShadow: [
@@ -57,10 +57,9 @@ class TaskCard extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: TextStyle(
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontSize: AppFonts.subheading,
                   fontWeight: AppFonts.semibold,
-                  color: AppColors.textPrimary,
                 ),
               ),
               //PopUpMenuButton
@@ -83,7 +82,13 @@ class TaskCard extends StatelessWidget {
                       children: [
                         Icon(Icons.edit, size: 18, color: AppColors.bgblue),
                         SizedBox(width: 8),
-                        Text('Edit', style: TextStyle(color: AppColors.bgblue, fontSize: AppFonts.caption),),
+                        Text(
+                          'Edit',
+                          style: TextStyle(
+                            color: AppColors.bgblue,
+                            fontSize: AppFonts.caption,
+                          ),
+                        ),
                       ],
                     ),
                   ),

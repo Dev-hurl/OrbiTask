@@ -18,7 +18,7 @@ class AppTheme {
       onSurface: AppColors.textPrimary,
       onError: AppColors.bgwhite,
     ),
-    textTheme: const TextTheme(
+    textTheme: TextTheme(
       displayLarge: TextStyle(
         fontFamily: AppFonts.primary,
         fontSize: AppFonts.heading1,
