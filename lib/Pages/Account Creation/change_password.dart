@@ -4,14 +4,14 @@ import 'package:orbitask/Widgets/custom_text_form_field.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
-class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({super.key});
+class ChangePassword extends StatefulWidget {
+  const ChangePassword({super.key});
 
   @override
-  State<ForgotPassword> createState() => _ForgotPasswordState();
+  State<ChangePassword> createState() => _ChangePasswordState();
 }
 
-class _ForgotPasswordState extends State<ForgotPassword> {
+class _ChangePasswordState extends State<ChangePassword> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
@@ -39,7 +39,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               child: Column(
                 children: [
                   Text(
-                    'Forgot Password',
+                    'Change Password',
                     style: TextStyle(
                       color: AppColors.textSecondary,
                       fontSize: AppFonts.heading2,
@@ -47,7 +47,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     ),
                   ),
                   Text(
-                    'Enter your email address to receive to a password reset link..',
+                    'Enter your details',
                     style: TextStyle(
                       color: AppColors.shark400,
                       fontSize: AppFonts.body,
@@ -60,7 +60,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Email Address',
+                        'Enter New Password',
                         style: TextStyle(
                           fontWeight: AppFonts.semibold,
                           fontSize: AppFonts.body,
@@ -68,12 +68,35 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         ),
                       ),
                       CustomTextFormField(
-                        hinText: 'johndoe@gmail.com',
+                        hinText: 'Enter new Password',
                         controller: _passwordController,
+                        obscureText: true,
+                        icon: Icons.visibility,
                       ),
                     ],
                   ),
                   SizedBox(height: 24),
+                  Column(
+                    spacing: 8,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Confirm New Password',
+                        style: TextStyle(
+                          fontSize: AppFonts.body,
+                          fontWeight: AppFonts.semibold,
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
+                      CustomTextFormField(
+                        hinText: 'Confirm Password',
+                        controller: _confirmPasswordController,
+                        obscureText: true,
+                        icon: Icons.visibility,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 32),
 
                   Align(
                     alignment: Alignment.center,
@@ -92,6 +115,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           ),
                         ),
                         onPressed: () {
+                          
                           if (_formKey.currentState!.validate()) {
                             // only navigates if all fields pass validation
                             Navigator.push(

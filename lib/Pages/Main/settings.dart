@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:orbitask/Features/provider/theme_notifier.dart';
+import 'package:orbitask/Pages/Account%20Creation/change_password.dart';
 import 'package:orbitask/Pages/Account%20Creation/sign_in.dart';
 import 'package:orbitask/Pages/Services/auth_services.dart';
 import 'package:orbitask/Widgets/custom_nav_bar.dart';
@@ -8,7 +9,6 @@ import 'package:orbitask/constants/app_fonts.dart';
 import 'package:provider/provider.dart';
 
 class Settings extends StatefulWidget {
-
   const Settings({super.key});
 
   @override
@@ -16,9 +16,8 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-
   final AuthService _authService = AuthService();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +49,12 @@ class _SettingsState extends State<Settings> {
             context,
             icon: Icons.lock_outline,
             label: 'Change Password',
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ChangePassword()),
+              );
+            },
           ),
           _buildSettingsItem(
             context,

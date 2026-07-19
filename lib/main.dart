@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:orbitask/Features/provider/theme_notifier.dart';
 import 'package:orbitask/Pages/Account%20Creation/sign_up.dart';
-import 'package:orbitask/Pages/Onboarding/main_onboard.dart';
+import 'package:orbitask/Pages/Splash_Screen/splash_screen1.dart';
 import 'package:orbitask/core/theme/app_theme.dart';
 import 'package:orbitask/firebase_options.dart';
 import 'package:provider/provider.dart';
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'OrbiTask',
       debugShowCheckedModeBanner: false,
-      home: hasSeenOnboarding ? SignUp() : MainOnboard(),
+      home: hasSeenOnboarding ? SignUp() : SplashScreen1(),
       themeMode: themeNotifier.themeMode,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,

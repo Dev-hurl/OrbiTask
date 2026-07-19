@@ -137,8 +137,8 @@ class _SigninState extends State<Signin> {
                           'Forgot Password?',
                           style: TextStyle(
                             fontSize: AppFonts.caption,
-                            fontWeight: AppFonts.bold,
-                            color: AppColors.textSecondary,
+                            fontWeight: AppFonts.medium,
+                            color: AppColors.error,
                           ),
                         ),
                       ),

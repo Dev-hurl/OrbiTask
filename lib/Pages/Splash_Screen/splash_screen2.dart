@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:orbitask/Pages/Account%20Creation/sign_in.dart';
+import 'package:orbitask/Pages/Onboarding/main_onboard.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 import 'package:orbitask/constants/app_colors.dart';
-import 'package:orbitask/Pages/Onboarding/onboard1.dart';
 
 class SplashScreen2 extends StatefulWidget {
   const SplashScreen2({super.key});
@@ -23,7 +23,7 @@ class _SplashScreen2State extends State<SplashScreen2> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (_) => isNewUser ? Onboarding1(onNext: () {}) : Signin(),
+            builder: (_) => isNewUser ? MainOnboard() : Signin(),
           ),
         );
       }
