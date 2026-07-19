@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:orbitask/Pages/Account%20Creation/sign_in.dart';
 import 'package:orbitask/Pages/Account%20Creation/verification.dart';
@@ -240,42 +241,45 @@ class _SignUpState extends State<SignUp> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         //Google
-                        Container(
-                          width: 80,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            color: AppColors.bgblue100,
-                            borderRadius: BorderRadius.all(Radius.circular(16)),
-                          ),
-                          child: Center(
-                            child: GestureDetector(
-                              onTap: () async {
-                                final navigator = Navigator.of(context);
-                                final User? user = await _authService
-                                    .signInWithGoogle();
-                                if (user != null) {
-                                  if (!mounted) return;
-                                  navigator.pushReplacement(
-                                    MaterialPageRoute(
-                                      builder: (context) => HomePage(
-                                        firstName:
-                                            user.displayName
-                                                ?.split(' ')
-                                                .first ??
-                                            'User',
+                        if (!kIsWeb)
+                          Container(
+                            width: 80,
+                            height: 80,
+                            decoration: BoxDecoration(
+                              color: AppColors.bgblue100,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(16),
+                              ),
+                            ),
+                            child: Center(
+                              child: GestureDetector(
+                                onTap: () async {
+                                  final navigator = Navigator.of(context);
+                                  final User? user = await _authService
+                                      .signInWithGoogle();
+                                  if (user != null) {
+                                    if (!mounted) return;
+                                    navigator.pushReplacement(
+                                      MaterialPageRoute(
+                                        builder: (context) => HomePage(
+                                          firstName:
+                                              user.displayName
+                                                  ?.split(' ')
+                                                  .first ??
+                                              'User',
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                }
-                              },
-                              child: Image.asset(
-                                'assets/images/google.png',
-                                width: 24,
-                                height: 24,
+                                    );
+                                  }
+                                },
+                                child: Image.asset(
+                                  'assets/images/google.png',
+                                  width: 24,
+                                  height: 24,
+                                ),
                               ),
                             ),
                           ),
-                        ),
                         SizedBox(width: 24),
                         //Facebook
                         Container(
