@@ -41,48 +41,51 @@ class _MainOnboardState extends State<MainOnboard> {
     return Scaffold(
       backgroundColor: AppColors.bgwhite,
       body: SafeArea(
-        child: Column(
-          children: [
-            // page content
-            Expanded(
-              child: PageView(
-                controller: _pageController,
-                onPageChanged: (index) {
-                  setState(() {
-                    _currentPage = index;
-                  });
-                },
-                children: [
-                  Onboarding1(onNext: _nextPage),
-                  Onboarding2(onNext: _nextPage),
-                  Onboarding3(onNext: _nextPage),
-                  Onboarding4(),
-                ],
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              // page content
+              Expanded(
+                child: PageView(
+                  controller: _pageController,
+                  onPageChanged: (index) {
+                    setState(() {
+                      _currentPage = index;
+                    });
+                  },
+                  children: [
+                    Onboarding1(onNext: _nextPage),
+                    Onboarding2(onNext: _nextPage),
+                    Onboarding3(onNext: _nextPage),
+                    Onboarding4(),
+                  ],
+                ),
               ),
-            ),
-
-            // dot indicator
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(_totalPages, (index) {
-                return AnimatedContainer(
-                  duration: const Duration(milliseconds: 300),
-                  margin: const EdgeInsets.symmetric(
-                    horizontal: 4,
-                    vertical: 16,
-                  ),
-                  width: _currentPage == index ? 20 : 8,
-                  height: 8,
-                  decoration: BoxDecoration(
-                    color: _currentPage == index
-                        ? AppColors.bgblue
-                        : AppColors.bgblue.withValues(alpha: 0.3),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                );
-              }),
-            ),
-          ],
+          
+              // dot indicator
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(_totalPages, (index) {
+                  return AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 4,
+                      vertical: 16,
+                    ),
+                    width: _currentPage == index ? 20 : 8,
+                    height: 8,
+                    decoration: BoxDecoration(
+                      color: _currentPage == index
+                          ? AppColors.bgblue
+                          : AppColors.bgblue.withValues(alpha: 0.3),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                  );
+                }),
+              ),
+            ],
+          ),
         ),
       ),
     );
