@@ -19,7 +19,6 @@ class Onboarding2 extends StatelessWidget {
             height: 350,
             fit: BoxFit.cover,
           ),
-      
           SizedBox(height: 24),
           Text(
             'Plan Smarter, Not Harder',
@@ -30,7 +29,6 @@ class Onboarding2 extends StatelessWidget {
             ),
           ),
           SizedBox(height: 8),
-      
           Text(
             'Create tasks, set priorities, and stay on top of your to-dos like a pro. Your goals, your way.',
             textAlign: TextAlign.center,
@@ -42,7 +40,6 @@ class Onboarding2 extends StatelessWidget {
           ),
           //Page View
           SizedBox(height: 32),
-      
           //Filled Button
           Align(
             alignment: Alignment.center,
