@@ -60,9 +60,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CustomBottomNavBar(currentIndex: 0),
+      
       appBar: AppBar(
         leading: CircleAvatar(
-          radius: 24,
+          radius: 16,
           backgroundImage: AssetImage('assets/images/avatar.jpg'),
         ),
         title: Column(

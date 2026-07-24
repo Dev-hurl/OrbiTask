@@ -42,11 +42,7 @@ class TaskCard extends StatelessWidget {
         color: Theme.of(context).colorScheme.surfaceContainerHighest,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: AppColors.shark100),
-        /*boxShadow: [
-          BoxShadow(
-            color: AppColors.shark600,
-          )
-        ]*/
+        
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

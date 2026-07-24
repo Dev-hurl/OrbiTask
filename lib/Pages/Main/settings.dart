@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:orbitask/Features/provider/theme_notifier.dart';
 import 'package:orbitask/Pages/Account%20Creation/change_password.dart';
 import 'package:orbitask/Pages/Account%20Creation/sign_in.dart';
+import 'package:orbitask/Pages/Main/account_page.dart';
 import 'package:orbitask/Pages/Services/auth_services.dart';
 import 'package:orbitask/Widgets/custom_nav_bar.dart';
 import 'package:orbitask/constants/app_colors.dart';
@@ -43,7 +44,12 @@ class _SettingsState extends State<Settings> {
             context,
             icon: Icons.person_outline,
             label: 'Account',
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AccountPage()),
+              );
+            },
           ),
           _buildSettingsItem(
             context,
@@ -60,7 +66,21 @@ class _SettingsState extends State<Settings> {
             context,
             icon: Icons.notifications_outlined,
             label: 'Notification',
-            onTap: () {},
+            onTap: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Suggest a Feature'),
+                  behavior: SnackBarBehavior.floating,
+                  width: 150,
+                  action: SnackBarAction(
+                    label: 'Undo',
+                    onPressed: () {
+                      //
+                    },
+                  ),
+                ),
+              );
+            },
           ),
 
           SizedBox(height: 24),
@@ -71,13 +91,41 @@ class _SettingsState extends State<Settings> {
             context,
             icon: Icons.headset_mic_outlined,
             label: 'Support',
-            onTap: () {},
+            onTap: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Suggest a Feature'),
+                  behavior: SnackBarBehavior.floating,
+                  width: 150,
+                  action: SnackBarAction(
+                    label: 'Undo',
+                    onPressed: () {
+                      //
+                    },
+                  ),
+                ),
+              );
+            },
           ),
           _buildSettingsItem(
             context,
             icon: Icons.shield_outlined,
             label: 'Terms and Conditions',
-            onTap: () {},
+            onTap: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Suggest a Feature'),
+                  behavior: SnackBarBehavior.floating,
+                  width: 150,
+                  action: SnackBarAction(
+                    label: 'Undo',
+                    onPressed: () {
+                      //
+                    },
+                  ),
+                ),
+              );
+            },
           ),
 
           SizedBox(height: 24),
