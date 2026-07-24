@@ -209,7 +209,7 @@ Widget _buildThemeToggle(BuildContext context) {
           size: 22,
         ),
         title: Text(
-          'Dark Mode',
+          themeNotifier.isDarkMode ? 'DarkMode' : 'LightMode',
           style: TextStyle(
             fontSize: AppFonts.body,
             fontWeight: AppFonts.medium,
