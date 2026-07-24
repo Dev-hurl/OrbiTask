@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/Pages/Account%20Creation/sign_in.dart';
-import 'package:orbitask/Widgets/custom_text_form_field.dart';
+import 'package:orbitask/Features/Auth/screens/sign_in.dart';
+import 'package:orbitask/Widgets/Custom%20Widgets/custom_text_form_field.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 

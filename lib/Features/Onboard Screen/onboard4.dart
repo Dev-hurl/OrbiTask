@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/Pages/Account%20Creation/sign_up.dart';
+import 'package:orbitask/Features/Auth/screens/sign_up.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';

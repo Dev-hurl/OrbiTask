@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/Pages/Onboarding/onboard1.dart';
-import 'package:orbitask/Pages/Onboarding/onboard2.dart';
-import 'package:orbitask/Pages/Onboarding/onboard3.dart';
-import 'package:orbitask/Pages/Onboarding/onboard4.dart';
+import 'package:orbitask/Features/Onboard%20Screen/onboard1.dart';
+import 'package:orbitask/Features/Onboard%20Screen/onboard2.dart';
+import 'package:orbitask/Features/Onboard%20Screen/onboard3.dart';
+import 'package:orbitask/Features/Onboard%20Screen/onboard4.dart';
 import 'package:orbitask/constants/app_colors.dart';
 
 class MainOnboard extends StatefulWidget {

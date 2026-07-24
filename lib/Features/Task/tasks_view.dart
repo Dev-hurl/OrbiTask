@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/Widgets/Home/empty_state.dart';
-import 'package:orbitask/Widgets/Home/tasks_list.dart';
-import 'package:orbitask/Widgets/custom_nav_bar.dart';
+import 'package:orbitask/Features/Home/empty_state.dart';
+import 'package:orbitask/Features/Home/tasks_list.dart';
+import 'package:orbitask/Widgets/Custom%20Widgets/custom_nav_bar.dart';
 
 class TasksView extends StatefulWidget {
   const TasksView({super.key});

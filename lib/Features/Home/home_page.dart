@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/Pages/Main/create_task1.dart';
-import 'package:orbitask/Widgets/Home/tasks_list.dart';
-import 'package:orbitask/Widgets/custom_nav_bar.dart';
+import 'package:orbitask/Features/Task/create_task1.dart';
+import 'package:orbitask/Features/Home/tasks_list.dart';
+import 'package:orbitask/Widgets/Custom%20Widgets/custom_nav_bar.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../Widgets/Home/empty_state.dart';
+import 'empty_state.dart';
 
 class HomePage extends StatefulWidget {
   final String firstName;

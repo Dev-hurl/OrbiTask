@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:orbitask/Pages/Account%20Creation/forgot_password.dart';
-import 'package:orbitask/Pages/Account%20Creation/sign_up.dart';
-import 'package:orbitask/Pages/Main/home_page.dart';
-import 'package:orbitask/Pages/Services/auth_services.dart';
-import 'package:orbitask/Widgets/custom_text_form_field.dart';
+import 'package:orbitask/Features/Auth/screens/Verification/forgot_password.dart';
+import 'package:orbitask/Features/Auth/screens/sign_up.dart';
+import 'package:orbitask/Features/Home/home_page.dart';
+import 'package:orbitask/Features/Services/auth_services.dart';
+import 'package:orbitask/Widgets/Custom%20Widgets/custom_text_form_field.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 

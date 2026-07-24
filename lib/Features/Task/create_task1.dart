@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/Pages/Main/create_task2.dart';
-import 'package:orbitask/Widgets/custom_text_form_field.dart';
+import 'package:orbitask/Features/Task/create_task2.dart';
+import 'package:orbitask/Widgets/Custom%20Widgets/custom_text_form_field.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 

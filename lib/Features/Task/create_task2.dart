@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:orbitask/Widgets/Task/date_picker_widget.dart';
-import 'package:orbitask/Widgets/Task/subtask_section.dart';
-import 'package:orbitask/Widgets/Task/time_picker_widget.dart';
-import 'package:orbitask/Pages/Main/task_preview.dart';
+import 'package:orbitask/Features/Task/date_picker_widget.dart';
+import 'package:orbitask/Features/Task/subtask_section.dart';
+import 'package:orbitask/Features/Task/time_picker_widget.dart';
+import 'package:orbitask/Features/Task/task_preview.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/Pages/Splash_Screen/splash_screen2.dart';
+import 'package:orbitask/Features/Splash_Screen/splash_screen2.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 import 'package:orbitask/constants/app_colors.dart';
 

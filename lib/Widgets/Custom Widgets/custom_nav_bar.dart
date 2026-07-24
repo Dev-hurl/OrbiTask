@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:orbitask/Pages/Main/home_page.dart';
-import 'package:orbitask/Pages/Main/settings.dart';
-import 'package:orbitask/Pages/Main/timer.dart';
+import 'package:orbitask/Features/Home/home_page.dart';
+import 'package:orbitask/Features/Settings/settings.dart';
+import 'package:orbitask/Features/Timer/timer.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
-import '../Pages/Main/tasks_view.dart';
+import '../../Features/Task/tasks_view.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   final int currentIndex;
