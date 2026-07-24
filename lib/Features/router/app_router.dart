@@ -1,0 +1,1 @@
+final GoRouter appRouter = GoRouter();
