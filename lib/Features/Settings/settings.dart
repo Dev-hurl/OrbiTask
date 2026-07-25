@@ -23,7 +23,7 @@ class _SettingsState extends State<Settings> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+    //final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
@@ -190,7 +190,7 @@ class _SettingsState extends State<Settings> {
 
 Widget _buildThemeToggle(BuildContext context) {
   final themeNotifier = context.watch<ThemeNotifier>();
-  final textTheme = Theme.of(context).textTheme;
+  //final textTheme = Theme.of(context).textTheme;
   final colorScheme = Theme.of(context).colorScheme;
 
   return Column(
