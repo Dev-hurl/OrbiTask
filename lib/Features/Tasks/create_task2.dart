@@ -4,8 +4,10 @@ import 'package:orbitask/Features/Tasks/date_picker_widget.dart';
 import 'package:orbitask/Features/Tasks/subtask_section.dart';
 import 'package:orbitask/Features/Tasks/time_picker_widget.dart';
 import 'package:orbitask/Features/Tasks/task_preview.dart';
+import 'package:orbitask/Widgets/toast/toast_manager.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
+import 'package:provider/provider.dart';
 
 class CreateTask2 extends StatefulWidget {
   const CreateTask2({super.key});
@@ -38,7 +40,8 @@ class _CreateTask2State extends State<CreateTask2> {
                   ),
                 ),
                 Text(
-                  'Enter time frame for start and end of the task',
+                  'Enter time frame for start and end of task',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: AppColors.shark400,
                     fontSize: AppFonts.body,
@@ -82,11 +85,7 @@ class _CreateTask2State extends State<CreateTask2> {
                       },
                     ),
                     SizedBox(height: 12),
-                    Divider(
-                      height: 1,
-                      thickness: 1,
-                      color: AppColors.shark50,
-                    ),
+                    Divider(height: 1, thickness: 1, color: AppColors.shark50),
                     SizedBox(height: 12),
                     //Second Row: Date
                     DatePickerWidget(
@@ -97,11 +96,7 @@ class _CreateTask2State extends State<CreateTask2> {
                       },
                     ),
                     SizedBox(height: 12),
-                    Divider(
-                      height: 1,
-                      thickness: 1,
-                      color: AppColors.shark50,
-                    ),
+                    Divider(height: 1, thickness: 1, color: AppColors.shark50),
                     //Third Row:Reminder
                     SizedBox(height: 12),
                     Row(
@@ -137,11 +132,7 @@ class _CreateTask2State extends State<CreateTask2> {
                       ],
                     ),
                     SizedBox(height: 24),
-                    Divider(
-                      height: 1,
-                      thickness: 1,
-                      color: AppColors.shark50,
-                    ),
+                    Divider(height: 1, thickness: 1, color: AppColors.shark50),
                   ],
                 ),
                 SizedBox(height: 24),
@@ -171,12 +162,9 @@ class _CreateTask2State extends State<CreateTask2> {
                       height: 92,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
-                        border: Border.all(
-                          color: AppColors.bgblue,
-                          width: 1.5,
-                        ),
+                        border: Border.all(color: AppColors.bgblue, width: 1.5),
                       ),
-                  
+
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -204,7 +192,7 @@ class _CreateTask2State extends State<CreateTask2> {
                   ],
                 ),
                 SizedBox(height: 24),
-                  
+
                 SizedBox(
                   width: double.infinity,
                   height: 48,
@@ -221,9 +209,12 @@ class _CreateTask2State extends State<CreateTask2> {
                     ),
                     onPressed: () {
                       if (_subTasks.isEmpty) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Please add at least one subtask'),
+                        context.read<ToastManager>().show(
+                          text: 'Suggest a new feature',
+                          icon: Icon(
+                            Icons.rocket_launch,
+                            color: Colors.white,
+                            size: 20,
                           ),
                         );
                         return;
@@ -231,9 +222,7 @@ class _CreateTask2State extends State<CreateTask2> {
                       // proceed to preview
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => TaskPreview(),
-                        ),
+                        MaterialPageRoute(builder: (context) => TaskPreview()),
                       );
                     },
                     child: Text(

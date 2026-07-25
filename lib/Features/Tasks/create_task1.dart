@@ -49,6 +49,7 @@ class _CreateTask1State extends State<CreateTask1> {
                 SizedBox(height: 4),
                 Text(
                   'Enter your new task details.',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: AppColors.shark400,
                     fontSize: AppFonts.body,
