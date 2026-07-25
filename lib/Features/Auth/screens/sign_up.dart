@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:orbitask/Features/Auth/screens/sign_in.dart';
 import 'package:orbitask/Features/Home/home_page.dart';
-import 'package:orbitask/Features/Services/auth_services.dart';
+import 'package:orbitask/core/Services/auth_services.dart';
 import 'package:orbitask/Features/Auth/screens/Verification/verification.dart';
 import 'package:orbitask/Widgets/Custom%20Widgets/custom_text_form_field.dart';
 import 'package:orbitask/constants/app_colors.dart';

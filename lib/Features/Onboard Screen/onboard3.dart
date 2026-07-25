@@ -31,7 +31,7 @@ class Onboarding3 extends StatelessWidget {
           SizedBox(height: 8),
 
           Text(
-            'Use the built-in timer to stay in the zone, hit milestones, and earn rewards for your hard work.',
+            'Use the built-in timer to stay in the zone .',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: AppFonts.body,

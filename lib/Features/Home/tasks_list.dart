@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/Features/Task/task_card.dart';
+import 'package:orbitask/Features/Tasks/task_card.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 

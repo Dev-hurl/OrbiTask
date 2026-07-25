@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:orbitask/Features/Task/date_picker_widget.dart';
-import 'package:orbitask/Features/Task/subtask_section.dart';
-import 'package:orbitask/Features/Task/time_picker_widget.dart';
-import 'package:orbitask/Features/Task/task_preview.dart';
+import 'package:orbitask/Features/Tasks/date_picker_widget.dart';
+import 'package:orbitask/Features/Tasks/subtask_section.dart';
+import 'package:orbitask/Features/Tasks/time_picker_widget.dart';
+import 'package:orbitask/Features/Tasks/task_preview.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
@@ -23,10 +23,10 @@ class _CreateTask2State extends State<CreateTask2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(leading: BackButton(color: AppColors.bgblue)),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
-          child: SingleChildScrollView(
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          child: Center(
             child: Column(
               children: [
                 Text(
@@ -176,7 +176,7 @@ class _CreateTask2State extends State<CreateTask2> {
                           width: 1.5,
                         ),
                       ),
-      
+                  
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -204,7 +204,7 @@ class _CreateTask2State extends State<CreateTask2> {
                   ],
                 ),
                 SizedBox(height: 24),
-      
+                  
                 SizedBox(
                   width: double.infinity,
                   height: 48,

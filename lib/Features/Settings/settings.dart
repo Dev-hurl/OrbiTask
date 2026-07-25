@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:orbitask/Features/Auth/screens/Verification/change_password.dart';
 import 'package:orbitask/Features/provider/theme_notifier.dart';
 import 'package:orbitask/Features/Auth/screens/sign_in.dart';
 import 'package:orbitask/Features/Proflie/account_page.dart';
-import 'package:orbitask/Features/Services/auth_services.dart';
+import 'package:orbitask/Widgets/toast/toast_manager.dart';
+import 'package:orbitask/Widgets/toast/toast_widget.dart';
+import 'package:orbitask/core/Services/auth_services.dart';
 import 'package:orbitask/Widgets/Custom%20Widgets/custom_nav_bar.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
@@ -67,18 +70,9 @@ class _SettingsState extends State<Settings> {
             icon: Icons.notifications_outlined,
             label: 'Notification',
             onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('Suggest a Feature'),
-                  behavior: SnackBarBehavior.floating,
-                  width: 150,
-                  action: SnackBarAction(
-                    label: 'Undo',
-                    onPressed: () {
-                      //
-                    },
-                  ),
-                ),
+              context.read<ToastManager>().show(
+                text: 'Suggest a new feature',
+                icon: Icon(Icons.rocket_launch, color: Colors.white, size: 20),
               );
             },
           ),
@@ -92,17 +86,12 @@ class _SettingsState extends State<Settings> {
             icon: Icons.headset_mic_outlined,
             label: 'Support',
             onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('Suggest a Feature'),
-                  behavior: SnackBarBehavior.floating,
-                  width: 150,
-                  action: SnackBarAction(
-                    label: 'Undo',
-                    onPressed: () {
-                      //
-                    },
-                  ),
+              context.read<ToastManager>().show(
+                text: 'Coming soon — stay tuned!',
+                icon: HugeIcon(
+                  icon: HugeIcons.strokeRoundedRocket,
+                  color: Colors.white,
+                  size: 20,
                 ),
               );
             },
@@ -112,17 +101,12 @@ class _SettingsState extends State<Settings> {
             icon: Icons.shield_outlined,
             label: 'Terms and Conditions',
             onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('Suggest a Feature'),
-                  behavior: SnackBarBehavior.floating,
-                  width: 150,
-                  action: SnackBarAction(
-                    label: 'Undo',
-                    onPressed: () {
-                      //
-                    },
-                  ),
+              context.read<ToastManager>().show(
+                text: 'Coming soon — stay tuned!',
+                icon: HugeIcon(
+                  icon: HugeIcons.strokeRoundedRocket,
+                  color: Colors.white,
+                  size: 20,
                 ),
               );
             },
@@ -209,7 +193,7 @@ Widget _buildThemeToggle(BuildContext context) {
           size: 22,
         ),
         title: Text(
-          themeNotifier.isDarkMode ? 'DarkMode' : 'LightMode',
+          themeNotifier.isDarkMode ? 'LightMode' : 'DarkMode',
           style: TextStyle(
             fontSize: AppFonts.body,
             fontWeight: AppFonts.medium,

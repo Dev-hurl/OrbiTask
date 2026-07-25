@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:orbitask/Features/Auth/screens/Verification/forgot_password.dart';
 import 'package:orbitask/Features/Auth/screens/sign_up.dart';
 import 'package:orbitask/Features/Home/home_page.dart';
-import 'package:orbitask/Features/Services/auth_services.dart';
+import 'package:orbitask/core/Services/auth_services.dart';
 import 'package:orbitask/Widgets/Custom%20Widgets/custom_text_form_field.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';

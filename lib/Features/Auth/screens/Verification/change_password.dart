@@ -31,7 +31,7 @@ class _ChangePasswordState extends State<ChangePassword> {
     return Scaffold(
       appBar: AppBar(leading: BackButton(color: AppColors.bgblue)),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: Center(
           child: Form(
             key: _formKey,

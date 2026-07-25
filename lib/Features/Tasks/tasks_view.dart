@@ -53,16 +53,18 @@ class _TasksViewState extends State<TasksView> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CustomBottomNavBar(currentIndex: 1),
-      body: tasks.isEmpty
-          ? EmptyState()
-          : TaskList(
-              tasks: tasks,
-              onDelete: (index) {
-                setState(() {
-                  tasks.removeAt(index);
-                });
-              },
-            ),
+      body: SafeArea(
+        child: tasks.isEmpty
+            ? EmptyState()
+            : TaskList(
+                tasks: tasks,
+                onDelete: (index) {
+                  setState(() {
+                    tasks.removeAt(index);
+                  });
+                },
+              ),
+      ),
     );
   }
 }

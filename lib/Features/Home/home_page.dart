@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/Features/Task/create_task1.dart';
+import 'package:orbitask/Features/Tasks/create_task1.dart';
 import 'package:orbitask/Features/Home/tasks_list.dart';
 import 'package:orbitask/Widgets/Custom%20Widgets/custom_nav_bar.dart';
 import 'package:orbitask/constants/app_colors.dart';
@@ -62,9 +62,14 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: CustomBottomNavBar(currentIndex: 0),
       
       appBar: AppBar(
-        leading: CircleAvatar(
-          radius: 16,
-          backgroundImage: AssetImage('assets/images/avatar.jpg'),
+        elevation: 0,
+        leading: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: CircleAvatar(
+            radius: 24,
+            backgroundImage: AssetImage('assets/images/avatar.jpg'),
+            
+          ),
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

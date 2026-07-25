@@ -5,7 +5,7 @@ import 'package:orbitask/Features/Settings/settings.dart';
 import 'package:orbitask/Features/Timer/timer.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
-import '../../Features/Task/tasks_view.dart';
+import '../../Features/Tasks/tasks_view.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   final int currentIndex;

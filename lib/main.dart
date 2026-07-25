@@ -5,6 +5,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:orbitask/Features/provider/theme_notifier.dart';
 import 'package:orbitask/Features/Auth/screens/sign_up.dart';
 import 'package:orbitask/Features/Splash_Screen/splash_screen1.dart';
+import 'package:orbitask/Widgets/toast/toast_manager.dart';
+import 'package:orbitask/Widgets/toast/toast_overlay.dart';
 import 'package:orbitask/core/theme/app_theme.dart';
 import 'package:orbitask/firebase_options.dart';
 import 'package:provider/provider.dart';
@@ -31,8 +33,11 @@ void main() async {
   runApp(
     DevicePreview(
       enabled: true,
-      builder: (context) => ChangeNotifierProvider(
-        create: (_) => ThemeNotifier(),
+      builder: (context) => MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => ToastManager()),
+          ChangeNotifierProvider(create: (_) => ThemeNotifier()),
+        ],
         child: MyApp(hasSeenOnboarding: hasSeenOnboarding),
       ),
     ),
@@ -44,7 +49,6 @@ class MyApp extends StatelessWidget {
 
   const MyApp({super.key, required this.hasSeenOnboarding});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     final themeNotifier = context.watch<ThemeNotifier>();
@@ -53,7 +57,10 @@ class MyApp extends StatelessWidget {
       title: 'OrbiTask',
       debugShowCheckedModeBanner: false,
       locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
+      builder: (context, child) {
+        child = DevicePreview.appBuilder(context, child);
+        return ToastOverlay(child: child);
+      },
       home: hasSeenOnboarding ? SignUp() : SplashScreen1(),
       themeMode: themeNotifier.themeMode,
       theme: AppTheme.lightTheme,
