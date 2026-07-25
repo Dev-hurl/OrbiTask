@@ -58,6 +58,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       bottomNavigationBar: CustomBottomNavBar(currentIndex: 0),
       
@@ -98,7 +101,7 @@ class _HomePageState extends State<HomePage> {
               'assets/icons/calendar-03-stroke-rounded.svg',
               width: 24,
               height: 24,
-              colorFilter: ColorFilter.mode(AppColors.bgblue, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(colorScheme.secondary, BlendMode.srcIn),
             ),
             onPressed: () {
               // Handle calendar icon press
@@ -109,7 +112,7 @@ class _HomePageState extends State<HomePage> {
               'assets/icons/notifications.svg',
               width: 24,
               height: 24,
-              colorFilter: ColorFilter.mode(AppColors.bgblue, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(colorScheme.secondary, BlendMode.srcIn),
             ),
             color: AppColors.bgblue,
             onPressed: () {
@@ -133,7 +136,7 @@ class _HomePageState extends State<HomePage> {
             );
             // Handle FAB press
           },
-          backgroundColor: AppColors.bgblue50,
+          backgroundColor: colorScheme.surfaceContainerHighest,
           child: Icon(Icons.add, color: AppColors.bgblue),
         ),
       ),

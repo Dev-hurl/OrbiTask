@@ -26,6 +26,9 @@ class _SigninState extends State<Signin> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -44,22 +47,11 @@ class _SigninState extends State<Signin> {
                     ),
                     SizedBox(height: 16),
 
-                    Text(
-                      'Welcome Back',
-                      style: TextStyle(
-                        fontSize: AppFonts.heading2,
-                        fontWeight: AppFonts.semibold,
-                        color: AppColors.textSecondary,
-                      ),
-                    ),
+                    Text('Welcome Back', style: textTheme.displayMedium),
                     Text(
                       'Signin to access your account, manage your time and task',
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: AppFonts.regular,
-                        color: AppColors.textSecondary,
-                      ),
+                      style: textTheme.bodyMedium,
                     ),
                     SizedBox(height: 24),
                     //FirstName
@@ -69,10 +61,9 @@ class _SigninState extends State<Signin> {
                       children: [
                         Text(
                           'Email',
-                          style: TextStyle(
-                            fontSize: AppFonts.body,
+                          style: textTheme.bodyMedium?.copyWith(
+                            color: AppColors.darkTextSecondary,
                             fontWeight: AppFonts.semibold,
-                            color: AppColors.textSecondary,
                           ),
                         ),
                         CustomTextFormField(
@@ -100,10 +91,9 @@ class _SigninState extends State<Signin> {
                       children: [
                         Text(
                           'Password',
-                          style: TextStyle(
-                            fontSize: AppFonts.body,
+                          style: textTheme.bodyMedium?.copyWith(
+                            color: AppColors.darkTextSecondary,
                             fontWeight: AppFonts.semibold,
-                            color: AppColors.textSecondary,
                           ),
                         ),
                         CustomTextFormField(
@@ -139,7 +129,7 @@ class _SigninState extends State<Signin> {
                           style: TextStyle(
                             fontSize: AppFonts.caption,
                             fontWeight: AppFonts.medium,
-                            color: AppColors.error,
+                            color: colorScheme.error,
                           ),
                         ),
                       ),
@@ -152,7 +142,7 @@ class _SigninState extends State<Signin> {
                         height: 48,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.bgblue,
+                            backgroundColor: colorScheme.secondary,
                             padding: EdgeInsets.symmetric(
                               horizontal: 16,
                               vertical: 14,
@@ -190,17 +180,20 @@ class _SigninState extends State<Signin> {
                               if (!mounted) return;
                               scaffoldMessenger.showSnackBar(
                                 SnackBar(
-                                  content: Text(e.message ?? 'Signin failed'),
+                                  content: Text(
+                                    e.message ?? 'Signin failed',
+                                    style: TextStyle(color: colorScheme.error),
+                                  ),
                                 ),
                               );
                             }
                           },
                           child: Text(
-                            'Signin',
+                            'Sign In',
                             style: TextStyle(
                               fontSize: AppFonts.body,
                               fontWeight: AppFonts.bold,
-                              color: AppColors.bgwhite,
+                              color: colorScheme.onPrimary,
                             ),
                           ),
                         ),
@@ -226,7 +219,7 @@ class _SigninState extends State<Signin> {
                             width: 80,
                             height: 80,
                             decoration: BoxDecoration(
-                              color: AppColors.bgblue100,
+                              color: colorScheme.surfaceContainerHighest,
                               borderRadius: BorderRadius.all(
                                 Radius.circular(16),
                               ),
@@ -266,7 +259,7 @@ class _SigninState extends State<Signin> {
                           width: 80,
                           height: 80,
                           decoration: BoxDecoration(
-                            color: AppColors.bgblue100,
+                            color: colorScheme.surfaceContainerHighest,
                             borderRadius: BorderRadius.all(Radius.circular(16)),
                           ),
                           child: Center(
@@ -304,7 +297,7 @@ class _SigninState extends State<Signin> {
                               style: TextStyle(
                                 fontSize: AppFonts.caption,
                                 fontWeight: AppFonts.bold,
-                                color: AppColors.bgblue,
+                                color: colorScheme.secondary,
                               ),
                             ),
                           ],

@@ -43,6 +43,9 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -63,20 +66,12 @@ class _SignUpState extends State<SignUp> {
 
                     Text(
                       'Join the OrbiTask Crew',
-                      style: TextStyle(
-                        fontSize: AppFonts.heading2,
-                        fontWeight: AppFonts.semibold,
-                        color: AppColors.textSecondary,
-                      ),
+                      style: textTheme.displayMedium,
                     ),
                     Text(
                       'Create your free account to sync tasks, earn rewards and never miss a deadline.',
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: AppFonts.regular,
-                        color: AppColors.textSecondary,
-                      ),
+                      style: textTheme.bodyMedium,
                     ),
                     SizedBox(height: 20),
                     Column(
@@ -85,10 +80,9 @@ class _SignUpState extends State<SignUp> {
                       children: [
                         Text(
                           'Fullname',
-                          style: TextStyle(
-                            fontSize: AppFonts.body,
+                          style: textTheme.bodyMedium?.copyWith(
+                            color: AppColors.darkTextSecondary,
                             fontWeight: AppFonts.semibold,
-                            color: AppColors.textSecondary,
                           ),
                         ),
                         CustomTextFormField(
@@ -111,10 +105,9 @@ class _SignUpState extends State<SignUp> {
                       children: [
                         Text(
                           'Email',
-                          style: TextStyle(
-                            fontSize: AppFonts.body,
+                          style: textTheme.bodyMedium?.copyWith(
+                            color: AppColors.darkTextSecondary,
                             fontWeight: AppFonts.semibold,
-                            color: AppColors.textSecondary,
                           ),
                         ),
                         CustomTextFormField(
@@ -142,10 +135,9 @@ class _SignUpState extends State<SignUp> {
                       children: [
                         Text(
                           'Password',
-                          style: TextStyle(
-                            fontSize: AppFonts.body,
+                          style: textTheme.bodyMedium?.copyWith(
+                            color: AppColors.darkTextSecondary,
                             fontWeight: AppFonts.semibold,
-                            color: AppColors.textSecondary,
                           ),
                         ),
                         CustomTextFormField(
@@ -210,7 +202,10 @@ class _SignUpState extends State<SignUp> {
                               if (!mounted) return;
                               scaffoldMessenger.showSnackBar(
                                 SnackBar(
-                                  content: Text(e.message ?? 'Signup failed'),
+                                  content: Text(
+                                    e.message ?? 'Signup failed',
+                                    style: TextStyle(color: colorScheme.error),
+                                  ),
                                 ),
                               );
                             }
@@ -220,7 +215,7 @@ class _SignUpState extends State<SignUp> {
                             style: TextStyle(
                               fontSize: AppFonts.body,
                               fontWeight: AppFonts.bold,
-                              color: AppColors.bgwhite,
+                              color: colorScheme.onPrimary,
                             ),
                           ),
                         ),
@@ -246,7 +241,7 @@ class _SignUpState extends State<SignUp> {
                             width: 80,
                             height: 80,
                             decoration: BoxDecoration(
-                              color: AppColors.bgblue100,
+                              color: colorScheme.surfaceContainerHighest,
                               borderRadius: BorderRadius.all(
                                 Radius.circular(16),
                               ),
@@ -286,7 +281,7 @@ class _SignUpState extends State<SignUp> {
                           width: 80,
                           height: 80,
                           decoration: BoxDecoration(
-                            color: AppColors.bgblue100,
+                            color: colorScheme.surfaceContainerHighest,
                             borderRadius: BorderRadius.all(Radius.circular(16)),
                           ),
                           child: Center(
@@ -319,7 +314,7 @@ class _SignUpState extends State<SignUp> {
                               style: TextStyle(
                                 fontSize: AppFonts.caption,
                                 fontWeight: AppFonts.bold,
-                                color: AppColors.bgblue,
+                                color: colorScheme.secondary,
                               ),
                             ),
                           ],

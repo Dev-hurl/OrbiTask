@@ -32,7 +32,7 @@ void main() async {
       : (prefs.getBool('hasSeenOnboarding') ?? false);
   runApp(
     DevicePreview(
-      enabled: true,
+      enabled: kIsWeb,
       builder: (context) => MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => ToastManager()),

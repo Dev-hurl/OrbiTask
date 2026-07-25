@@ -28,8 +28,11 @@ class _ChangePasswordState extends State<ChangePassword> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
-      appBar: AppBar(leading: BackButton(color: AppColors.bgblue)),
+      appBar: AppBar(leading: BackButton(color: colorScheme.secondary)),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: Center(
@@ -39,10 +42,10 @@ class _ChangePasswordState extends State<ChangePassword> {
               children: [
                 Text(
                   'Change Password',
-                  style: TextStyle(
-                    color: AppColors.textSecondary,
-                    fontSize: AppFonts.heading2,
-                    fontWeight: AppFonts.semibold,
+                  style: textTheme.displayMedium?.copyWith(
+                    color: textTheme
+                        .bodyMedium
+                        ?.color, // pulls the theme-correct textSecondary equivalent
                   ),
                 ),
                 Text(
@@ -96,7 +99,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   ],
                 ),
                 SizedBox(height: 32),
-      
+
                 Align(
                   alignment: Alignment.center,
                   child: SizedBox(
@@ -114,7 +117,6 @@ class _ChangePasswordState extends State<ChangePassword> {
                         ),
                       ),
                       onPressed: () {
-                        
                         if (_formKey.currentState!.validate()) {
                           // only navigates if all fields pass validation
                           Navigator.push(

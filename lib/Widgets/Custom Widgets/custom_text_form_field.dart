@@ -22,6 +22,10 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return TextFormField(
       scrollPhysics: NeverScrollableScrollPhysics(),
       controller: controller,
@@ -35,15 +39,15 @@ class CustomTextFormField extends StatelessWidget {
           color: AppColors.shark400,
         ),
         suffixIcon: Icon(icon),
-        suffixIconColor: AppColors.bgblue,
+        suffixIconColor: colorScheme.secondary,
         //prefixIcon: Icon(icon),
         //prefixIconColor: AppColors.bgblue,
         filled: true,
-        fillColor: Color(0xffEAEAEA),
+        fillColor: colorScheme.surfaceContainerHighest,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(
-            color: AppColors.shark300,
+            color: colorScheme.onPrimary,
             //width: 1,
           ),
         ),

@@ -27,9 +27,12 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       height: 80,
-      decoration: BoxDecoration(color: AppColors.shark50),
+      decoration: BoxDecoration(color: colorScheme.surfaceContainerHighest),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -74,6 +77,8 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     Widget page,
   ) {
     final bool isActive = _selectedIndex == index;
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return GestureDetector(
       onTap: () {
@@ -90,7 +95,9 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
             width: 24,
             height: 24,
             colorFilter: ColorFilter.mode(
-              isActive ? AppColors.bgblue : AppColors.textSecondary,
+              isActive
+                  ? colorScheme.secondary
+                  : (textTheme.bodyMedium?.color ?? AppColors.textSecondary),
               BlendMode.srcIn,
             ),
           ),
@@ -100,7 +107,9 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
             style: TextStyle(
               fontSize: AppFonts.body,
               fontWeight: AppFonts.semibold,
-              color: isActive ? AppColors.bgblue : AppColors.textSecondary,
+              color: isActive
+                  ? colorScheme.secondary
+                  : (textTheme.bodyMedium?.color ?? AppColors.textSecondary),
             ),
           ),
         ],

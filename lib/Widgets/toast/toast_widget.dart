@@ -28,19 +28,13 @@ class _ToastWidgetState extends State<ToastWidget>
 
     _slideAnimation = Tween<Offset>(
       begin: const Offset(0, 1), // starts below screen
-      end: Offset.zero,          // slides to position
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeOut,
-    ));
+      end: Offset.zero, // slides to position
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
 
     _fadeAnimation = Tween<double>(
       begin: 0,
       end: 1,
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeOut,
-    ));
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
 
     _controller.forward(); // play on appear
   }
@@ -53,6 +47,9 @@ class _ToastWidgetState extends State<ToastWidget>
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Align(
       alignment: Alignment.center,
       child: IntrinsicWidth(
@@ -88,13 +85,13 @@ class _ToastWidgetState extends State<ToastWidget>
                         color: Color(0xFF2E2E2E),
                         shape: BoxShape.circle,
                       ),
-                      child: Center(child: widget.toast.icon),
+                      child: Center(child: widget.toast.icon,),
                     ),
                     SizedBox(width: 12),
                     Text(
                       widget.toast.text,
                       style: TextStyle(
-                        color: Colors.white,
+                        color: colorScheme.onPrimary,
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),

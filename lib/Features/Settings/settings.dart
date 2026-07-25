@@ -5,7 +5,6 @@ import 'package:orbitask/Features/provider/theme_notifier.dart';
 import 'package:orbitask/Features/Auth/screens/sign_in.dart';
 import 'package:orbitask/Features/Proflie/account_page.dart';
 import 'package:orbitask/Widgets/toast/toast_manager.dart';
-import 'package:orbitask/Widgets/toast/toast_widget.dart';
 import 'package:orbitask/core/Services/auth_services.dart';
 import 'package:orbitask/Widgets/Custom%20Widgets/custom_nav_bar.dart';
 import 'package:orbitask/constants/app_colors.dart';
@@ -24,6 +23,9 @@ class _SettingsState extends State<Settings> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -72,7 +74,11 @@ class _SettingsState extends State<Settings> {
             onTap: () {
               context.read<ToastManager>().show(
                 text: 'Suggest a new feature',
-                icon: Icon(Icons.rocket_launch, color: Colors.white, size: 20),
+                icon: Icon(
+                  Icons.rocket_launch,
+                  color: colorScheme.onPrimary,
+                  size: 20,
+                ),
               );
             },
           ),
@@ -90,7 +96,7 @@ class _SettingsState extends State<Settings> {
                 text: 'Coming soon — stay tuned!',
                 icon: HugeIcon(
                   icon: HugeIcons.strokeRoundedRocket,
-                  color: Colors.white,
+                  color: colorScheme.onPrimary,
                   size: 20,
                 ),
               );
@@ -105,7 +111,7 @@ class _SettingsState extends State<Settings> {
                 text: 'Coming soon — stay tuned!',
                 icon: HugeIcon(
                   icon: HugeIcons.strokeRoundedRocket,
-                  color: Colors.white,
+                  color: colorScheme.onPrimary,
                   size: 20,
                 ),
               );
@@ -118,8 +124,8 @@ class _SettingsState extends State<Settings> {
             context,
             icon: Icons.logout,
             label: 'Logout',
-            iconColor: Colors.red,
-            labelColor: Colors.red,
+            iconColor: colorScheme.error,
+            labelColor: colorScheme.error,
             onTap: () async {
               final navigator = Navigator.of(context);
               await _authService.signOut();
@@ -155,6 +161,8 @@ class _SettingsState extends State<Settings> {
     Color? iconColor,
     Color? labelColor,
   }) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Column(
       children: [
         ListTile(
@@ -174,7 +182,7 @@ class _SettingsState extends State<Settings> {
             size: 16,
           ),
         ),
-        Divider(color: AppColors.shark100, height: 1),
+        Divider(color: colorScheme.surfaceContainerHighest, height: 1),
       ],
     );
   }
@@ -182,6 +190,9 @@ class _SettingsState extends State<Settings> {
 
 Widget _buildThemeToggle(BuildContext context) {
   final themeNotifier = context.watch<ThemeNotifier>();
+  final textTheme = Theme.of(context).textTheme;
+  final colorScheme = Theme.of(context).colorScheme;
+
   return Column(
     children: [
       ListTile(
@@ -189,11 +200,11 @@ Widget _buildThemeToggle(BuildContext context) {
           themeNotifier.isDarkMode
               ? Icons.dark_mode_outlined
               : Icons.light_mode_outlined,
-          color: AppColors.bgblue,
+          color: colorScheme.secondary,
           size: 22,
         ),
         title: Text(
-          themeNotifier.isDarkMode ? 'LightMode' : 'DarkMode',
+          themeNotifier.isDarkMode ? 'DarkMode' : 'LightMode',
           style: TextStyle(
             fontSize: AppFonts.body,
             fontWeight: AppFonts.medium,
@@ -203,10 +214,10 @@ Widget _buildThemeToggle(BuildContext context) {
         trailing: Switch(
           value: themeNotifier.isDarkMode,
           onChanged: (_) => themeNotifier.toggleTheme(),
-          activeThumbColor: AppColors.accent,
+          activeThumbColor: colorScheme.primary,
         ),
       ),
-      Divider(color: AppColors.shark100, height: 1),
+      Divider(color: colorScheme.surfaceContainerHighest, height: 1),
     ],
   );
 }
