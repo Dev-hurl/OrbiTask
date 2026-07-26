@@ -79,3 +79,4 @@ doc/api/
 # lib/firebase_options.dart
 firebase.json
 **/google-services.json
+assets/secrets/

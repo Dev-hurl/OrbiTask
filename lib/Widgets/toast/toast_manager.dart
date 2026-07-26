@@ -1,4 +1,4 @@
-
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'toast_model.dart';
 
@@ -15,10 +15,16 @@ class ToastManager extends ChangeNotifier {
     );
 
     _toasts.add(toast);
-    notifyListeners();
 
-    // auto remove after 3 seconds
-    Future.delayed(Duration(seconds: 3), () {
+    // keep notifying until UI picks it up
+    Timer.periodic(const Duration(milliseconds: 16), (timer) {
+      notifyListeners();
+      if (_toasts.contains(toast)) {
+        timer.cancel();
+      }
+    });
+
+    Future.delayed(const Duration(seconds: 3), () {
       remove(toast.uniqueId);
     });
   }
