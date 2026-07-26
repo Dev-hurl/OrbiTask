@@ -19,60 +19,62 @@ class Onboarding4 extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        children: [
-          Image.asset(
-            'assets/images/onboard4.png',
-            width: double.infinity,
-            height: 505,
-            fit: BoxFit.cover,
-          ),
-
-          SizedBox(height: 80),
-          Text(
-            'Notes & Reminders',
-            style: textTheme.displayMedium?.copyWith(fontWeight: AppFonts.bold),
-          ),
-          SizedBox(height: 16),
-
-          Text(
-            'Jot down ideas, set reminders, and keep everything in one place to stay organized.',
-            textAlign: TextAlign.center,
-            style: textTheme.bodyMedium,
-          ),
-          SizedBox(height: 40),
-
-          //Filled Button
-          SizedBox(
-            width: double.infinity,
-            height: 52,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: colorScheme.secondary,
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Image.asset(
+              'assets/images/onboard4.png',
+              width: double.infinity,
+              height: 505,
+              fit: BoxFit.cover,
+            ),
+        
+            SizedBox(height: 80),
+            Text(
+              'Notes & Reminders',
+              style: textTheme.displayMedium?.copyWith(fontWeight: AppFonts.bold),
+            ),
+            SizedBox(height: 16),
+        
+            Text(
+              'Jot down ideas, set reminders, and keep everything in one place to stay organized.',
+              textAlign: TextAlign.center,
+              style: textTheme.bodyMedium,
+            ),
+            SizedBox(height: 40),
+        
+            //Filled Button
+            SizedBox(
+              width: double.infinity,
+              height: 52,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: colorScheme.secondary,
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
                 ),
-              ),
-              onPressed: () async {
-                final navigator = Navigator.of(context);
-                await _completeOnboarding();
-                navigator.push(
-                  MaterialPageRoute(builder: (context) => SignUp()),
-                );
-              },
-              child: Text(
-                'Create Account',
-                style: TextStyle(
-                  fontSize: AppFonts.body,
-                  fontWeight: AppFonts.semibold,
-                  color: AppColors.bgwhite,
+                onPressed: () async {
+                  final navigator = Navigator.of(context);
+                  await _completeOnboarding();
+                  navigator.push(
+                    MaterialPageRoute(builder: (context) => SignUp()),
+                  );
+                },
+                child: Text(
+                  'Create Account',
+                  style: TextStyle(
+                    fontSize: AppFonts.body,
+                    fontWeight: AppFonts.semibold,
+                    color: AppColors.bgwhite,
+                  ),
                 ),
               ),
             ),
-          ),
-          SizedBox(height: 16),
-        ],
+            SizedBox(height: 16),
+          ],
+        ),
       ),
     );
   }

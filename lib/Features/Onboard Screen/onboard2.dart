@@ -14,50 +14,54 @@ class Onboarding2 extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        children: [
-          Image.asset(
-            'assets/images/onboard2.png',
-            width: double.infinity,
-            height: 505,
-            fit: BoxFit.cover,
-          ),
-          SizedBox(height: 80),
-          Text(
-            'Plan Smarter, Not Harder',
-            style: textTheme.displayMedium?.copyWith(fontWeight: AppFonts.bold),
-          ),
-          SizedBox(height: 16),
-          Text(
-            'Create tasks, set priorities, and stay on top of your to-dos like a pro. Your goals, your way.',
-            textAlign: TextAlign.center,
-            style: textTheme.bodyMedium,
-          ),
-          //Page View
-          SizedBox(height: 40),
-          //Filled Button
-          SizedBox(
-            width: double.infinity,
-            height: 52,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: colorScheme.secondary,
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24),
-                ),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Image.asset(
+              'assets/images/onboard2.png',
+              width: double.infinity,
+              height: 505,
+              fit: BoxFit.cover,
+            ),
+            SizedBox(height: 80),
+            Text(
+              'Plan Smarter, Not Harder',
+              style: textTheme.displayMedium?.copyWith(
+                fontWeight: AppFonts.bold,
               ),
-              onPressed: onNext,
-              child: Text(
-                'Next',
-                style: textTheme.bodyMedium?.copyWith(
-                  color: colorScheme.onPrimary,
-                  fontWeight: AppFonts.semibold,
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Create tasks, set priorities, and stay on top of your to-dos like a pro. Your goals, your way.',
+              textAlign: TextAlign.center,
+              style: textTheme.bodyMedium,
+            ),
+            //Page View
+            SizedBox(height: 40),
+            //Filled Button
+            SizedBox(
+              width: double.infinity,
+              height: 52,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: colorScheme.secondary,
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                ),
+                onPressed: onNext,
+                child: Text(
+                  'Next',
+                  style: textTheme.bodyMedium?.copyWith(
+                    color: colorScheme.onPrimary,
+                    fontWeight: AppFonts.semibold,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
