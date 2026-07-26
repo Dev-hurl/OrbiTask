@@ -29,6 +29,9 @@ class _TimerPickerWidgetState extends State<TimerPickerWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Column(
       children: [
         GestureDetector(
@@ -37,27 +40,19 @@ class _TimerPickerWidgetState extends State<TimerPickerWidget> {
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: Row(
               children: [
-                Icon(
-                  Icons.timer_rounded,
-                  size: 24,
-                  color: AppColors.bgblue,
-                ),
+                Icon(Icons.timer_rounded, size: 24, color: colorScheme.secondary),
                 SizedBox(width: 8),
                 Text(
                   'Start Time',
-                  style: TextStyle(
-                    fontSize: AppFonts.body,
-                    fontWeight: AppFonts.medium,
-                    color: AppColors.textPrimary,
+                  style: textTheme.bodyMedium?.copyWith(
+                    fontWeight: AppFonts.semibold,
                   ),
                 ),
                 Spacer(),
                 Text(
                   _startTime.format(context),
-                  style: TextStyle(
-                    fontSize: AppFonts.body,
-                    fontWeight: AppFonts.semibold,
-                    color: AppColors.shark600,
+                  style: textTheme.bodyMedium?.copyWith(
+                    color: AppColors.textSecondary,
                   ),
                 ),
               ],

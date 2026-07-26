@@ -29,10 +29,13 @@ class _CreateTask1State extends State<CreateTask1> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
-      appBar: AppBar(leading: BackButton(color: AppColors.bgblue)),
+      appBar: AppBar(leading: BackButton(color: colorScheme.secondary)),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: EdgeInsets.only(left: 16.0, right: 16, bottom: 48),
         child: Center(
           child: Form(
             key: _formKey,
@@ -40,21 +43,15 @@ class _CreateTask1State extends State<CreateTask1> {
               children: [
                 Text(
                   'Create New Task',
-                  style: TextStyle(
-                    color: AppColors.textPrimary,
-                    fontSize: AppFonts.heading2,
-                    fontWeight: AppFonts.semibold,
+                  style: textTheme.displayMedium?.copyWith(
+                    fontWeight: AppFonts.bold,
                   ),
                 ),
                 SizedBox(height: 4),
                 Text(
                   'Enter your new task details.',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: AppColors.shark400,
-                    fontSize: AppFonts.body,
-                    fontWeight: AppFonts.regular,
-                  ),
+                  style: textTheme.bodyMedium,
                 ),
                 SizedBox(height: 12),
                 //Progress
@@ -63,9 +60,9 @@ class _CreateTask1State extends State<CreateTask1> {
                   children: [
                     LinearProgressIndicator(
                       value: 0.5,
-                      backgroundColor: AppColors.shark100,
+                      backgroundColor: colorScheme.surfaceContainerHighest,
                       valueColor: AlwaysStoppedAnimation<Color>(
-                        AppColors.bgblue,
+                        colorScheme.secondary,
                       ),
                       borderRadius: BorderRadius.circular(10),
                       minHeight: 5,
@@ -76,7 +73,7 @@ class _CreateTask1State extends State<CreateTask1> {
                       style: TextStyle(
                         fontSize: AppFonts.caption,
                         fontWeight: AppFonts.semibold,
-                        color: AppColors.bgblue,
+                        color: colorScheme.secondary,
                       ),
                     ),
                   ],
@@ -87,9 +84,7 @@ class _CreateTask1State extends State<CreateTask1> {
                   children: [
                     Text(
                       'Task Title',
-                      style: TextStyle(
-                        color: AppColors.textPrimary,
-                        fontSize: AppFonts.body,
+                      style: textTheme.bodyMedium?.copyWith(
                         fontWeight: AppFonts.semibold,
                       ),
                     ),
@@ -100,20 +95,19 @@ class _CreateTask1State extends State<CreateTask1> {
                     ),
                   ],
                 ),
-                SizedBox(height: 12),
+                SizedBox(height: 24),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Description',
-                      style: TextStyle(
-                        color: AppColors.textPrimary,
-                        fontSize: AppFonts.body,
+                      style: textTheme.bodyMedium?.copyWith(
                         fontWeight: AppFonts.semibold,
                       ),
                     ),
                     SizedBox(height: 8),
                     CustomTextFormField(
+                      maxline: 5,
                       hinText: 'Add Task Details',
                       controller: _descriptionController,
                     ),
@@ -123,29 +117,36 @@ class _CreateTask1State extends State<CreateTask1> {
                 //Priority Level
                 DropdownButtonFormField<String>(
                   initialValue: _selectedPriority,
+                  style: textTheme.bodyMedium?.copyWith(
+                    fontWeight: AppFonts.medium,
+                  ),
                   decoration: InputDecoration(
                     hintText: 'Choose Priority Level',
                     labelText: 'Priority Level',
-                    labelStyle: TextStyle(
-                      color: AppColors.textPrimary,
-                      fontSize: AppFonts.body,
+                    labelStyle: textTheme.bodyLarge?.copyWith(
+                      fontSize: AppFonts.subheading,
                       fontWeight: AppFonts.semibold,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: AppColors.shark300),
+                      borderSide: BorderSide(
+                        color: Theme.of(context).dividerColor,
+                        //width: 1,
+                      ),
                     ),
                     errorBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: AppColors.error),
+                      borderSide: BorderSide(color: colorScheme.error),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: AppColors.bgblue),
+                      borderSide: BorderSide(
+                        color: colorScheme.secondary,
+                        width: 1.2,
+                      ),
                     ),
-                    //focusColor: AppColors.shark100,
                     filled: true,
-                    fillColor: Color(0xffEAEAEA),
+                    fillColor: colorScheme.surfaceContainerHighest,
                   ),
                   items: ['High', 'Medium', 'Low']
                       .map(
@@ -169,28 +170,36 @@ class _CreateTask1State extends State<CreateTask1> {
                 //Category
                 DropdownButtonFormField<String>(
                   initialValue: _selectedCategory,
+                  style: textTheme.bodyMedium?.copyWith(
+                    fontWeight: AppFonts.medium,
+                  ),
                   decoration: InputDecoration(
                     hintText: 'Choose a Category',
                     labelText: 'Category',
-                    labelStyle: TextStyle(
-                      color: AppColors.textPrimary,
-                      fontSize: AppFonts.body,
+                    labelStyle: textTheme.bodyLarge?.copyWith(
+                      fontSize: AppFonts.subheading,
                       fontWeight: AppFonts.semibold,
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: AppColors.shark300),
+                      borderSide: BorderSide(
+                        color: Theme.of(context).dividerColor,
+                        //width: 1,
+                      ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: AppColors.bgblue),
+                      borderSide: BorderSide(
+                        color: colorScheme.secondary,
+                        width: 1.2,
+                      ),
                     ),
                     errorBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: AppColors.error),
+                      borderSide: BorderSide(color: colorScheme.error),
                     ),
                     filled: true,
-                    fillColor: Color(0xffEAEAEA),
+                    fillColor: colorScheme.surfaceContainerHighest,
                   ),
                   items: ['Work', 'Personal', 'School', 'Other']
                       .map(
@@ -210,12 +219,12 @@ class _CreateTask1State extends State<CreateTask1> {
                     return null;
                   },
                 ),
-                SizedBox(height: 32),
+                Spacer(),
                 Align(
                   alignment: Alignment.center,
                   child: SizedBox(
                     width: double.infinity,
-                    height: 48,
+                    height: 52,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.bgblue,
@@ -228,10 +237,6 @@ class _CreateTask1State extends State<CreateTask1> {
                         ),
                       ),
                       onPressed: () {
-                        /*print('button pressed');
-                            print(
-                              'form valid: ${_formKey.currentState!.validate()}',
-                            );*/
                         if (_formKey.currentState!.validate()) {
                           // only navigates if all fields pass validation
                           Navigator.push(
@@ -243,11 +248,10 @@ class _CreateTask1State extends State<CreateTask1> {
                         }
                       },
                       child: Text(
-                        'Next',
-                        style: TextStyle(
-                          fontSize: AppFonts.body,
+                        'Set Timeframe',
+                        style: textTheme.bodyMedium?.copyWith(
+                          color: colorScheme.onPrimary,
                           fontWeight: AppFonts.semibold,
-                          color: AppColors.bgwhite,
                         ),
                       ),
                     ),

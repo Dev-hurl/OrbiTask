@@ -35,14 +35,16 @@ class TaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       margin: EdgeInsets.only(bottom: 16),
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainerHighest,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.shark100),
-        
+        border: Border.all(color: Theme.of(context).dividerColor),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,7 +62,11 @@ class TaskCard extends StatelessWidget {
               ),
               //PopUpMenuButton
               PopupMenuButton<String>(
-                icon: Icon(Icons.more_horiz, color: AppColors.shark400),
+                color: colorScheme.surfaceContainerHighest,
+                icon: Icon(
+                  Icons.more_horiz,
+                  color: Theme.of(context).canvasColor,
+                ),
                 onSelected: (value) {
                   if (value == 'edit') {
                     Navigator.push(
@@ -76,13 +82,17 @@ class TaskCard extends StatelessWidget {
                     value: 'edit',
                     child: Row(
                       children: [
-                        Icon(Icons.edit, size: 18, color: AppColors.bgblue),
+                        Icon(
+                          Icons.edit,
+                          size: 18,
+                          color: colorScheme.secondary,
+                        ),
                         SizedBox(width: 8),
                         Text(
                           'Edit',
-                          style: TextStyle(
-                            color: AppColors.bgblue,
-                            fontSize: AppFonts.caption,
+                          style: textTheme.bodyMedium?.copyWith(
+                            color: colorScheme.secondary,
+                            fontWeight: AppFonts.semibold,
                           ),
                         ),
                       ],
@@ -95,14 +105,14 @@ class TaskCard extends StatelessWidget {
                         Icon(
                           Icons.delete_forever_rounded,
                           size: 18,
-                          color: Colors.red,
+                          color: colorScheme.error,
                         ),
                         SizedBox(width: 8),
                         Text(
                           'Delete',
-                          style: TextStyle(
-                            color: Colors.red,
-                            fontSize: AppFonts.caption,
+                          style: textTheme.bodyMedium?.copyWith(
+                            color: colorScheme.error,
+                            fontWeight: AppFonts.semibold,
                           ),
                         ),
                       ],
@@ -121,7 +131,7 @@ class TaskCard extends StatelessWidget {
                 width: 16,
                 height: 16,
                 colorFilter: ColorFilter.mode(
-                  AppColors.bgblue,
+                  colorScheme.secondary,
                   BlendMode.srcIn,
                 ),
               ),
@@ -141,7 +151,7 @@ class TaskCard extends StatelessWidget {
                 width: 16,
                 height: 16,
                 colorFilter: ColorFilter.mode(
-                  AppColors.bgblue,
+                  colorScheme.secondary,
                   BlendMode.srcIn,
                 ),
               ),

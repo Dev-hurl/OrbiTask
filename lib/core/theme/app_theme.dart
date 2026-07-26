@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
+
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
@@ -34,7 +35,7 @@ class AppTheme {
       bodyLarge: TextStyle(
         fontFamily: AppFonts.primary,
         fontSize: AppFonts.body,
-        fontWeight: AppFonts.regular,
+        fontWeight: AppFonts.medium,
         color: AppColors.textPrimary,
       ),
       bodyMedium: TextStyle(
@@ -52,6 +53,7 @@ class AppTheme {
     ),
     dividerColor: AppColors.shark100,
     cardColor: AppColors.shark50,
+    canvasColor: AppColors.shark400,
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -70,39 +72,40 @@ class AppTheme {
       onSurface: AppColors.darkTextPrimary,
       onError: AppColors.darkBgPrimary,
     ),
-    textTheme: const TextTheme(
-  displayLarge: TextStyle(
-    fontFamily: AppFonts.primary,
-    fontSize: AppFonts.heading1,
-    fontWeight: AppFonts.bold,
-    color: AppColors.darkTextPrimary,
-  ),
-  displayMedium: TextStyle(
-    fontFamily: AppFonts.primary,
-    fontSize: AppFonts.heading2,
-    fontWeight: AppFonts.semibold,
-    color: AppColors.darkTextPrimary,
-  ),
-  bodyLarge: TextStyle(
-    fontFamily: AppFonts.primary,
-    fontSize: AppFonts.body,
-    fontWeight: AppFonts.regular,
-    color: AppColors.darkTextPrimary,
-  ),
-  bodyMedium: TextStyle(
-    fontFamily: AppFonts.primary,
-    fontSize: AppFonts.body,
-    fontWeight: AppFonts.regular,
-    color: AppColors.darkTextSecondary,
-  ),
-  bodySmall: TextStyle(
-    fontFamily: AppFonts.primary,
-    fontSize: AppFonts.caption,
-    fontWeight: AppFonts.regular,
-    color: AppColors.darkTextSecondary,
-  ),
-),
+    textTheme: TextTheme(
+      displayLarge: TextStyle(
+        fontFamily: AppFonts.primary,
+        fontSize: AppFonts.heading1,
+        fontWeight: AppFonts.bold,
+        color: AppColors.darkTextPrimary,
+      ),
+      displayMedium: TextStyle(
+        fontFamily: AppFonts.primary,
+        fontSize: AppFonts.heading2,
+        fontWeight: AppFonts.semibold,
+        color: AppColors.darkTextPrimary,
+      ),
+      bodyLarge: TextStyle(
+        fontFamily: AppFonts.primary,
+        fontSize: AppFonts.body,
+        fontWeight: AppFonts.regular,
+        color: AppColors.darkTextPrimary,
+      ),
+      bodyMedium: TextStyle(
+        fontFamily: AppFonts.primary,
+        fontSize: AppFonts.body,
+        fontWeight: AppFonts.regular,
+        color: AppColors.darkTextSecondary,
+      ),
+      bodySmall: TextStyle(
+        fontFamily: AppFonts.primary,
+        fontSize: AppFonts.caption,
+        fontWeight: AppFonts.regular,
+        color: AppColors.darkTextSecondary,
+      ),
+    ),
     dividerColor: AppColors.darkBgCard,
     cardColor: AppColors.darkBgSecondary,
+    canvasColor: AppColors.darkShark400,
   );
 }

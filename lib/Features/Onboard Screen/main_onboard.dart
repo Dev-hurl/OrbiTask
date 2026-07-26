@@ -3,7 +3,6 @@ import 'package:orbitask/Features/Onboard%20Screen/onboard1.dart';
 import 'package:orbitask/Features/Onboard%20Screen/onboard2.dart';
 import 'package:orbitask/Features/Onboard%20Screen/onboard3.dart';
 import 'package:orbitask/Features/Onboard%20Screen/onboard4.dart';
-import 'package:orbitask/constants/app_colors.dart';
 
 class MainOnboard extends StatefulWidget {
   const MainOnboard({super.key});
@@ -38,8 +37,9 @@ class _MainOnboardState extends State<MainOnboard> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
-      backgroundColor: AppColors.bgwhite,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(8.0),
@@ -62,7 +62,7 @@ class _MainOnboardState extends State<MainOnboard> {
                   ],
                 ),
               ),
-          
+
               // dot indicator
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -77,8 +77,8 @@ class _MainOnboardState extends State<MainOnboard> {
                     height: 8,
                     decoration: BoxDecoration(
                       color: _currentPage == index
-                          ? AppColors.bgblue
-                          : AppColors.bgblue.withValues(alpha: 0.3),
+                          ? colorScheme.secondary
+                          : colorScheme.secondary.withValues(alpha: 0.3),
                       borderRadius: BorderRadius.circular(4),
                     ),
                   );

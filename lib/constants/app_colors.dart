@@ -28,11 +28,11 @@ class AppColors {
   // ─── DARK MODE ────────────────────────────────────────────
   static const Color darkBgPrimary = Color(0xFF121212);
   static const Color darkBgSecondary = Color(0xFF1E1E1E);
-  static const Color darkBgCard = Color(0xFF252525);
+  static const Color darkBgCard = Color(0xFF2D2D2D);
   static const Color darkBgBlue = Color(0xFF727FDC);
   static const Color darkBgBlue100 = Color(0xFF1A2340);
   static const Color darkBgBlue50 = Color(0xFF151C2E);
-  static const Color darkShark400 = Color(0xFF9E9E9E);
+  static const Color darkShark400 = Color(0xFFBDBDBD);
   static const Color darkShark300 = Color(0xFF757575);
   static const Color darkShark600 = Color(0xFFBDBDBD);
 

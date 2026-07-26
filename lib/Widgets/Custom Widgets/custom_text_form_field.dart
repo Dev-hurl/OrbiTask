@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String hinText;
   final IconData? icon;
+  final int maxline;
   final bool obscureText;
   final TextEditingController controller;
   final TextInputType keyboardType;
@@ -14,6 +14,7 @@ class CustomTextFormField extends StatelessWidget {
     super.key,
     required this.hinText,
     this.icon,
+    this.maxline = 1,
     required this.controller,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
@@ -22,8 +23,6 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    //final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
 
     return TextFormField(
@@ -31,12 +30,18 @@ class CustomTextFormField extends StatelessWidget {
       controller: controller,
       obscureText: obscureText,
       validator: validator,
+      maxLines: maxline,
+      style: TextStyle(
+        fontWeight: AppFonts.medium,
+        color: colorScheme.onSurface,
+      ),
       decoration: InputDecoration(
+        
         hintText: hinText,
         hintStyle: TextStyle(
           fontSize: AppFonts.caption,
           fontWeight: AppFonts.medium,
-          color: AppColors.shark400,
+          color: colorScheme.onSurface,
         ),
         suffixIcon: Icon(icon),
         suffixIconColor: colorScheme.secondary,
@@ -47,22 +52,17 @@ class CustomTextFormField extends StatelessWidget {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(
-            color: colorScheme.onPrimary,
+            color: Theme.of(context).dividerColor,
             //width: 1,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(
-            color: AppColors.bgblue,
-            width: 1.2,
-          ),
+          borderSide: BorderSide(color: colorScheme.secondary),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(
-            color: AppColors.error,
-          ),
+          borderSide: BorderSide(color: colorScheme.error),
         ),
       ),
     );

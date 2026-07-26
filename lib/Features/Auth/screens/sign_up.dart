@@ -81,7 +81,6 @@ class _SignUpState extends State<SignUp> {
                         Text(
                           'Fullname',
                           style: textTheme.bodyMedium?.copyWith(
-                            color: AppColors.darkTextSecondary,
                             fontWeight: AppFonts.semibold,
                           ),
                         ),
@@ -106,7 +105,6 @@ class _SignUpState extends State<SignUp> {
                         Text(
                           'Email',
                           style: textTheme.bodyMedium?.copyWith(
-                            color: AppColors.darkTextSecondary,
                             fontWeight: AppFonts.semibold,
                           ),
                         ),
@@ -136,7 +134,6 @@ class _SignUpState extends State<SignUp> {
                         Text(
                           'Password',
                           style: textTheme.bodyMedium?.copyWith(
-                            color: AppColors.darkTextSecondary,
                             fontWeight: AppFonts.semibold,
                           ),
                         ),
@@ -164,7 +161,7 @@ class _SignUpState extends State<SignUp> {
                       alignment: Alignment.center,
                       child: SizedBox(
                         width: double.infinity,
-                        height: 48,
+                        height: 52,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.bgblue,
@@ -222,14 +219,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                     SizedBox(height: 16),
-                    Text(
-                      'Or Sign up with',
-                      style: TextStyle(
-                        fontSize: AppFonts.caption,
-                        fontWeight: AppFonts.regular,
-                        color: AppColors.textSecondary,
-                      ),
-                    ),
+                    Text('Or Sign up with', style: textTheme.bodyMedium),
                     SizedBox(height: 16),
 
                     Row(
@@ -303,18 +293,13 @@ class _SignUpState extends State<SignUp> {
                       child: RichText(
                         text: TextSpan(
                           text: 'Already have an account?',
-                          style: TextStyle(
-                            fontSize: AppFonts.caption,
-                            fontWeight: AppFonts.regular,
-                            color: AppColors.textSecondary,
-                          ),
+                          style: textTheme.bodyMedium,
                           children: [
                             TextSpan(
                               text: ' Login',
-                              style: TextStyle(
-                                fontSize: AppFonts.caption,
-                                fontWeight: AppFonts.bold,
+                              style: textTheme.bodyMedium?.copyWith(
                                 color: colorScheme.secondary,
+                                fontWeight: AppFonts.semibold,
                               ),
                             ),
                           ],

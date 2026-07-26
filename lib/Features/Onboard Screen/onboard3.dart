@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
 class Onboarding3 extends StatelessWidget {
@@ -9,44 +8,39 @@ class Onboarding3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
           Image.asset(
             'assets/images/onboard3.png',
             width: double.infinity,
-            height: 350,
+            height: 505,
             fit: BoxFit.cover,
           ),
-
-          SizedBox(height: 24),
+          SizedBox(height: 80),
           Text(
             'Focus, Track, Achieve',
-            style: TextStyle(
-              fontSize: AppFonts.subheading,
-              fontWeight: AppFonts.bold,
-              color: AppColors.textPrimary,
-            ),
-          ),
-          SizedBox(height: 8),
-
-          Text(
-            'Use the built-in timer to stay in the zone .',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: AppFonts.body,
-              fontWeight: AppFonts.regular,
-              color: AppColors.textSecondary,
-            ),
+            style: textTheme.displayMedium?.copyWith(fontWeight: AppFonts.bold),
           ),
-          SizedBox(height: 32),
+          SizedBox(height: 16),
+          Text(
+            'Use the built-in timer to stay in the zone, hit milestones, and earn rewards for your hard work.',
+            textAlign: TextAlign.center,
+            style: textTheme.bodyMedium,
+          ),
+          SizedBox(height: 40),
           //Filled Button
-          Align(
-            alignment: Alignment.center,
+          SizedBox(
+            width: double.infinity,
+            height: 52,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                fixedSize: Size(400, 48),
-                backgroundColor: AppColors.bgblue,
+                backgroundColor: colorScheme.secondary,
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(24),
@@ -55,15 +49,13 @@ class Onboarding3 extends StatelessWidget {
               onPressed: onNext,
               child: Text(
                 'Next',
-                style: TextStyle(
-                  fontSize: AppFonts.body,
+                style: textTheme.bodyMedium?.copyWith(
+                  color: colorScheme.onPrimary,
                   fontWeight: AppFonts.semibold,
-                  color: AppColors.bgwhite,
                 ),
               ),
             ),
           ),
-          SizedBox(height: 16),
         ],
       ),
     );

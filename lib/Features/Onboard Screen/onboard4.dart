@@ -14,45 +14,41 @@ class Onboarding4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
           Image.asset(
             'assets/images/onboard4.png',
             width: double.infinity,
-            height: 350,
+            height: 505,
             fit: BoxFit.cover,
           ),
-      
-          SizedBox(height: 24),
+
+          SizedBox(height: 80),
           Text(
             'Notes & Reminders',
-            style: TextStyle(
-              fontSize: AppFonts.subheading,
-              fontWeight: AppFonts.bold,
-              color: AppColors.textPrimary,
-            ),
+            style: textTheme.displayMedium?.copyWith(fontWeight: AppFonts.bold),
           ),
-          SizedBox(height: 8),
-      
+          SizedBox(height: 16),
+
           Text(
             'Jot down ideas, set reminders, and keep everything in one place to stay organized.',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: AppFonts.body,
-              fontWeight: AppFonts.regular,
-              color: AppColors.textSecondary,
-            ),
+            style: textTheme.bodyMedium,
           ),
-          SizedBox(height: 32),
-      
+          SizedBox(height: 40),
+
           //Filled Button
-          Align(
-            alignment: Alignment.center,
+          SizedBox(
+            width: double.infinity,
+            height: 52,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                fixedSize: Size(400, 48),
-                backgroundColor: AppColors.bgblue,
+                backgroundColor: colorScheme.secondary,
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(24),
@@ -61,7 +57,9 @@ class Onboarding4 extends StatelessWidget {
               onPressed: () async {
                 final navigator = Navigator.of(context);
                 await _completeOnboarding();
-                navigator.push(MaterialPageRoute(builder: (context) => SignUp()));
+                navigator.push(
+                  MaterialPageRoute(builder: (context) => SignUp()),
+                );
               },
               child: Text(
                 'Create Account',

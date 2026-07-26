@@ -23,8 +23,11 @@ class _CreateTask2State extends State<CreateTask2> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
-      appBar: AppBar(leading: BackButton(color: AppColors.bgblue)),
+      appBar: AppBar(leading: BackButton(color: colorScheme.secondary)),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -33,20 +36,14 @@ class _CreateTask2State extends State<CreateTask2> {
               children: [
                 Text(
                   'Create New Task',
-                  style: TextStyle(
-                    color: AppColors.textPrimary,
-                    fontSize: AppFonts.heading2,
-                    fontWeight: AppFonts.semibold,
+                  style: textTheme.displayMedium?.copyWith(
+                    fontWeight: AppFonts.bold,
                   ),
                 ),
                 Text(
                   'Enter time frame for start and end of task',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: AppColors.shark400,
-                    fontSize: AppFonts.body,
-                    fontWeight: AppFonts.regular,
-                  ),
+                  style: textTheme.bodyMedium,
                 ),
                 SizedBox(height: 24),
                 // Add form fields here
@@ -55,9 +52,9 @@ class _CreateTask2State extends State<CreateTask2> {
                   children: [
                     LinearProgressIndicator(
                       value: 1,
-                      backgroundColor: AppColors.shark100,
+                      backgroundColor: colorScheme.surfaceContainerHighest,
                       valueColor: AlwaysStoppedAnimation<Color>(
-                        AppColors.bgblue,
+                        colorScheme.secondary,
                       ),
                       borderRadius: BorderRadius.circular(10),
                       minHeight: 5,
@@ -68,12 +65,12 @@ class _CreateTask2State extends State<CreateTask2> {
                       style: TextStyle(
                         fontSize: AppFonts.caption,
                         fontWeight: AppFonts.semibold,
-                        color: AppColors.bgblue,
+                        color: colorScheme.secondary,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 12),
+                SizedBox(height: 24),
                 Column(
                   children: [
                     //First Row: Time
@@ -85,8 +82,12 @@ class _CreateTask2State extends State<CreateTask2> {
                       },
                     ),
                     SizedBox(height: 12),
-                    Divider(height: 1, thickness: 1, color: AppColors.shark50),
-                    SizedBox(height: 12),
+                    Divider(
+                      height: 1,
+                      thickness: 1,
+                      color: colorScheme.surfaceContainerHighest,
+                    ),
+                    SizedBox(height: 24),
                     //Second Row: Date
                     DatePickerWidget(
                       onDateSelected: (date) {
@@ -96,9 +97,13 @@ class _CreateTask2State extends State<CreateTask2> {
                       },
                     ),
                     SizedBox(height: 12),
-                    Divider(height: 1, thickness: 1, color: AppColors.shark50),
+                    Divider(
+                      height: 1,
+                      thickness: 1,
+                      color: colorScheme.surfaceContainerHighest,
+                    ),
                     //Third Row:Reminder
-                    SizedBox(height: 12),
+                    SizedBox(height: 24),
                     Row(
                       children: [
                         SvgPicture.asset(
@@ -106,33 +111,33 @@ class _CreateTask2State extends State<CreateTask2> {
                           width: 24,
                           height: 24,
                           colorFilter: ColorFilter.mode(
-                            AppColors.bgblue,
+                            colorScheme.secondary,
                             BlendMode.srcIn,
                           ),
                         ),
-                        SizedBox(height: 8),
+                        SizedBox(width: 8),
                         Text(
                           'Reminder',
-                          style: TextStyle(
-                            fontSize: AppFonts.body,
-                            fontWeight: AppFonts.medium,
-                            color: AppColors.textPrimary,
+                          style: textTheme.bodyMedium?.copyWith(
+                            fontWeight: AppFonts.semibold,
                           ),
                         ),
                         Spacer(),
                         Text(
                           '5 Minutes before',
-                          style: TextStyle(
-                            fontSize: AppFonts.caption,
-                            fontWeight: AppFonts.medium,
-                            color: AppColors.textPrimary,
+                          style: textTheme.bodyMedium?.copyWith(
+                            color: AppColors.textSecondary,
                           ),
                         ),
                         //Dropdown Reminder
                       ],
                     ),
                     SizedBox(height: 24),
-                    Divider(height: 1, thickness: 1, color: AppColors.shark50),
+                    Divider(
+                      height: 1,
+                      thickness: 1,
+                      color: colorScheme.surfaceContainerHighest,
+                    ),
                   ],
                 ),
                 SizedBox(height: 24),
@@ -144,16 +149,14 @@ class _CreateTask2State extends State<CreateTask2> {
                     });
                   },
                 ),
-                SizedBox(height: 24),
+                SizedBox(height: 40),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Attach File',
-                      style: TextStyle(
-                        fontSize: AppFonts.caption,
+                      style: textTheme.bodyMedium?.copyWith(
                         fontWeight: AppFonts.semibold,
-                        color: AppColors.textSecondary,
                       ),
                     ),
                     SizedBox(height: 12),
@@ -162,9 +165,11 @@ class _CreateTask2State extends State<CreateTask2> {
                       height: 92,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
-                        border: Border.all(color: AppColors.bgblue, width: 1.5),
+                        border: Border.all(
+                          color: colorScheme.secondary,
+                          width: 1.5,
+                        ),
                       ),
-
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -173,7 +178,7 @@ class _CreateTask2State extends State<CreateTask2> {
                             width: 24,
                             height: 24,
                             colorFilter: ColorFilter.mode(
-                              AppColors.bgblue,
+                              colorScheme.secondary,
                               BlendMode.srcIn,
                             ),
                           ),
@@ -183,7 +188,7 @@ class _CreateTask2State extends State<CreateTask2> {
                             style: TextStyle(
                               fontSize: AppFonts.body,
                               fontWeight: AppFonts.medium,
-                              color: AppColors.bgblue,
+                              color: colorScheme.secondary,
                             ),
                           ),
                         ],
@@ -195,10 +200,10 @@ class _CreateTask2State extends State<CreateTask2> {
 
                 SizedBox(
                   width: double.infinity,
-                  height: 48,
+                  height: 52,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.bgblue,
+                      backgroundColor: colorScheme.secondary,
                       padding: EdgeInsets.symmetric(
                         horizontal: 16,
                         vertical: 14,
@@ -210,10 +215,10 @@ class _CreateTask2State extends State<CreateTask2> {
                     onPressed: () {
                       if (_subTasks.isEmpty) {
                         context.read<ToastManager>().show(
-                          text: 'Suggest a new feature',
+                          text: 'Add at least one subtask',
                           icon: Icon(
                             Icons.rocket_launch,
-                            color: Colors.white,
+                            color: colorScheme.onPrimary,
                             size: 20,
                           ),
                         );
@@ -227,10 +232,9 @@ class _CreateTask2State extends State<CreateTask2> {
                     },
                     child: Text(
                       'Preview & Save',
-                      style: TextStyle(
-                        fontSize: AppFonts.body,
+                      style: textTheme.bodyMedium?.copyWith(
+                        color: colorScheme.onPrimary,
                         fontWeight: AppFonts.semibold,
-                        color: AppColors.bgwhite,
                       ),
                     ),
                   ),

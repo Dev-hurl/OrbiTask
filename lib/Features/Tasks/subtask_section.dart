@@ -25,34 +25,43 @@ class _SubtaskSectionState extends State<SubtaskSection> {
     showDialog(
       context: context,
       builder: (context) {
+        final textTheme = Theme.of(context).textTheme;
+        final colorScheme = Theme.of(context).colorScheme;
+
         return AlertDialog(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(16),
           ),
           title: Text(
             'Add Subtask',
-            style: TextStyle(
-              fontSize: AppFonts.subheading,
+            style: textTheme.bodyMedium?.copyWith(
               fontWeight: AppFonts.semibold,
-              color: AppColors.textPrimary,
             ),
           ),
           content: TextField(
             controller: _subtaskController,
             autofocus: true,
+            style: textTheme.bodyMedium?.copyWith(fontWeight: AppFonts.medium),
             decoration: InputDecoration(
               hintText: 'Enter Subtask Name',
               hintStyle: TextStyle(
-                color: AppColors.shark300,
-                fontSize: AppFonts.body,
+                fontSize: AppFonts.caption,
+                fontWeight: AppFonts.medium,
+                color: colorScheme.onSurface,
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: AppColors.shark300),
+                borderRadius: BorderRadius.circular(16),
+                borderSide: BorderSide(
+                  color: colorScheme.onPrimary,
+                  //width: 1,
+                ),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: AppColors.bgblue),
+                borderSide: BorderSide(
+                  color: colorScheme.secondary,
+                  width: 1.2,
+                ),
               ),
             ),
           ),
@@ -64,12 +73,15 @@ class _SubtaskSectionState extends State<SubtaskSection> {
               },
               child: Text(
                 'Cancel',
-                style: TextStyle(color: AppColors.shark400),
+                style: textTheme.bodyMedium?.copyWith(
+                  color: colorScheme.onSurface,
+                  fontWeight: AppFonts.semibold,
+                ),
               ),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.bgblue,
+                backgroundColor: colorScheme.secondary,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -86,9 +98,9 @@ class _SubtaskSectionState extends State<SubtaskSection> {
               },
               child: Text(
                 'Add',
-                style: TextStyle(
-                  fontSize: AppFonts.body,
-                  color: AppColors.bgwhite,
+                style: textTheme.bodyMedium?.copyWith(
+                  color: colorScheme.onPrimary,
+                  fontWeight: AppFonts.semibold,
                 ),
               ),
             ),
@@ -100,6 +112,9 @@ class _SubtaskSectionState extends State<SubtaskSection> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -110,14 +125,12 @@ class _SubtaskSectionState extends State<SubtaskSection> {
             padding: EdgeInsets.symmetric(vertical: 8),
             child: Row(
               children: [
-                Icon(Icons.add, color: AppColors.bgblue, size: 24),
+                Icon(Icons.add, color: colorScheme.secondary, size: 24),
                 SizedBox(width: 8),
                 Text(
                   'Add Sub Task',
-                  style: TextStyle(
-                    fontSize: AppFonts.body,
-                    fontWeight: AppFonts.medium,
-                    color: AppColors.textPrimary,
+                  style: textTheme.bodyMedium?.copyWith(
+                    fontWeight: AppFonts.semibold,
                   ),
                 ),
               ],
@@ -138,7 +151,7 @@ class _SubtaskSectionState extends State<SubtaskSection> {
                   Icon(
                     Icons.check_box_outlined,
                     size: 24,
-                    color: AppColors.bgblue,
+                    color: colorScheme.secondary,
                   ),
                   SizedBox(width: 8),
                   Text(

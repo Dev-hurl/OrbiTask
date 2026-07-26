@@ -12,7 +12,6 @@ class DatePickerWidget extends StatefulWidget {
 }
 
 class _DatePickerWidgetState extends State<DatePickerWidget> {
-  
   DateTime _startDate = DateTime.now();
 
   Future<void> _pickedDate() async {
@@ -24,12 +23,12 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
 
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: today, 
+      initialDate: today,
       firstDate: today,
       lastDate: DateTime(2100),
-    ); 
+    );
 
-    if (picked != null ) {
+    if (picked != null) {
       setState(() {
         _startDate = picked;
       });
@@ -39,26 +38,27 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Column(
       children: [
         GestureDetector(
           onTap: _pickedDate,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
+            padding: EdgeInsets.symmetric(vertical: 8),
             child: Row(
               children: [
                 Icon(
                   Icons.calendar_month_rounded,
                   size: 24,
-                  color: AppColors.bgblue,
+                  color: colorScheme.secondary,
                 ),
                 SizedBox(width: 8),
                 Text(
                   'Start Date',
-                  style: TextStyle(
-                    fontSize: AppFonts.body,
-                    fontWeight: AppFonts.medium,
-                    color: AppColors.textPrimary,
+                  style: textTheme.bodyMedium?.copyWith(
+                    fontWeight: AppFonts.semibold,
                   ),
                 ),
                 Spacer(),
@@ -66,10 +66,8 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                   '${_startDate.day.toString().padLeft(2, '0')}/'
                   '${_startDate.month.toString().padLeft(2, '0')}/'
                   '${_startDate.year.toString().padLeft(2, '0')}',
-                  style: TextStyle(
-                    fontSize: AppFonts.body,
-                    fontWeight: AppFonts.semibold,
-                    color: AppColors.shark600,
+                  style: textTheme.bodyMedium?.copyWith(
+                    color: AppColors.textSecondary,
                   ),
                 ),
               ],

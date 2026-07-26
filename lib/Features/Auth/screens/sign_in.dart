@@ -62,7 +62,6 @@ class _SigninState extends State<Signin> {
                         Text(
                           'Email',
                           style: textTheme.bodyMedium?.copyWith(
-                            color: AppColors.darkTextSecondary,
                             fontWeight: AppFonts.semibold,
                           ),
                         ),
@@ -92,7 +91,6 @@ class _SigninState extends State<Signin> {
                         Text(
                           'Password',
                           style: textTheme.bodyMedium?.copyWith(
-                            color: AppColors.darkTextSecondary,
                             fontWeight: AppFonts.semibold,
                           ),
                         ),
@@ -139,7 +137,7 @@ class _SigninState extends State<Signin> {
                       alignment: Alignment.center,
                       child: SizedBox(
                         width: double.infinity,
-                        height: 48,
+                        height: 52,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: colorScheme.secondary,
@@ -202,11 +200,7 @@ class _SigninState extends State<Signin> {
                     SizedBox(height: 16),
                     Text(
                       'Or continue with',
-                      style: TextStyle(
-                        fontSize: AppFonts.caption,
-                        fontWeight: AppFonts.regular,
-                        color: AppColors.textSecondary,
-                      ),
+                      style: textTheme.bodyMedium,
                     ),
                     SizedBox(height: 16),
 
@@ -286,18 +280,13 @@ class _SigninState extends State<Signin> {
                       child: RichText(
                         text: TextSpan(
                           text: 'Don\'t have an account?',
-                          style: TextStyle(
-                            fontSize: AppFonts.caption,
-                            fontWeight: AppFonts.regular,
-                            color: AppColors.textSecondary,
-                          ),
+                          style: textTheme.bodyMedium,
                           children: [
                             TextSpan(
                               text: ' Sign Up',
-                              style: TextStyle(
-                                fontSize: AppFonts.caption,
-                                fontWeight: AppFonts.bold,
+                              style: textTheme.bodyMedium?.copyWith(
                                 color: colorScheme.secondary,
+                                fontWeight: AppFonts.semibold,
                               ),
                             ),
                           ],

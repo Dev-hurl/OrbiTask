@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:orbitask/Features/Auth/screens/Verification/change_password.dart';
+import 'package:orbitask/Features/Notification/notifications.dart';
 import 'package:orbitask/Features/provider/theme_notifier.dart';
 import 'package:orbitask/Features/Auth/screens/sign_in.dart';
 import 'package:orbitask/Features/Proflie/account_page.dart';
@@ -72,13 +73,9 @@ class _SettingsState extends State<Settings> {
             icon: Icons.notifications_outlined,
             label: 'Notification',
             onTap: () {
-              context.read<ToastManager>().show(
-                text: 'Suggest a new feature',
-                icon: Icon(
-                  Icons.rocket_launch,
-                  color: colorScheme.onPrimary,
-                  size: 20,
-                ),
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Notifications()),
               );
             },
           ),
@@ -90,10 +87,10 @@ class _SettingsState extends State<Settings> {
           _buildSettingsItem(
             context,
             icon: Icons.headset_mic_outlined,
-            label: 'Support',
+            label: 'Contact Support',
             onTap: () {
               context.read<ToastManager>().show(
-                text: 'Coming soon — stay tuned!',
+                text: 'Suggest a new feature',
                 icon: HugeIcon(
                   icon: HugeIcons.strokeRoundedRocket,
                   color: colorScheme.onPrimary,

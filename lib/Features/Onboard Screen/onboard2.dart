@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
 class Onboarding2 extends StatelessWidget {
@@ -10,43 +9,39 @@ class Onboarding2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
           Image.asset(
             'assets/images/onboard2.png',
             width: double.infinity,
-            height: 350,
+            height: 505,
             fit: BoxFit.cover,
           ),
-          SizedBox(height: 24),
+          SizedBox(height: 80),
           Text(
             'Plan Smarter, Not Harder',
-            style: TextStyle(
-              fontSize: AppFonts.subheading,
-              fontWeight: AppFonts.bold,
-              color: AppColors.textPrimary,
-            ),
+            style: textTheme.displayMedium?.copyWith(fontWeight: AppFonts.bold),
           ),
-          SizedBox(height: 8),
+          SizedBox(height: 16),
           Text(
             'Create tasks, set priorities, and stay on top of your to-dos like a pro. Your goals, your way.',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: AppFonts.body,
-              fontWeight: AppFonts.regular,
-              color: AppColors.textSecondary,
-            ),
+            style: textTheme.bodyMedium,
           ),
           //Page View
-          SizedBox(height: 32),
+          SizedBox(height: 40),
           //Filled Button
-          Align(
-            alignment: Alignment.center,
+          SizedBox(
+            width: double.infinity,
+            height: 52,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                fixedSize: Size(400, 48),
-                backgroundColor: AppColors.bgblue,
+                backgroundColor: colorScheme.secondary,
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(24),
@@ -55,15 +50,13 @@ class Onboarding2 extends StatelessWidget {
               onPressed: onNext,
               child: Text(
                 'Next',
-                style: TextStyle(
-                  fontSize: AppFonts.body,
+                style: textTheme.bodyMedium?.copyWith(
+                  color: colorScheme.onPrimary,
                   fontWeight: AppFonts.semibold,
-                  color: AppColors.bgwhite,
                 ),
               ),
             ),
           ),
-          SizedBox(height: 16),
         ],
       ),
     );
