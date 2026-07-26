@@ -41,7 +41,7 @@ class Onboarding4 extends StatelessWidget {
               textAlign: TextAlign.center,
               style: textTheme.bodyMedium,
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 100),
         
             //Filled Button
             SizedBox(

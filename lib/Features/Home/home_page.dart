@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:orbitask/Features/Tasks/create_task1.dart';
+import 'package:orbitask/Features/Notification/notifications.dart';
+import 'package:orbitask/Features/Tasks/screens/create_task1.dart';
 import 'package:orbitask/Features/Home/tasks_list.dart';
 import 'package:orbitask/Widgets/Custom%20Widgets/custom_nav_bar.dart';
 import 'package:orbitask/constants/app_colors.dart';
@@ -10,7 +11,7 @@ import 'empty_state.dart';
 
 class HomePage extends StatefulWidget {
   final String firstName;
-  const HomePage({super.key, this.firstName= 'User'});
+  const HomePage({super.key, this.firstName = 'User'});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -19,51 +20,50 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Map<String, dynamic>> tasks = [
     {
-    'title': 'UIUX Assignment',
-    'time': '09:00 AM',
-    'date': '12/02/2025',
-    'priority': 'Low',
-    'category': 'Work',
-  },
-  {
-    'title': 'Build My App',
-    'time': '01:20 AM',
-    'date': '12/04/2026',
-    'priority': 'High',
-    'category': 'School',
-  },
-  {
-    'title': 'Build My App',
-    'time': '01:20 AM',
-    'date': '12/04/2026',
-    'priority': 'High',
-    'category': 'School',
-  },
-  {
-    'title': 'Build My App',
-    'time': '01:20 AM',
-    'date': '12/04/2026',
-    'priority': 'High',
-    'category': 'School',
-  },
-  {
-    'title': 'Build My App',
-    'time': '01:20 AM',
-    'date': '12/04/2026',
-    'priority': 'Medium',
-    'category': 'Personal',
-  },
+      'title': 'UIUX Assignment',
+      'time': '09:00 AM',
+      'date': '12/02/2025',
+      'priority': 'Low',
+      'category': 'Work',
+    },
+    {
+      'title': 'Build My App',
+      'time': '01:20 AM',
+      'date': '12/04/2026',
+      'priority': 'High',
+      'category': 'School',
+    },
+    {
+      'title': 'Build My App',
+      'time': '01:20 AM',
+      'date': '12/04/2026',
+      'priority': 'High',
+      'category': 'School',
+    },
+    {
+      'title': 'Build My App',
+      'time': '01:20 AM',
+      'date': '12/04/2026',
+      'priority': 'High',
+      'category': 'School',
+    },
+    {
+      'title': 'Build My App',
+      'time': '01:20 AM',
+      'date': '12/04/2026',
+      'priority': 'Medium',
+      'category': 'Personal',
+    },
   ];
-
 
   @override
   Widget build(BuildContext context) {
-    //final textTheme = Theme.of(context).textTheme;
+    final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       bottomNavigationBar: CustomBottomNavBar(currentIndex: 0),
-      
+
       appBar: AppBar(
         elevation: 0,
         leading: Padding(
@@ -71,28 +71,14 @@ class _HomePageState extends State<HomePage> {
           child: CircleAvatar(
             radius: 24,
             backgroundImage: AssetImage('assets/images/avatar.jpg'),
-            
           ),
         ),
         title: Column(
+          spacing: 4,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Hello, ${widget.firstName}',
-              style: TextStyle(
-                fontSize: AppFonts.subheading,
-                fontWeight: AppFonts.semibold,
-                color: AppColors.textPrimary,
-              ),
-            ),
-            Text(
-              'welcome back',
-              style: TextStyle(
-                fontSize: AppFonts.body,
-                fontWeight: AppFonts.medium,
-                color: AppColors.textSecondary,
-              ),
-            ),
+            Text('Hello, ${widget.firstName}', style: textTheme.displayMedium),
+            Text('welcome back', style: textTheme.bodyMedium),
           ],
         ),
         actions: [
@@ -101,7 +87,10 @@ class _HomePageState extends State<HomePage> {
               'assets/icons/calendar-03-stroke-rounded.svg',
               width: 24,
               height: 24,
-              colorFilter: ColorFilter.mode(colorScheme.secondary, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(
+                colorScheme.secondary,
+                BlendMode.srcIn,
+              ),
             ),
             onPressed: () {
               // Handle calendar icon press
@@ -112,20 +101,31 @@ class _HomePageState extends State<HomePage> {
               'assets/icons/notifications.svg',
               width: 24,
               height: 24,
-              colorFilter: ColorFilter.mode(colorScheme.secondary, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(
+                colorScheme.secondary,
+                BlendMode.srcIn,
+              ),
             ),
             color: AppColors.bgblue,
             onPressed: () {
-              // Handle notification icon press
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Notifications()),
+              );
             },
           ),
         ],
       ),
-      body: tasks.isEmpty ? EmptyState() : TaskList(tasks: tasks, onDelete: (index) {
-        setState(() {
-          tasks.removeAt(index);
-        });
-      },),
+      body: tasks.isEmpty
+          ? EmptyState()
+          : TaskList(
+              tasks: tasks,
+              onDelete: (index) {
+                setState(() {
+                  tasks.removeAt(index);
+                });
+              },
+            ),
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 32),
         child: FloatingActionButton(

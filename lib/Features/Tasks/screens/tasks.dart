@@ -3,14 +3,14 @@ import 'package:orbitask/Features/Home/empty_state.dart';
 import 'package:orbitask/Features/Home/tasks_list.dart';
 import 'package:orbitask/Widgets/Custom%20Widgets/custom_nav_bar.dart';
 
-class TasksView extends StatefulWidget {
-  const TasksView({super.key});
+class Tasks extends StatefulWidget {
+  const Tasks({super.key});
 
   @override
-  State<TasksView> createState() => _TasksViewState();
+  State<Tasks> createState() => _TasksViewState();
 }
 
-class _TasksViewState extends State<TasksView> {
+class _TasksViewState extends State<Tasks> {
   List<Map<String, dynamic>> tasks = [
     {
       'title': 'UIUX Assignment',

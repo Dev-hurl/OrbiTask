@@ -27,29 +27,30 @@ class Onboarding1 extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
               SizedBox(height: 80),
-              Text(
-                'Welcome to OrbiTask',
-                style: textTheme.displayMedium?.copyWith(
-                  fontWeight: AppFonts.bold,
-                )
+              Column(
+                spacing: 16,
+                children: [
+                  Text(
+                    'Welcome to OrbiTask',
+                    style: textTheme.displayMedium?.copyWith(
+                      fontWeight: AppFonts.bold,
+                    ),
+                  ),
+                  Text(
+                    'Your ultimate sidekick for crushing tasks, hitting deadlines, and celebrating wins.',
+                    textAlign: TextAlign.center,
+                    style: textTheme.bodyMedium,
+                  ),
+                ],
               ),
-              SizedBox(height: 16),
-              Text(
-                'Your ultimate sidekick for crushing tasks, hitting deadlines, and celebrating wins.',
-                textAlign: TextAlign.center,
-                style: textTheme.bodyMedium,
-              ),
-              SizedBox(height: 40),
+              SizedBox(height: 100),
               SizedBox(
                 width: double.infinity,
                 height: 52,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: colorScheme.secondary,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 14,
-                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(24),
                     ),

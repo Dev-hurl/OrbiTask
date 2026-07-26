@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:orbitask/Features/Tasks/date_picker_widget.dart';
 import 'package:orbitask/Features/Tasks/subtask_section.dart';
 import 'package:orbitask/Features/Tasks/time_picker_widget.dart';
-import 'package:orbitask/Features/Tasks/task_preview.dart';
+import 'package:orbitask/Features/Tasks/screens/task_preview.dart';
 import 'package:orbitask/Widgets/toast/toast_manager.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';

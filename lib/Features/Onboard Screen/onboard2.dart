@@ -37,7 +37,7 @@ class Onboarding2 extends StatelessWidget {
               style: textTheme.bodyMedium,
             ),
             //Page View
-            SizedBox(height: 40),
+            SizedBox(height: 100),
             //Filled Button
             SizedBox(
               width: double.infinity,

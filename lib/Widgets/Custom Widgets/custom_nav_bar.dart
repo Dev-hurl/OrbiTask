@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:orbitask/Features/Home/home_page.dart';
 import 'package:orbitask/Features/Settings/settings.dart';
+import 'package:orbitask/Features/Tasks/screens/tasks.dart';
 import 'package:orbitask/Features/Timer/timer.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
-import '../../Features/Tasks/tasks_view.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   final int currentIndex;
@@ -48,7 +48,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
             'assets/icons/task list.svg',
             'assets/icons/task list filled.svg',
             'Task',
-            TasksView(),
+            Tasks(),
           ),
           _buildNavItem(
             2,
