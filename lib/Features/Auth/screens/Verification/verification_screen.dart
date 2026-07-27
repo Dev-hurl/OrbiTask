@@ -19,86 +19,87 @@ class _VerificationScreenState extends State<VerificationScreen> {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsetsGeometry.all(16),
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 4,
-            children: [
-              Text('Confirm Verification Code', style: textTheme.displayMedium),
-              Text(
-                'Please enter the confirmation code sent to email or phone to proceed.',
-                //text span here & be able to change to which ever verification method was chosen
-                textAlign: TextAlign.center,
-                style: textTheme.bodyMedium,
-              ),
-              SizedBox(height: 32),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _VerificationInputBox(first: true, last: false),
-                  _VerificationInputBox(first: true, last: false),
-                  _VerificationInputBox(first: true, last: false),
-                  _VerificationInputBox(first: false, last: true),
-                ],
-              ),
-
-              SizedBox(height: 32),
-              SizedBox(
-                height: 48,
-                width: double.infinity,
-                child: FilledButton(
-                  style: FilledButton.styleFrom(
-                    backgroundColor: colorScheme.secondary,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomePage(
-                          firstName:
-                              FirebaseAuth.instance.currentUser?.displayName
-                                  ?.split(' ')
-                                  .first ??
-                              'User',
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: Center(
+            child: Column(
+              spacing: 4,
+              children: [
+                Text('Confirm Verification Code', style: textTheme.displayMedium),
+                Text(
+                  'Please enter the confirmation code sent to email or phone to proceed.',
+                  //text span here & be able to change to which ever verification method was chosen
+                  textAlign: TextAlign.center,
+                  style: textTheme.bodyMedium,
+                ),
+                SizedBox(height: 32),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    _VerificationInputBox(first: true, last: false),
+                    _VerificationInputBox(first: true, last: false),
+                    _VerificationInputBox(first: true, last: false),
+                    _VerificationInputBox(first: false, last: true),
+                  ],
+                ),
+        
+                SizedBox(height: 32),
+                SizedBox(
+                  height: 48,
+                  width: double.infinity,
+                  child: FilledButton(
+                    style: FilledButton.styleFrom(
+                      backgroundColor: colorScheme.secondary,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(
+                            firstName:
+                                FirebaseAuth.instance.currentUser?.displayName
+                                    ?.split(' ')
+                                    .first ??
+                                'User',
+                          ),
                         ),
+                      );
+                    },
+                    child: Text(
+                      'Verify Code',
+                      style: textTheme.bodyLarge?.copyWith(
+                        fontWeight: AppFonts.semibold,
+                        color: colorScheme.surface,
                       ),
-                    );
-                  },
-                  child: Text(
-                    'Verify Code',
-                    style: textTheme.bodyLarge?.copyWith(
-                      fontWeight: AppFonts.semibold,
-                      color: colorScheme.surface,
                     ),
                   ),
                 ),
-              ),
-              Spacer(),
-              Align(
-                alignment: Alignment.center,
-                child: Text.rich(
-                  TextSpan(
-                    text: 'Didn\'t receive code?',
-                    style: textTheme.bodyMedium,
-                    children: [
-                      TextSpan(
-                        text: ' Resend.',
-                        style: textTheme.bodyMedium?.copyWith(
-                          color: colorScheme.secondary,
-                          fontWeight: AppFonts.semibold,
+                Spacer(),
+                Align(
+                  alignment: Alignment.center,
+                  child: Text.rich(
+                    TextSpan(
+                      text: 'Didn\'t receive code?',
+                      style: textTheme.bodyMedium,
+                      children: [
+                        TextSpan(
+                          text: ' Resend.',
+                          style: textTheme.bodyMedium?.copyWith(
+                            color: colorScheme.secondary,
+                            fontWeight: AppFonts.semibold,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              //
+                            },
                         ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            //
-                          },
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

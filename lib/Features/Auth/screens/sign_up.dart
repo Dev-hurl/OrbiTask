@@ -56,7 +56,6 @@ class _SignUpState extends State<SignUp> {
                 key: _formKey,
                 child: Column(
                   children: [
-                    SizedBox(height: 24),
                     Image.asset(
                       'assets/images/Orbitask logo.png',
                       width: 59,
