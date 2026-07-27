@@ -23,6 +23,7 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
 
     return TextFormField(
@@ -36,10 +37,8 @@ class CustomTextFormField extends StatelessWidget {
         color: colorScheme.onSurface,
       ),
       decoration: InputDecoration(
-        
         hintText: hinText,
-        hintStyle: TextStyle(
-          fontSize: AppFonts.caption,
+        hintStyle: textTheme.bodySmall?.copyWith(
           fontWeight: AppFonts.medium,
           color: colorScheme.onSurface,
         ),

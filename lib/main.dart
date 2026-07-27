@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:orbitask/Features/Auth/screens/sign_in.dart';
+import 'package:orbitask/Features/Home/home_page.dart';
 import 'package:orbitask/Features/provider/theme_notifier.dart';
 import 'package:orbitask/Features/Splash_Screen/splash_screen1.dart';
 import 'package:orbitask/Widgets/toast/toast_manager.dart';
@@ -36,6 +37,9 @@ void main() async {
   final hasSeenOnboarding = kIsWeb
       ? false
       : (prefs.getBool('hasSeenOnboarding') ?? false);
+
+  final isLoggedIn = FirebaseAuth.instance.currentUser != null;
+
   runApp(
     DevicePreview(
       enabled: kIsWeb,
@@ -44,7 +48,10 @@ void main() async {
           ChangeNotifierProvider(create: (_) => ToastManager()),
           ChangeNotifierProvider(create: (_) => ThemeNotifier()),
         ],
-        child: MyApp(hasSeenOnboarding: hasSeenOnboarding),
+        child: MyApp(
+          hasSeenOnboarding: hasSeenOnboarding,
+          isLoggedIn: isLoggedIn,
+        ),
       ),
     ),
   );
@@ -52,12 +59,27 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   final bool hasSeenOnboarding;
+  final bool isLoggedIn;
 
-  const MyApp({super.key, required this.hasSeenOnboarding});
+  const MyApp({
+    super.key,
+    required this.hasSeenOnboarding,
+    required this.isLoggedIn,
+  });
 
   @override
   Widget build(BuildContext context) {
     final themeNotifier = context.watch<ThemeNotifier>();
+
+    // navigation logic
+    Widget homeScreen;
+    if (!hasSeenOnboarding) {
+      homeScreen = SplashScreen1();
+    } else if (isLoggedIn) {
+      homeScreen = HomePage(); // ← go straight to home
+    } else {
+      homeScreen = Signin();
+    }
 
     return MaterialApp(
       navigatorKey: navigatorKey,
@@ -68,7 +90,7 @@ class MyApp extends StatelessWidget {
         child = DevicePreview.appBuilder(context, child);
         return ToastOverlay(child: child);
       },
-      home: hasSeenOnboarding ? Signin() : SplashScreen1(),
+      home: homeScreen,
       themeMode: themeNotifier.themeMode,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
