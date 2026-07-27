@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:orbitask/Features/Tasks/screens/create_task2.dart';
 import 'package:orbitask/Widgets/Custom%20Widgets/custom_text_form_field.dart';
-import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
 class CreateTask1 extends StatefulWidget {
@@ -31,6 +30,18 @@ class _CreateTask1State extends State<CreateTask1> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
+
+    final priorityEntries = ['High', 'Medium', 'Low']
+        .map(
+          (option) => DropdownMenuEntry<String>(value: option, label: option),
+        )
+        .toList();
+
+    final categoryEntries = ['Work', 'Personal', 'School', 'Other']
+        .map(
+          (option) => DropdownMenuEntry<String>(value: option, label: option),
+        )
+        .toList();
 
     return Scaffold(
       appBar: AppBar(leading: BackButton(color: colorScheme.secondary)),
@@ -114,23 +125,22 @@ class _CreateTask1State extends State<CreateTask1> {
               ),
               SizedBox(height: 24),
               //Priority Level
-              DropdownButtonFormField<String>(
-                initialValue: _selectedPriority,
-                style: textTheme.bodyMedium?.copyWith(
+              DropdownMenuFormField<String>(
+                initialSelection: _selectedPriority,
+                width: double.infinity,
+                textStyle: textTheme.bodyMedium?.copyWith(
                   fontWeight: AppFonts.medium,
                 ),
-                decoration: InputDecoration(
+                decorationBuilder: (context, menuController) => InputDecoration(
                   hintText: 'Choose Priority Level',
                   labelText: 'Priority Level',
-                  labelStyle: textTheme.bodyLarge?.copyWith(
-                    fontSize: AppFonts.subheading,
+                  labelStyle: textTheme.bodyMedium?.copyWith(
                     fontWeight: AppFonts.semibold,
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide(
                       color: Theme.of(context).dividerColor,
-                      //width: 1,
                     ),
                   ),
                   errorBorder: OutlineInputBorder(
@@ -147,15 +157,8 @@ class _CreateTask1State extends State<CreateTask1> {
                   filled: true,
                   fillColor: colorScheme.surfaceContainerHighest,
                 ),
-                items: ['High', 'Medium', 'Low']
-                    .map(
-                      (option) => DropdownMenuItem(
-                        value: option,
-                        child: Text(option),
-                      ),
-                    )
-                    .toList(),
-                onChanged: (value) {
+                dropdownMenuEntries: priorityEntries,
+                onSelected: (value) {
                   setState(() {
                     _selectedPriority = value;
                   });
@@ -167,23 +170,22 @@ class _CreateTask1State extends State<CreateTask1> {
               ),
               SizedBox(height: 24),
               //Category
-              DropdownButtonFormField<String>(
-                initialValue: _selectedCategory,
-                style: textTheme.bodyMedium?.copyWith(
+              DropdownMenuFormField<String>(
+                initialSelection: _selectedCategory,
+                width: double.infinity,
+                textStyle: textTheme.bodyMedium?.copyWith(
                   fontWeight: AppFonts.medium,
                 ),
-                decoration: InputDecoration(
+                decorationBuilder: (context, menuController) => InputDecoration(
                   hintText: 'Choose a Category',
                   labelText: 'Category',
-                  labelStyle: textTheme.bodyLarge?.copyWith(
-                    fontSize: AppFonts.subheading,
+                  labelStyle: textTheme.bodyMedium?.copyWith(
                     fontWeight: AppFonts.semibold,
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide(
                       color: Theme.of(context).dividerColor,
-                      //width: 1,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
@@ -200,15 +202,8 @@ class _CreateTask1State extends State<CreateTask1> {
                   filled: true,
                   fillColor: colorScheme.surfaceContainerHighest,
                 ),
-                items: ['Work', 'Personal', 'School', 'Other']
-                    .map(
-                      (option) => DropdownMenuItem(
-                        value: option,
-                        child: Text(option),
-                      ),
-                    )
-                    .toList(),
-                onChanged: (value) {
+                dropdownMenuEntries: categoryEntries,
+                onSelected: (value) {
                   setState(() {
                     _selectedCategory = value;
                   });
@@ -226,7 +221,7 @@ class _CreateTask1State extends State<CreateTask1> {
                   height: 52,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.bgblue,
+                      backgroundColor: colorScheme.secondary,
                       padding: EdgeInsets.symmetric(
                         horizontal: 16,
                         vertical: 14,

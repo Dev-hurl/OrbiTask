@@ -1,13 +1,15 @@
 import 'dart:convert';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:googleapis_auth/auth_io.dart';
 
-
 class Notifications extends StatelessWidget {
   Future<void> sendTestNotification() async {
+    if (kIsWeb) {
+      debugPrint('❌ Not supported on web');
+    }
     try {
       // 1. load service account JSON
       final String jsonStr = await rootBundle.loadString(
