@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:orbitask/Features/Tasks/screens/edit_tasks.dart';
 import 'package:orbitask/Features/Tasks/screens/tasks_overview.dart';
+import 'package:orbitask/Widgets/Custom%20Widgets/custom_dialog.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
@@ -82,7 +83,18 @@ class TaskCard extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => EditTasks()),
                       );
                     } else if (value == 'delete') {
-                      onDelete();
+                      showDialog(
+                        context: context,
+                        barrierDismissible: true,
+                        builder: (_) => CustomDialog(
+                          title: 'Delete Task',
+                          message: 'This task will be permanently deleted.',
+                          confirmText: 'Delete',
+                          onConfirm: () {
+                            onDelete();
+                          },
+                        ),
+                      );
                     }
                   },
                   itemBuilder: (context) => [

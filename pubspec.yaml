@@ -30,6 +30,7 @@ dependencies:
   flutter_timezone: ^5.1.0
   http: ^1.6.0
   googleapis_auth: ^2.3.3
+  cloud_firestore: ^5.6.12
 
 dev_dependencies:
   flutter_lints: ^5.0.0
@@ -44,6 +45,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/fonts/
+   # - assets/secrets/service_account.json
     
   fonts:
     - family: Poppins

@@ -17,6 +17,7 @@ class AppTheme {
       onPrimary: AppColors.buttonText,
       onSecondary: AppColors.buttonText,
       onSurface: AppColors.textPrimary,
+      onSurfaceVariant: AppColors.textSecondary,
       onError: AppColors.bgwhite,
     ),
     textTheme: TextTheme(
@@ -70,6 +71,7 @@ class AppTheme {
       onPrimary: AppColors.darkButtonText,
       onSecondary: AppColors.darkButtonText,
       onSurface: AppColors.darkTextPrimary,
+      onSurfaceVariant: AppColors.darkTextSecondary,
       onError: AppColors.darkBgPrimary,
     ),
     textTheme: TextTheme(

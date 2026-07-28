@@ -44,23 +44,22 @@ class TaskList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return DefaultTabController(
       length: 5,
-      //animationDuration: Duration(days: 0, hours: 0, minutes: 0, seconds: 0, milliseconds: 30,),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TabBar(
             isScrollable: true,
-            labelColor: AppColors.bgblue,
-            unselectedLabelColor: AppColors.textSecondary,
-            indicatorColor: AppColors.bgblue,
-            indicator: BoxDecoration(
-              shape: BoxShape.circle,
-            ),
-            labelStyle: TextStyle(
+            labelColor: colorScheme.secondary,
+            unselectedLabelColor: colorScheme.onSurfaceVariant,
+            indicatorColor: colorScheme.secondary,
+            indicator: BoxDecoration(shape: BoxShape.circle),
+            labelStyle: textTheme.bodySmall?.copyWith(
               fontWeight: AppFonts.medium,
-              fontSize: AppFonts.caption,
             ),
             tabs: [
               Tab(text: 'All'),

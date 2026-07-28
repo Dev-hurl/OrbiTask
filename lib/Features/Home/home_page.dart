@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:orbitask/Features/Notification/notifications.dart';
+import 'package:orbitask/Features/Proflie/account_page.dart';
 import 'package:orbitask/Features/Tasks/screens/create_task1.dart';
 import 'package:orbitask/Features/Home/tasks_list.dart';
 import 'package:orbitask/Widgets/Custom%20Widgets/custom_nav_bar.dart';
-import 'package:orbitask/constants/app_colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'empty_state.dart';
@@ -67,9 +67,18 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         leading: Padding(
           padding: EdgeInsets.all(8.0),
-          child: CircleAvatar(
-            radius: 24,
-            backgroundImage: AssetImage('assets/images/avatar.jpg'),
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AccountPage()),
+              );
+            },
+            child: CircleAvatar(
+              radius: 24,
+              backgroundImage: AssetImage('assets/images/avatar.jpg'),
+            ),
           ),
         ),
         title: Column(
@@ -105,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                 BlendMode.srcIn,
               ),
             ),
-            color: AppColors.bgblue,
+            color: colorScheme.secondary,
             onPressed: () {
               Navigator.push(
                 context,
@@ -136,7 +145,7 @@ class _HomePageState extends State<HomePage> {
             // Handle FAB press
           },
           backgroundColor: colorScheme.surfaceContainerHighest,
-          child: Icon(Icons.add, color: AppColors.bgblue),
+          child: Icon(Icons.add, color: colorScheme.secondary),
         ),
       ),
     );

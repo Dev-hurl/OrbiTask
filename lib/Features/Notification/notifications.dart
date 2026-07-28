@@ -9,6 +9,7 @@ class Notifications extends StatelessWidget {
   Future<void> sendTestNotification() async {
     if (kIsWeb) {
       debugPrint('❌ Not supported on web');
+      return;
     }
     try {
       // 1. load service account JSON

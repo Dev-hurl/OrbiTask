@@ -5,6 +5,7 @@ import 'package:orbitask/Features/Notification/notifications.dart';
 import 'package:orbitask/Features/provider/theme_notifier.dart';
 import 'package:orbitask/Features/Auth/screens/sign_in.dart';
 import 'package:orbitask/Features/Proflie/account_page.dart';
+import 'package:orbitask/Widgets/Custom%20Widgets/custom_dialog.dart';
 import 'package:orbitask/Widgets/toast/toast_manager.dart';
 import 'package:orbitask/core/Services/auth_services.dart';
 import 'package:orbitask/Widgets/Custom%20Widgets/custom_nav_bar.dart';
@@ -24,7 +25,7 @@ class _SettingsState extends State<Settings> {
 
   @override
   Widget build(BuildContext context) {
-    //final textTheme = Theme.of(context).textTheme;
+    final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
@@ -32,13 +33,12 @@ class _SettingsState extends State<Settings> {
         centerTitle: true,
         title: Text(
           'Settings',
-          style: TextStyle(
+          style: textTheme.bodyLarge?.copyWith(
             fontSize: AppFonts.subheading,
             fontWeight: AppFonts.semibold,
-            color: AppColors.textPrimary,
           ),
         ),
-        leading: BackButton(color: AppColors.textPrimary),
+        leading: BackButton(color: colorScheme.secondary),
       ),
       body: ListView(
         padding: EdgeInsets.all(16),
@@ -46,6 +46,7 @@ class _SettingsState extends State<Settings> {
           _buildSectionHeader('General'),
           SizedBox(height: 8),
           _buildThemeToggle(context),
+          SizedBox(height: 8),
           _buildSettingsItem(
             context,
             icon: Icons.person_outline,
@@ -57,6 +58,7 @@ class _SettingsState extends State<Settings> {
               );
             },
           ),
+          SizedBox(height: 8),
           _buildSettingsItem(
             context,
             icon: Icons.lock_outline,
@@ -68,6 +70,7 @@ class _SettingsState extends State<Settings> {
               );
             },
           ),
+          SizedBox(height: 8),
           _buildSettingsItem(
             context,
             icon: Icons.notifications_outlined,
@@ -99,6 +102,7 @@ class _SettingsState extends State<Settings> {
               );
             },
           ),
+          SizedBox(height: 8),
           _buildSettingsItem(
             context,
             icon: Icons.shield_outlined,
@@ -123,13 +127,25 @@ class _SettingsState extends State<Settings> {
             label: 'Logout',
             iconColor: colorScheme.error,
             labelColor: colorScheme.error,
-            onTap: () async {
-              final navigator = Navigator.of(context);
-              await _authService.signOut();
-              if (!mounted) return;
-              navigator.pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => Signin()),
-                (route) => false,
+            onTap: () {
+              showDialog(
+                context: context,
+                barrierDismissible: true,
+                builder: (_) => CustomDialog(
+                  title: 'Log Out',
+                  message: 'Are you sure you want to log out?',
+                  confirmText: 'Log Out',
+                  onConfirm: () async {
+                    final navigator = Navigator.of(
+                      context,
+                    ); // ← store before await
+                    await _authService.signOut();
+                    navigator.pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (_) => Signin()),
+                      (route) => false,
+                    );
+                  },
+                ),
               );
             },
           ),
@@ -140,14 +156,9 @@ class _SettingsState extends State<Settings> {
   }
 
   Widget _buildSectionHeader(String title) {
-    return Text(
-      title,
-      style: TextStyle(
-        fontSize: AppFonts.caption,
-        fontWeight: AppFonts.medium,
-        color: AppColors.textSecondary,
-      ),
-    );
+    final textTheme = Theme.of(context).textTheme;
+
+    return Text(title, style: textTheme.bodySmall);
   }
 
   Widget _buildSettingsItem(
@@ -164,13 +175,17 @@ class _SettingsState extends State<Settings> {
       children: [
         ListTile(
           onTap: onTap,
-          leading: Icon(icon, color: iconColor ?? AppColors.bgblue, size: 22),
+          leading: Icon(
+            icon,
+            color: iconColor ?? colorScheme.secondary,
+            size: 22,
+          ),
           title: Text(
             label,
             style: TextStyle(
               fontSize: AppFonts.body,
               fontWeight: AppFonts.medium,
-              color: labelColor ?? AppColors.textPrimary,
+              color: labelColor ?? colorScheme.onSurface,
             ),
           ),
           trailing: Icon(
@@ -187,7 +202,7 @@ class _SettingsState extends State<Settings> {
 
 Widget _buildThemeToggle(BuildContext context) {
   final themeNotifier = context.watch<ThemeNotifier>();
-  //final textTheme = Theme.of(context).textTheme;
+  final textTheme = Theme.of(context).textTheme;
   final colorScheme = Theme.of(context).colorScheme;
 
   return Column(
@@ -202,14 +217,14 @@ Widget _buildThemeToggle(BuildContext context) {
         ),
         title: Text(
           themeNotifier.isDarkMode ? 'DarkMode' : 'LightMode',
-          style: TextStyle(
-            fontSize: AppFonts.body,
-            fontWeight: AppFonts.medium,
-            color: AppColors.textPrimary,
-          ),
+          style: textTheme.bodyMedium?.copyWith(fontWeight: AppFonts.semibold),
         ),
         trailing: Switch(
           value: themeNotifier.isDarkMode,
+          thumbIcon: WidgetStateProperty<Icon?>.fromMap({
+            WidgetState.selected: Icon(Icons.dark_mode_rounded),
+            WidgetState.any: Icon(Icons.light_mode_rounded),
+          }),
           onChanged: (_) => themeNotifier.toggleTheme(),
           activeThumbColor: colorScheme.primary,
         ),

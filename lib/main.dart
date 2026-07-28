@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  FirebaseAnalytics.instance; // ← initializes analytics
+  FirebaseAnalytics.instance;
+  FirebaseFirestore.instance; // ← initializes analytics
 
   // Handle Google redirect result on web
   if (kIsWeb) {

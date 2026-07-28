@@ -46,6 +46,18 @@ class NotificationService {
         );
 
     _startForegroundListener();
+    _startBackgroundListener();
+    await _checkTerminatedMessage();
+
+    // add this in initialize()
+    FirebaseMessaging.instance.onTokenRefresh.listen((newToken) {
+      debugPrint('🔑 Token refreshed: $newToken');
+      // save to Firestore user document
+      // FirebaseFirestore.instance
+      //     .collection('users')
+      //     .doc(FirebaseAuth.instance.currentUser?.uid)
+      //     .update({'fcmToken': newToken});
+    });
   }
 
   void _startForegroundListener() {
@@ -74,6 +86,42 @@ class NotificationService {
         );
       }
     });
+  }
+
+  // call this in initialize() after _startForegroundListener()
+  void _startBackgroundListener() {
+    // when app is in background and user taps notification
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      debugPrint('🔔 Opened from background: ${message.notification?.title}');
+      _handleNotificationNavigation(message);
+    });
+  }
+
+  Future<void> _checkTerminatedMessage() async {
+    // when app is completely closed and user taps notification
+    RemoteMessage? initialMessage = await FirebaseMessaging.instance
+        .getInitialMessage();
+    if (initialMessage != null) {
+      debugPrint(
+        '🔔 Opened from terminated: ${initialMessage.notification?.title}',
+      );
+      _handleNotificationNavigation(initialMessage);
+    }
+  }
+
+  void _handleNotificationNavigation(RemoteMessage message) {
+    final String? screen = message.data['screen'];
+    if (screen == null) return;
+
+    switch (screen) {
+      case 'home':
+        navigatorKey.currentState?.pushNamed('/home');
+        break;
+      case 'tasks':
+        navigatorKey.currentState?.pushNamed('/tasks');
+        break;
+      // add more routes as needed
+    }
   }
 
   /// Triggers automatically on UI click
