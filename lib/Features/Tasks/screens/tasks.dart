@@ -58,9 +58,9 @@ class _TasksViewState extends State<Tasks> {
             ? EmptyState()
             : TaskList(
                 tasks: tasks,
-                onDelete: (index) {
+                onDelete: (task) {
                   setState(() {
-                    tasks.removeAt(index);
+                    tasks.removeWhere((item) => item['title'] == task['title']);
                   });
                 },
               ),

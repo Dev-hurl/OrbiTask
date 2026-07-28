@@ -4,7 +4,9 @@ import 'package:orbitask/Widgets/Custom%20Widgets/custom_text_form_field.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
 class CreateTask1 extends StatefulWidget {
-  const CreateTask1({super.key});
+  final String firstName;
+
+  const CreateTask1({super.key, this.firstName = 'User'});
 
   @override
   State<CreateTask1> createState() => _CreateTask1State();
@@ -232,11 +234,16 @@ class _CreateTask1State extends State<CreateTask1> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        // only navigates if all fields pass validation
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CreateTask2(),
+                            builder: (context) => CreateTask2(
+                              title: _titleController.text.trim(),
+                              description: _descriptionController.text.trim(),
+                              priority: _selectedPriority!,
+                              category: _selectedCategory!,
+                              firstName: widget.firstName,
+                            ),
                           ),
                         );
                       }

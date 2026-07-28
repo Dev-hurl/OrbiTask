@@ -5,7 +5,7 @@ import 'package:orbitask/constants/app_fonts.dart';
 
 class TaskList extends StatelessWidget {
   final List<Map<String, dynamic>> tasks;
-  final Function(int) onDelete;
+  final Function(Map<String, dynamic>) onDelete;
 
   const TaskList({super.key, required this.tasks, required this.onDelete});
 
@@ -36,7 +36,7 @@ class TaskList extends StatelessWidget {
           time: filteredTasks[index]['time'],
           date: filteredTasks[index]['date'],
           priority: filteredTasks[index]['priority'],
-          onDelete: () => onDelete(index),
+          onDelete: () => onDelete(filteredTasks[index]),
         );
       },
     );

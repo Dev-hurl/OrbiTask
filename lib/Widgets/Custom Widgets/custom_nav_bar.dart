@@ -9,8 +9,13 @@ import 'package:orbitask/constants/app_fonts.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   final int currentIndex;
+  final String firstName;
 
-  const CustomBottomNavBar({super.key, this.currentIndex = 0});
+  const CustomBottomNavBar({
+    super.key,
+    this.currentIndex = 0,
+    this.firstName = 'User',
+  });
 
   @override
   State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
@@ -41,7 +46,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
             'assets/icons/home outline.svg',
             'assets/icons/home bold.svg',
             'Home',
-            HomePage(),
+            HomePage(firstName: widget.firstName),
           ),
           _buildNavItem(
             1,

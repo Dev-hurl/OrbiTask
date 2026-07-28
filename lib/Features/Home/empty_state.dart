@@ -1,42 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:orbitask/Features/Tasks/screens/create_task1.dart';
-import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
 class EmptyState extends StatelessWidget {
-  const EmptyState({super.key});
+  final String firstName;
+
+  const EmptyState({super.key, this.firstName = 'User'});
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset(
-            'assets/icons/task list.svg',
-            width: 100,
-            height: 100,
-            colorFilter: ColorFilter.mode(AppColors.bgblue, BlendMode.srcIn),
+          HugeIcon(
+            icon: HugeIcons.strokeRoundedTask01,
+            size: 100,
+            color: colorScheme.secondary,
           ),
           SizedBox(height: 16),
           Text(
-            'Create a task to efficiently\nmanage your time.',
+            'Create a task to efficiently manage your time.',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: AppFonts.body,
-              fontWeight: AppFonts.regular,
-              color: AppColors.textSecondary,
-            ),
+            style: textTheme.bodyMedium,
           ),
           SizedBox(height: 24),
           ElevatedButton(
             onPressed: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => CreateTask1()),
+              MaterialPageRoute(
+                builder: (context) => CreateTask1(firstName: firstName),
+              ),
             ),
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.bgblue,
+              backgroundColor: colorScheme.secondary,
               padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(24),
@@ -44,9 +45,8 @@ class EmptyState extends StatelessWidget {
             ),
             child: Text(
               'Create a Task',
-              style: TextStyle(
-                color: AppColors.bgwhite,
-                fontSize: AppFonts.body,
+              style: textTheme.bodyMedium?.copyWith(
+                color: colorScheme.onPrimary,
                 fontWeight: AppFonts.semibold,
               ),
             ),
