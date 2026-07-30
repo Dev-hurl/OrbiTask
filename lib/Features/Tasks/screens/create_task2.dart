@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:orbitask/Features/Tasks/date_picker_widget.dart';
 import 'package:orbitask/Features/Tasks/models/task_model.dart';
 import 'package:orbitask/Features/Tasks/subtask_section.dart';
 import 'package:orbitask/Features/Tasks/time_picker_widget.dart';
-import 'package:orbitask/Features/Tasks/screens/task_detail.dart';
-import 'package:orbitask/Widgets/toast/toast_manager.dart';
+import 'package:orbitask/Features/Tasks/screens/task_preview.dart';
+import 'package:orbitask/Widgets/toast/toast_service.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
-import 'package:provider/provider.dart';
 
 class CreateTask2 extends StatefulWidget {
   final String title;
@@ -119,14 +119,10 @@ class _CreateTask2State extends State<CreateTask2> {
                   SizedBox(height: 24),
                   Row(
                     children: [
-                      SvgPicture.asset(
-                        'assets/icons/notifications.svg',
-                        width: 24,
-                        height: 24,
-                        colorFilter: ColorFilter.mode(
-                          colorScheme.secondary,
-                          BlendMode.srcIn,
-                        ),
+                      HugeIcon(
+                        icon: HugeIcons.strokeRoundedAlarmClock,
+                        size: 24,
+                        color: colorScheme.secondary,
                       ),
                       SizedBox(width: 8),
                       Text(
@@ -224,11 +220,12 @@ class _CreateTask2State extends State<CreateTask2> {
                   ),
                   onPressed: () {
                     if (_subTasks.isEmpty) {
-                      context.read<ToastManager>().show(
-                        text: 'Add at least one subtask',
-                        icon: Icon(
-                          Icons.warning,
-                          color: colorScheme.onPrimary,
+                      ToastService.instance.show(
+                        context: context,
+                        text: 'Coming soon — stay tuned!',
+                        icon: HugeIcon(
+                          icon: HugeIcons.strokeRoundedStartUp02,
+                          color: colorScheme.onSurface,
                           size: 20,
                         ),
                       );

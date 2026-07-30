@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
@@ -49,8 +50,8 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
             padding: EdgeInsets.symmetric(vertical: 8),
             child: Row(
               children: [
-                Icon(
-                  Icons.calendar_month_rounded,
+                HugeIcon(
+                  icon: HugeIcons.strokeRoundedCalendar03,
                   size: 24,
                   color: colorScheme.secondary,
                 ),

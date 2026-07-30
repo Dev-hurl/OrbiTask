@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
@@ -40,7 +41,11 @@ class _TimerPickerWidgetState extends State<TimerPickerWidget> {
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: Row(
               children: [
-                Icon(Icons.timer_rounded, size: 24, color: colorScheme.secondary),
+                HugeIcon(
+                  icon: HugeIcons.strokeRoundedStopWatch,
+                  size: 24,
+                  color: colorScheme.secondary,
+                ),
                 SizedBox(width: 8),
                 Text(
                   'Start Time',

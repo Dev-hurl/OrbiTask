@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:intl/intl.dart';
 import 'package:orbitask/Features/Home/tasks_list.dart';
 import 'package:orbitask/Features/Notification/notifications.dart';
@@ -23,6 +23,26 @@ String resolveFirstName(String? providedName) {
   }
 
   return 'User';
+}
+
+String formatTaskTime(String? rawTime) {
+  if (rawTime == null || rawTime.toString().trim().isEmpty) {
+    return '';
+  }
+
+  final timeParts = rawTime.toString().split(':');
+  if (timeParts.length < 2) {
+    return rawTime.toString();
+  }
+
+  final hour = int.tryParse(timeParts[0]);
+  final minute = int.tryParse(timeParts[1]);
+  if (hour == null || minute == null) {
+    return rawTime.toString();
+  }
+
+  final parsedTime = DateTime(2024, 1, 1, hour, minute);
+  return DateFormat('hh:mm a').format(parsedTime);
 }
 
 class HomePage extends StatefulWidget {
@@ -81,7 +101,6 @@ class _HomePageState extends State<HomePage> {
         currentIndex: 0,
         firstName: currentFirstName,
       ),
-
       appBar: AppBar(
         elevation: 0,
         leading: Padding(
@@ -94,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                 MaterialPageRoute(builder: (context) => AccountPage()),
               );
             },
-            child: CircleAvatar(
+            child: const CircleAvatar(
               radius: 24,
               backgroundImage: AssetImage('assets/images/avatar.jpg'),
             ),
@@ -110,29 +129,13 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           IconButton(
-            icon: SvgPicture.asset(
-              'assets/icons/calendar-03-stroke-rounded.svg',
-              width: 24,
-              height: 24,
-              colorFilter: ColorFilter.mode(
-                colorScheme.secondary,
-                BlendMode.srcIn,
-              ),
-            ),
+            icon: HugeIcon(icon: HugeIcons.strokeRoundedCalendar03, color: colorScheme.secondary,),
             onPressed: () {
               // Handle calendar icon press
             },
           ),
           IconButton(
-            icon: SvgPicture.asset(
-              'assets/icons/notifications.svg',
-              width: 24,
-              height: 24,
-              colorFilter: ColorFilter.mode(
-                colorScheme.secondary,
-                BlendMode.srcIn,
-              ),
-            ),
+            icon: HugeIcon(icon: HugeIcons.strokeRoundedNotification01),
             color: colorScheme.secondary,
             onPressed: () {
               Navigator.push(
@@ -186,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                   return {
                     'id': doc.id,
                     'title': data['title'] ?? 'Untitled task',
-                    'time': data['startTime']?.toString() ?? '',
+                    'time': formatTaskTime(data['startTime']?.toString()),
                     'date': formattedDate,
                     'priority': data['priority'] ?? 'Medium',
                     'category': data['category'] ?? 'Others',
@@ -226,7 +229,7 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       floatingActionButton: Padding(
-        padding: EdgeInsets.only(bottom: 40, right: 12),
+        padding: const EdgeInsets.only(bottom: 40, right: 12),
         child: FloatingActionButton(
           onPressed: () {
             Navigator.push(

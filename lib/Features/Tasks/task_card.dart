@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:orbitask/Features/Tasks/screens/edit_tasks.dart';
 import 'package:orbitask/Features/Tasks/screens/tasks_overview.dart';
 import 'package:orbitask/Widgets/Custom%20Widgets/custom_dialog.dart';
@@ -102,8 +103,8 @@ class TaskCard extends StatelessWidget {
                       value: 'edit',
                       child: Row(
                         children: [
-                          Icon(
-                            Icons.edit,
+                          HugeIcon(
+                            icon: HugeIcons.strokeRoundedEdit03,
                             size: 18,
                             color: colorScheme.secondary,
                           ),
@@ -122,8 +123,8 @@ class TaskCard extends StatelessWidget {
                       value: 'delete',
                       child: Row(
                         children: [
-                          Icon(
-                            Icons.delete_forever_rounded,
+                          HugeIcon(
+                            icon: HugeIcons.strokeRoundedDelete03,
                             size: 18,
                             color: colorScheme.error,
                           ),

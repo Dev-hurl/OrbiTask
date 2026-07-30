@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
@@ -125,7 +126,11 @@ class _SubtaskSectionState extends State<SubtaskSection> {
             padding: EdgeInsets.symmetric(vertical: 8),
             child: Row(
               children: [
-                Icon(Icons.add, color: colorScheme.secondary, size: 24),
+                HugeIcon(
+                  icon: HugeIcons.strokeRoundedStopWatch,
+                  color: colorScheme.secondary,
+                  size: 24,
+                ),
                 SizedBox(width: 8),
                 Text(
                   'Add Sub Task',

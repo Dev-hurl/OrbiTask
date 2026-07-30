@@ -4,6 +4,7 @@ import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
 class TaskList extends StatelessWidget {
+  
   final List<Map<String, dynamic>> tasks;
   final Function(Map<String, dynamic>) onDelete;
 
@@ -53,6 +54,7 @@ class TaskList extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TabBar(
+            dividerColor: Colors.transparent,
             isScrollable: true,
             labelColor: colorScheme.secondary,
             unselectedLabelColor: colorScheme.onSurfaceVariant,

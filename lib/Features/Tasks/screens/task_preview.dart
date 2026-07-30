@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:intl/intl.dart';
 import 'package:orbitask/Features/Home/home_page.dart';
 import 'package:orbitask/Features/Tasks/models/task_model.dart';
-import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 import 'package:orbitask/core/Services/firestore_service.dart';
 
@@ -29,7 +29,7 @@ class TaskPreview extends StatelessWidget {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -44,12 +44,12 @@ class TaskPreview extends StatelessWidget {
               style: textTheme.bodyMedium,
             ),
 
-            const SizedBox(height: 24),
+            SizedBox(height: 24),
 
             // title + description box
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.all(16),
+              padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
                 border: Border.all(color: colorScheme.secondary),
                 borderRadius: BorderRadius.circular(12),
@@ -64,11 +64,11 @@ class TaskPreview extends StatelessWidget {
                       color: colorScheme.secondary,
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8),
                   Text(
                     task.description,
                     style: textTheme.bodyMedium?.copyWith(
-                      color: AppColors.textSecondary,
+                      color: colorScheme.onSurface,
                     ),
                   ),
                 ],
@@ -91,7 +91,7 @@ class TaskPreview extends StatelessWidget {
             // start time
             _buildInfoRow(
               context,
-              iconPath: 'assets/icons/timer_filled.svg',
+              icon: HugeIcons.strokeRoundedStopWatch,
               label: 'Start Time',
               value: formattedTime,
             ),
@@ -100,7 +100,7 @@ class TaskPreview extends StatelessWidget {
             // start date
             _buildInfoRow(
               context,
-              iconPath: 'assets/icons/calendar-01-stroke-rounded.svg',
+              icon: HugeIcons.strokeRoundedCalendar03,
               label: 'Start Date',
               value: formattedDate,
             ),
@@ -109,7 +109,7 @@ class TaskPreview extends StatelessWidget {
             // reminder
             _buildInfoRow(
               context,
-              iconPath: 'assets/icons/notifications.svg',
+              icon: HugeIcons.strokeRoundedAlarmClock,
               label: 'Reminder',
               value: task.reminder,
             ),
@@ -130,8 +130,8 @@ class TaskPreview extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 8),
                 child: Row(
                   children: [
-                    Icon(
-                      Icons.check_box_outlined,
+                    HugeIcon(
+                      icon: HugeIcons.strokeRoundedCheckmarkSquare02,
                       color: colorScheme.secondary,
                       size: 20,
                     ),
@@ -241,7 +241,7 @@ class TaskPreview extends StatelessWidget {
 
   Widget _buildChip(BuildContext context, String label, Color color) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
         border: Border.all(color: color),
         borderRadius: BorderRadius.circular(20),
@@ -255,7 +255,7 @@ class TaskPreview extends StatelessWidget {
 
   Widget _buildInfoRow(
     BuildContext context, {
-    required String iconPath,
+    required dynamic icon,
     required String label,
     required String value,
   }) {
@@ -266,15 +266,7 @@ class TaskPreview extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 12),
       child: Row(
         children: [
-          SvgPicture.asset(
-            iconPath,
-            width: 24,
-            height: 24,
-            colorFilter: ColorFilter.mode(
-              colorScheme.secondary,
-              BlendMode.srcIn,
-            ),
-          ),
+          icon,
           const SizedBox(width: 8),
           Text(
             label,

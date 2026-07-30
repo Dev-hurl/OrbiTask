@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -8,8 +9,6 @@ import 'package:orbitask/Features/Auth/screens/sign_in.dart';
 import 'package:orbitask/Features/Home/home_page.dart';
 import 'package:orbitask/Features/provider/theme_notifier.dart';
 import 'package:orbitask/Features/Splash_Screen/splash_screen1.dart';
-import 'package:orbitask/Widgets/toast/toast_manager.dart';
-import 'package:orbitask/Widgets/toast/toast_overlay.dart';
 import 'package:orbitask/core/Services/notification_service.dart';
 import 'package:orbitask/core/theme/app_theme.dart';
 import 'package:orbitask/core/util/navigation_key.dart';
@@ -18,11 +17,16 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize Firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  
+  // Initialize Analytics & Firestore instances (optional but good for warm-up)
   FirebaseAnalytics.instance;
-  FirebaseFirestore.instance; // ← initializes analytics
+  FirebaseFirestore.instance;
 
   // Handle Google redirect result on web
   if (kIsWeb) {
@@ -36,10 +40,28 @@ void main() async {
   await NotificationService.instance.initialize();
 
   final prefs = await SharedPreferences.getInstance();
+  final hasAskedPermission = prefs.getBool('hasAskedPermission') ?? false;
+
+  if (!hasAskedPermission) {
+    final settings = await FirebaseMessaging.instance.requestPermission(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
+    await prefs.setBool('hasAskedPermission', true);
+    await prefs.setBool(
+      'notificationsEnabled',
+   
+      settings.authorizationStatus == AuthorizationStatus.authorized,
+    );
+  }
+
   final hasSeenOnboarding = kIsWeb
       ? false
       : (prefs.getBool('hasSeenOnboarding') ?? false);
 
+
+  // Note: currentUser is available immediately after initializeApp if persistence is enabled (default)
   final isLoggedIn = FirebaseAuth.instance.currentUser != null;
 
   runApp(
@@ -47,7 +69,6 @@ void main() async {
       enabled: kIsWeb,
       builder: (context) => MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => ToastManager()),
           ChangeNotifierProvider(create: (_) => ThemeNotifier()),
         ],
         child: MyApp(
@@ -73,12 +94,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeNotifier = context.watch<ThemeNotifier>();
 
-    // navigation logic
     Widget homeScreen;
     if (!hasSeenOnboarding) {
       homeScreen = SplashScreen1();
     } else if (isLoggedIn) {
-      homeScreen = HomePage(); // ← go straight to home
+      homeScreen = HomePage();
     } else {
       homeScreen = Signin();
     }
@@ -88,14 +108,11 @@ class MyApp extends StatelessWidget {
       title: 'OrbiTask',
       debugShowCheckedModeBanner: false,
       locale: DevicePreview.locale(context),
-      builder: (context, child) {
-        child = DevicePreview.appBuilder(context, child);
-        return ToastOverlay(child: child);
-      },
+      builder: DevicePreview.appBuilder,
       home: homeScreen,
       themeMode: themeNotifier.themeMode,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
     );
   }
-}
+}   
