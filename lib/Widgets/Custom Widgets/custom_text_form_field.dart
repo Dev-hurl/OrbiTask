@@ -3,7 +3,7 @@ import 'package:orbitask/constants/app_fonts.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String hinText;
-  final IconData? icon;
+  final dynamic icon;
   final int maxline;
   final bool obscureText;
   final TextEditingController controller;
@@ -42,7 +42,7 @@ class CustomTextFormField extends StatelessWidget {
           fontWeight: AppFonts.medium,
           color: colorScheme.onSurface,
         ),
-        suffixIcon: Icon(icon),
+        suffixIcon: icon,
         suffixIconColor: colorScheme.secondary,
         //prefixIcon: Icon(icon),
         //prefixIconColor: AppColors.bgblue,

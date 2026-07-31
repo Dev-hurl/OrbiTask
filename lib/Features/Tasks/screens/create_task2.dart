@@ -222,7 +222,7 @@ class _CreateTask2State extends State<CreateTask2> {
                     if (_subTasks.isEmpty) {
                       ToastService.instance.show(
                         context: context,
-                        text: 'Coming soon — stay tuned!',
+                        text: 'Add at least one subtask',
                         icon: HugeIcon(
                           icon: HugeIcons.strokeRoundedStartUp02,
                           color: colorScheme.onSurface,

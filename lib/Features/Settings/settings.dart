@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:orbitask/Features/Auth/screens/Verification/change_password.dart';
 import 'package:orbitask/Features/Notification/enable_notification.dart';
+import 'package:orbitask/Features/Settings/about_app_screen.dart';
 import 'package:orbitask/Features/provider/theme_notifier.dart';
 import 'package:orbitask/Features/Auth/screens/sign_in.dart';
 import 'package:orbitask/Features/Proflie/account_page.dart';
@@ -10,7 +11,6 @@ import 'package:orbitask/Widgets/Custom%20Widgets/custom_dialog.dart';
 import 'package:orbitask/Widgets/toast/toast_service.dart';
 import 'package:orbitask/core/Services/auth_services.dart';
 import 'package:orbitask/Widgets/Custom%20Widgets/custom_nav_bar.dart';
-import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -55,7 +55,7 @@ class _SettingsState extends State<Settings> {
             fontWeight: AppFonts.semibold,
           ),
         ),
-        leading: BackButton(color: colorScheme.secondary),
+        leading: BackButton(),
       ),
       body: ListView(
         padding: EdgeInsets.all(16),
@@ -79,22 +79,22 @@ class _SettingsState extends State<Settings> {
                         : null,
                     backgroundColor: colorScheme.surfaceContainerHighest,
                     child: user?.photoURL == null
-                        ? Icon(
-                            Icons.person,
+                        ? HugeIcon(
+                            icon: HugeIcons.strokeRoundedUser,
                             size: 40,
                             color: colorScheme.secondary,
                           )
                         : null,
                   ),
                 ),
-                const SizedBox(height: 12),
+                SizedBox(height: 12),
                 Text(
                   user?.displayName ?? 'OrbiTask User',
                   style: textTheme.titleMedium?.copyWith(
                     fontWeight: AppFonts.bold,
                   ),
                 ),
-                const SizedBox(height: 4),
+                SizedBox(height: 4),
                 Text(
                   user?.email ?? '',
                   style: textTheme.bodySmall?.copyWith(
@@ -164,19 +164,15 @@ class _SettingsState extends State<Settings> {
             },
           ),
           _buildThemeToggle(context),
-          SizedBox(height: 24),
-
-          _buildSectionHeader('About'),
           SizedBox(height: 8),
           _buildSettingsItem(
             context,
             icon: HugeIcon(
-              icon: HugeIcons.strokeRoundedShield02,
-              size: 24,
+              icon: HugeIcons.strokeRoundedHugeicons,
               color: colorScheme.secondary,
             ),
-            label: 'Terms and Conditions',
-            subtitle: 'Read our terms of service',
+            label: 'Feedback & Suggestions',
+            subtitle: 'Report a bug or suggest a feature',
             onTap: () {
               ToastService.instance.show(
                 context: context,
@@ -189,28 +185,6 @@ class _SettingsState extends State<Settings> {
               );
             },
           ),
-          _buildSettingsItem(
-            context,
-            icon: HugeIcon(
-              icon: HugeIcons.strokeRoundedCustomerService01,
-              size: 24,
-              color: colorScheme.secondary,
-            ),
-            label: 'Contact Support',
-            subtitle: 'Get help from our team',
-            onTap: () {
-              ToastService.instance.show(
-                context: context,
-                text: 'Coming soon — stay tuned!',
-                icon: HugeIcon(
-                  icon: HugeIcons.strokeRoundedStartUp02,
-                  color: colorScheme.onSurface,
-                  size: 20,
-                ),
-              );
-            },
-          ),
-
           SizedBox(height: 24),
           _buildSectionHeader('Session'),
           SizedBox(height: 8),
@@ -266,6 +240,22 @@ class _SettingsState extends State<Settings> {
             },
           ),
           SizedBox(height: 24),
+          _buildSettingsItem(
+            context,
+            icon: HugeIcon(
+              icon: HugeIcons.strokeRoundedBadgeInfo,
+              color: colorScheme.secondary,
+            ),
+            label: 'About App',
+            subtitle: 'Details of our App',
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AboutAppScreen()),
+              );
+            },
+          ),
+          SizedBox(height: 24),
           Center(
             child: Text(
               _appVersion.isEmpty ? 'Loading version...' : _appVersion,
@@ -313,10 +303,9 @@ class _SettingsState extends State<Settings> {
             ),
           ),
           subtitle: Text(subtitle, style: textTheme.bodySmall),
-          trailing: Icon(
-            Icons.arrow_forward_ios,
-            color: AppColors.textSecondary,
-            size: 16,
+          trailing: HugeIcon(
+            icon: HugeIcons.strokeRoundedArrowRight01,
+            color: colorScheme.onSurfaceVariant,
           ),
         ),
         //Divider(color: colorScheme.surfaceContainerHighest, height: 1),

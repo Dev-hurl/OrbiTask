@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:orbitask/Features/Home/home_page.dart';
 import 'package:orbitask/Features/Settings/settings.dart';
-import 'package:orbitask/Features/Tasks/screens/tasks.dart';
 import 'package:orbitask/Features/Timer/timer.dart';
 import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
@@ -39,7 +38,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       height: 80,
       decoration: BoxDecoration(color: colorScheme.surfaceContainerHighest),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _buildNavItem(
             0,
@@ -48,13 +47,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
             'Home',
             HomePage(firstName: widget.firstName),
           ),
-          _buildNavItem(
-            1,
-            'assets/icons/task list.svg',
-            'assets/icons/task list filled.svg',
-            'Task',
-            Tasks(),
-          ),
+          
           _buildNavItem(
             2,
             'assets/icons/timer_outline.svg',

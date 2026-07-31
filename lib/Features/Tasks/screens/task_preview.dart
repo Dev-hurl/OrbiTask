@@ -91,7 +91,11 @@ class TaskPreview extends StatelessWidget {
             // start time
             _buildInfoRow(
               context,
-              icon: HugeIcons.strokeRoundedStopWatch,
+              icon: HugeIcon(
+                icon: HugeIcons.strokeRoundedStopWatch,
+                size: 24,
+                color: colorScheme.secondary,
+              ),
               label: 'Start Time',
               value: formattedTime,
             ),
@@ -100,7 +104,11 @@ class TaskPreview extends StatelessWidget {
             // start date
             _buildInfoRow(
               context,
-              icon: HugeIcons.strokeRoundedCalendar03,
+              icon: HugeIcon(
+                icon: HugeIcons.strokeRoundedCalendar03,
+                size: 24,
+                color: colorScheme.secondary,
+              ),
               label: 'Start Date',
               value: formattedDate,
             ),
@@ -109,7 +117,11 @@ class TaskPreview extends StatelessWidget {
             // reminder
             _buildInfoRow(
               context,
-              icon: HugeIcons.strokeRoundedAlarmClock,
+              icon: HugeIcon(
+                icon: HugeIcons.strokeRoundedAlarmClock,
+                size: 24,
+                color: colorScheme.secondary,
+              ),
               label: 'Reminder',
               value: task.reminder,
             ),
@@ -198,8 +210,13 @@ class TaskPreview extends StatelessWidget {
                     if (!context.mounted) return;
 
                     // navigate back to home and clear stack
-                    final resolvedFirstName = (firstName.trim().isEmpty || firstName == 'User')
-                        ? (FirebaseAuth.instance.currentUser?.displayName?.trim().split(' ').first ?? 'User')
+                    final resolvedFirstName =
+                        (firstName.trim().isEmpty || firstName == 'User')
+                        ? (FirebaseAuth.instance.currentUser?.displayName
+                                  ?.trim()
+                                  .split(' ')
+                                  .first ??
+                              'User')
                         : firstName;
 
                     final createdTask = {
@@ -267,14 +284,14 @@ class TaskPreview extends StatelessWidget {
       child: Row(
         children: [
           icon,
-          const SizedBox(width: 8),
+          SizedBox(width: 8),
           Text(
             label,
             style: textTheme.bodyMedium?.copyWith(
               fontWeight: AppFonts.semibold,
             ),
           ),
-          const Spacer(),
+          Spacer(),
           Text(
             value,
             style: textTheme.bodyMedium?.copyWith(

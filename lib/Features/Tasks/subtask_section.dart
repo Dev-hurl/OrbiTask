@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:orbitask/constants/app_colors.dart';
 import 'package:orbitask/constants/app_fonts.dart';
 
 class SubtaskSection extends StatefulWidget {
@@ -161,9 +160,8 @@ class _SubtaskSectionState extends State<SubtaskSection> {
                   SizedBox(width: 8),
                   Text(
                     _subTasks[index],
-                    style: TextStyle(
-                      fontSize: AppFonts.body,
-                      color: AppColors.textPrimary,
+                    style: textTheme.bodyMedium?.copyWith(
+                      color: colorScheme.onPrimary,
                     ),
                   ),
                 ],

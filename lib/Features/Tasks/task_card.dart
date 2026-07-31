@@ -48,6 +48,9 @@ class TaskCard extends StatelessWidget {
           MaterialPageRoute(builder: (context) => TasksOverview()),
         );
       },
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      onLongPress: () {},
       child: Container(
         margin: EdgeInsets.only(bottom: 16),
         padding: EdgeInsets.all(16),
@@ -143,7 +146,7 @@ class TaskCard extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 8),
             //Time & Date
             Row(
               children: [
