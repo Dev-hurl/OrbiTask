@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:orbitask/Features/Auth/screens/sign_in.dart';
 import 'package:orbitask/Widgets/Custom%20Widgets/custom_text_form_field.dart';
 import 'package:orbitask/constants/app_colors.dart';
@@ -40,21 +41,11 @@ class _ChangePasswordState extends State<ChangePassword> {
             key: _formKey,
             child: Column(
               children: [
-                Text(
-                  'Change Password',
-                  style: textTheme.displayMedium?.copyWith(
-                    color: textTheme
-                        .bodyMedium
-                        ?.color, // pulls the theme-correct textSecondary equivalent
-                  ),
-                ),
+                Text('Change Password', style: textTheme.displayMedium),
                 Text(
                   'Enter your details',
-                  style: TextStyle(
-                    color: AppColors.shark400,
-                    fontSize: AppFonts.body,
-                    fontWeight: AppFonts.regular,
-                  ),
+                  textAlign: TextAlign.center,
+                  style: textTheme.bodyMedium,
                 ),
                 SizedBox(height: 24),
                 Column(
@@ -63,17 +54,20 @@ class _ChangePasswordState extends State<ChangePassword> {
                   children: [
                     Text(
                       'Enter New Password',
-                      style: TextStyle(
+                      style: textTheme.bodyMedium?.copyWith(
                         fontWeight: AppFonts.semibold,
-                        fontSize: AppFonts.body,
-                        color: AppColors.textSecondary,
                       ),
                     ),
                     CustomTextFormField(
                       hinText: 'Enter new Password',
                       controller: _passwordController,
                       obscureText: true,
-                      icon: Icons.visibility,
+                      icon: UnconstrainedBox(
+                        child: HugeIcon(
+                          icon: HugeIcons.strokeRoundedEye,
+                          size: 24,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -84,30 +78,32 @@ class _ChangePasswordState extends State<ChangePassword> {
                   children: [
                     Text(
                       'Confirm New Password',
-                      style: TextStyle(
-                        fontSize: AppFonts.body,
+                      style: textTheme.bodyMedium?.copyWith(
                         fontWeight: AppFonts.semibold,
-                        color: AppColors.textSecondary,
                       ),
                     ),
                     CustomTextFormField(
                       hinText: 'Confirm Password',
                       controller: _confirmPasswordController,
                       obscureText: true,
-                      icon: Icons.visibility,
+                      icon: UnconstrainedBox(
+                        child: HugeIcon(
+                          icon: HugeIcons.strokeRoundedEye,
+                          size: 24,
+                        ),
+                      ),
                     ),
                   ],
                 ),
-                SizedBox(height: 32),
-
+                SizedBox(height: 80),
                 Align(
                   alignment: Alignment.center,
                   child: SizedBox(
                     width: double.infinity,
-                    height: 48,
+                    height: 52,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.bgblue,
+                        backgroundColor: colorScheme.secondary,
                         padding: EdgeInsets.symmetric(
                           horizontal: 16,
                           vertical: 14,

@@ -95,6 +95,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
+    final user = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
       bottomNavigationBar: CustomBottomNavBar(
@@ -113,9 +114,19 @@ class _HomePageState extends State<HomePage> {
                 MaterialPageRoute(builder: (context) => AccountPage()),
               );
             },
-            child: const CircleAvatar(
-              radius: 24,
-              backgroundImage: AssetImage('assets/images/avatar.jpg'),
+            child: CircleAvatar(
+              radius: 40,
+              backgroundImage: user?.photoURL != null
+                  ? NetworkImage(user!.photoURL!)
+                  : null,
+              backgroundColor: colorScheme.surfaceContainerHighest,
+              child: user?.photoURL == null
+                  ? HugeIcon(
+                      icon: HugeIcons.strokeRoundedUser,
+                      size: 40,
+                      color: colorScheme.secondary,
+                    )
+                  : null,
             ),
           ),
         ),
@@ -129,7 +140,10 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           IconButton(
-            icon: HugeIcon(icon: HugeIcons.strokeRoundedCalendar03, color: colorScheme.secondary,),
+            icon: HugeIcon(
+              icon: HugeIcons.strokeRoundedCalendar03,
+              color: colorScheme.secondary,
+            ),
             onPressed: () {
               // Handle calendar icon press
             },

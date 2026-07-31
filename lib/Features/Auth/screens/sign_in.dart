@@ -113,7 +113,7 @@ class _SigninState extends State<Signin> {
                     SizedBox(height: 12),
 
                     Align(
-                      alignment: Alignment.centerLeft,
+                      alignment: Alignment.centerRight,
                       child: GestureDetector(
                         onTap: () => Navigator.push(
                           context,
@@ -123,9 +123,7 @@ class _SigninState extends State<Signin> {
                         ),
                         child: Text(
                           'Forgot Password?',
-                          style: TextStyle(
-                            fontSize: AppFonts.caption,
-                            fontWeight: AppFonts.medium,
+                          style: textTheme.bodySmall?.copyWith(
                             color: colorScheme.error,
                           ),
                         ),
@@ -197,10 +195,7 @@ class _SigninState extends State<Signin> {
                       ),
                     ),
                     SizedBox(height: 16),
-                    Text(
-                      'Or continue with',
-                      style: textTheme.bodyMedium,
-                    ),
+                    Text('Or continue with', style: textTheme.bodyMedium),
                     SizedBox(height: 16),
 
                     Row(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:orbitask/Features/Auth/screens/sign_in.dart';
 import 'package:orbitask/Widgets/Custom%20Widgets/custom_text_form_field.dart';
 import 'package:orbitask/constants/app_colors.dart';
@@ -28,8 +29,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
-      appBar: AppBar(leading: BackButton(color: AppColors.bgblue)),
+      appBar: AppBar(leading: BackButton(color: colorScheme.secondary)),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: Center(
@@ -37,22 +41,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             key: _formKey,
             child: Column(
               children: [
-                Text(
-                  'Forgot Password',
-                  style: TextStyle(
-                    color: AppColors.textSecondary,
-                    fontSize: AppFonts.heading2,
-                    fontWeight: AppFonts.semibold,
-                  ),
-                ),
+                Text('Forgot Password', style: textTheme.displayMedium),
                 Text(
                   'Enter your email address to receive to a password reset link.',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: AppColors.shark400,
-                    fontSize: AppFonts.body,
-                    fontWeight: AppFonts.regular,
-                  ),
+                  style: textTheme.bodyMedium,
                 ),
                 SizedBox(height: 24),
                 Column(
@@ -61,55 +54,61 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   children: [
                     Text(
                       'Email Address',
-                      style: TextStyle(
+                      style: textTheme.bodyMedium?.copyWith(
                         fontWeight: AppFonts.semibold,
-                        fontSize: AppFonts.body,
-                        color: AppColors.textSecondary,
                       ),
                     ),
                     CustomTextFormField(
                       hinText: 'johndoe@gmail.com',
                       controller: _passwordController,
+                      icon: UnconstrainedBox(
+                        child: HugeIcon(
+                          icon: HugeIcons.strokeRoundedEye,
+                          size: 24,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 80),
+
+                    Align(
+                      alignment: Alignment.center,
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 52,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.bgblue,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 14,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(24),
+                            ),
+                          ),
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              // only navigates if all fields pass validation
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Signin(),
+                                ),
+                              );
+                            }
+                          },
+                          child: Text(
+                            'Reset Password',
+                            style: TextStyle(
+                              fontSize: AppFonts.body,
+                              fontWeight: AppFonts.semibold,
+                              color: AppColors.bgwhite,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ],
-                ),
-                SizedBox(height: 24),
-      
-                Align(
-                  alignment: Alignment.center,
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 48,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.bgblue,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 14,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(24),
-                        ),
-                      ),
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          // only navigates if all fields pass validation
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Signin()),
-                          );
-                        }
-                      },
-                      child: Text(
-                        'Reset Password',
-                        style: TextStyle(
-                          fontSize: AppFonts.body,
-                          fontWeight: AppFonts.semibold,
-                          color: AppColors.bgwhite,
-                        ),
-                      ),
-                    ),
-                  ),
                 ),
               ],
             ),
