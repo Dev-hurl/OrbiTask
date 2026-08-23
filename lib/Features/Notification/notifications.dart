@@ -34,6 +34,50 @@ class Notifications extends StatelessWidget {
         child: ListView(
           physics: AlwaysScrollableScrollPhysics(),
           children: [
+            Row(
+              spacing: 8,
+              children: [
+                ChoiceChip(
+                  showCheckmark: false,
+                  label: Text(
+                    'All Notifications',
+                    style: textTheme.bodyMedium?.copyWith(
+                      color: colorScheme.onSurface,
+                      fontWeight: AppFonts.semibold,
+                    ),
+                  ),
+                  selected: true,
+                  selectedColor: colorScheme.surfaceContainerHighest,
+                  disabledColor: colorScheme.onSurfaceVariant,
+                ),
+                ChoiceChip(
+                  showCheckmark: false,
+                  label: Text(
+                    'Promotions',
+                    style: textTheme.bodyMedium?.copyWith(
+                      color: colorScheme.onSurface,
+                      fontWeight: AppFonts.semibold,
+                    ),
+                  ),
+                  selected: false,
+                  selectedColor: colorScheme.surfaceContainerHighest,
+                  disabledColor: colorScheme.surfaceContainerHighest,
+                ),
+                ChoiceChip(
+                  showCheckmark: false,
+                  label: Text(
+                    'Tasks',
+                    style: textTheme.bodyMedium?.copyWith(
+                      color: colorScheme.onSurface,
+                      fontWeight: AppFonts.semibold,
+                    ),
+                  ),
+                  selected: false,
+                  selectedColor: colorScheme.surfaceContainerHighest,
+                  disabledColor: colorScheme.surfaceContainerHighest,
+                ),
+              ],
+            ),
             Slidable(
               startActionPane: ActionPane(
                 motion: ScrollMotion(),
