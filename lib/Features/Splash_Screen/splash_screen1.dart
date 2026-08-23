@@ -65,9 +65,9 @@ class _SplashScreen1State extends State<SplashScreen1>
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final maxRadius = size.longestSide * 2;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      backgroundColor: AppColors.bgwhite,
       body: Stack(
         children: [
           // top left circle
@@ -84,7 +84,7 @@ class _SplashScreen1State extends State<SplashScreen1>
                   width: circleSize,
                   height: circleSize,
                   decoration: BoxDecoration(
-                    color: Color(0xFF6B6BF5),
+                    color: colorScheme.secondary,
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -106,7 +106,7 @@ class _SplashScreen1State extends State<SplashScreen1>
                   width: circleSize,
                   height: circleSize,
                   decoration: BoxDecoration(
-                    color: AppColors.bgblue,
+                    color: colorScheme.secondary,
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -132,7 +132,7 @@ class _SplashScreen1State extends State<SplashScreen1>
                     width: 200,
                     height: 200,
                   ),
-                  const SizedBox(height: 4),
+                  SizedBox(height: 4),
                   Text(
                     '...Tasks in motion, Goals in Sight',
                     style: TextStyle(

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:orbitask/Features/Auth/screens/Verification/forgot_password.dart';
 import 'package:orbitask/Features/Auth/screens/sign_up.dart';
 import 'package:orbitask/Features/Home/home_page.dart';
@@ -48,7 +49,7 @@ class _SigninState extends State<Signin> {
 
                     Text('Welcome Back', style: textTheme.displayMedium),
                     Text(
-                      'Signin to access your account, manage your time and task',
+                      'Sign In to access your account, manage your time and task',
                       textAlign: TextAlign.center,
                       style: textTheme.bodyMedium,
                     ),
@@ -96,7 +97,11 @@ class _SigninState extends State<Signin> {
                         CustomTextFormField(
                           hinText: 'Enter your password',
                           controller: _passwordController,
-                          icon: Icons.visibility_off_rounded,
+                          icon: UnconstrainedBox(
+                            child: HugeIcon(
+                              icon: HugeIcons.strokeRoundedEye,
+                            ),
+                          ),
                           obscureText: true,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
