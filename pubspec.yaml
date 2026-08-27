@@ -48,7 +48,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/fonts/
-    #- assets/secrets/service_account.json
+    - assets/secrets/service_account.json
     
   fonts:
     - family: Poppins

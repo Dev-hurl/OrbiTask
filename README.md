@@ -63,7 +63,30 @@ OrbiTask is a modern task management mobile app built with Flutter — designed 
 | `shared_preferences` | Local storage |
 | `flutter_svg` | SVG rendering |
 | `device_preview` | UI preview across devices |
-
+| `flutter_svg` | SVG rendering |
+| `flutter_native_splash` | Native splash screen |
+| `firebase_messaging` | Push notifications |
+  | `firebase_analytics` | Analytics |
+  | `firebase_in_app_messaging` | In-App Messaging |
+  | `flutter_local_notifications` | Local Notifications |
+| `firebase_core` | Firebase initialization |
+| `firebase_auth` | Authentication |
+| `google_sign_in` | Google Sign-In |
+| `shared_preferences` | Local storage |
+| `provider` | State management |
+|  `device_preview` | UI preview across devices |
+| `quick_actions` | Quick actions (home screen shortcuts) |
+| `go_router` |
+ | `hugeicons` | 
+ | `timezone` |
+ | `flutter_timezone` |
+ | `http` |
+  | `googleapis_auth` | 
+  | `cloud_firestore` | 
+ | `intl` | 
+ | `permission_handler` |
+ | `package_info_plus` |
+|  `flutter_slidable` | drag-to-dismiss and swipeable list items |
 ---
 
 ## 👨‍💻 Author
